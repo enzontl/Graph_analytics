@@ -1,0 +1,25 @@
+[project]
+name = "lego-graph"
+version = "0.1.0"
+description = "Analyse en graphe du catalogue LEGO (données Rebrickable)"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "networkx>=3.4",
+    "pandas>=2.2",
+    "numpy>=1.26",
+    "scipy>=1.13",
+    "scikit-learn>=1.5",
+    "matplotlib>=3.9",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.0"]
+
+[tool.uv]
+# Projet d'analyse, pas une bibliothèque à publier : uv installe seulement les dépendances.
+package = false
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
