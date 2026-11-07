@@ -1,0 +1,14 @@
+weighting,min_weight,n_nodes,note,n_edges,density,mean_degree,n_components,n_isolated,largest_component_share,n_communities,n_communities_size_ge_10,modularity_louvain,modularity_root_themes,nmi_vs_root_theme
+jaccard,0.05,9062,abandonné : plus de 5000000 arêtes,,,,,,,,,,,
+jaccard,0.1,9062,abandonné : plus de 5000000 arêtes,,,,,,,,,,,
+jaccard,0.15,9062,Louvain non lancé (graphe trop grand),4564972.0,0.11119056203849087,1007.4976826307658,168.0,126.0,0.9655705142352682,,,,,
+jaccard,0.2,9062,Louvain non lancé (graphe trop grand),1293395.0,0.03150365807014236,285.45464577355995,534.0,450.0,0.8717722357095564,,,,,
+jaccard,0.3,9062,,85274.0,0.002077047567273199,18.820128007062458,3438.0,3107.0,0.5061796512911058,3471.0,36.0,0.7984201424356402,0.48796788973225935,0.5869139571248512
+count,10.0,9062,abandonné : plus de 5000000 arêtes,,,,,,,,,,,
+count,20.0,9062,abandonné : plus de 5000000 arêtes,,,,,,,,,,,
+count,40.0,9062,Louvain non lancé (graphe trop grand),2201318.0,0.05361824467826893,485.83491502979473,3891.0,3844.0,0.5634517766497462,,,,,
+count,80.0,9062,,215403.0,0.005246643491959436,47.53983668064445,6955.0,6898.0,0.223791657470757,6961.0,6.0,0.14158333428368353,0.031925993079564154,0.5663633154401003
+idf,10.0,9062,abandonné : plus de 5000000 arêtes,,,,,,,,,,,
+idf,20.0,9062,abandonné : plus de 5000000 arêtes,,,,,,,,,,,
+idf,40.0,9062,Louvain non lancé (graphe trop grand),4249287.0,0.10350131606346168,937.8254248510262,1144.0,1113.0,0.8619510041933348,,,,,
+idf,80.0,9062,Louvain non lancé (graphe trop grand),1052670.0,0.025640238087124782,232.32619730743764,3349.0,3260.0,0.6014124917236813,,,,,

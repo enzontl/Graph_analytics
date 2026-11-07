@@ -1,0 +1,381 @@
+{
+  "params": {
+    "year_min": 1990,
+    "year_max": 2025,
+    "min_parts": 50,
+    "exclude_themes": [
+      "Gear",
+      "Books",
+      "Key Chain",
+      "Bulk Bricks",
+      "Service Packs",
+      "Supplemental",
+      "Collectible Minifigures"
+    ],
+    "ignore_color": true,
+    "max_part_share": null,
+    "weighting": "jaccard",
+    "min_weight": 0.25,
+    "top_k": null,
+    "chunk_size": 2000,
+    "seed": 42,
+    "resolution": 1.0,
+    "betweenness_k": 500
+  },
+  "basic": {
+    "n_nodes": 9062,
+    "n_edges": 317495,
+    "directed": false,
+    "multigraph": false,
+    "weighted": true,
+    "density": 0.007733332755252532,
+    "mean_degree": 70.07172809534319,
+    "max_degree": 997,
+    "weight_quantiles": {
+      "0.0": 0.25,
+      "0.25": 0.2595419847328244,
+      "0.5": 0.2746478873239437,
+      "0.75": 0.3026315789473684,
+      "0.9": 0.3466666666666667,
+      "0.99": 0.5454545454545454,
+      "1.0": 1.0
+    },
+    "average_clustering_weighted": 0.13917004384448212
+  },
+  "connectivity": {
+    "is_connected": false,
+    "n_components": 1640,
+    "n_isolated_nodes": 1462,
+    "largest_component_size": 6694,
+    "largest_component_share": 0.7386890311189583
+  },
+  "distances": {
+    "component_size": 6694,
+    "convention": "plus grande composante connexe, distance = nombre d'arêtes",
+    "diameter": 16,
+    "radius": 8,
+    "n_center_nodes": 8,
+    "center_examples": [
+      "10265-1 Ford Mustang (Creator, 2019)",
+      "10279-1 Volkswagen T2 Camper Van (Icons, 2021)",
+      "10317-1 Land Rover Classic Defender 90 (Icons, 2023)",
+      "21311-1 Voltron (LEGO Ideas and CUUSOO, 2018)",
+      "75244-1 Tantive IV (Star Wars, 2019)"
+    ],
+    "n_periphery_nodes": 3,
+    "periphery_examples": [
+      "10280-1 Flower Bouquet (Botanicals, 2021)",
+      "2000481-1 Personal Learning Kit Essential (Educational and Dacta, 2022)",
+      "8138-1 Phantom Crasher (Racers, 2007)"
+    ],
+    "mean_distance_estimate": 3.7703981772000597
+  },
+  "top_sets": {
+    "degree": [
+      {
+        "set_num": "40502-1",
+        "name": "The Brick Moulding Machine",
+        "root_theme": "LEGO Exclusive",
+        "year": 2021,
+        "degree": 997
+      },
+      {
+        "set_num": "75308-1",
+        "name": "R2-D2",
+        "root_theme": "Star Wars",
+        "year": 2021,
+        "degree": 885
+      },
+      {
+        "set_num": "75341-1",
+        "name": "Luke Skywalker's Landspeeder",
+        "root_theme": "Star Wars",
+        "year": 2022,
+        "degree": 847
+      },
+      {
+        "set_num": "10272-1",
+        "name": "Old Trafford - Manchester United",
+        "root_theme": "Creator",
+        "year": 2020,
+        "degree": 803
+      },
+      {
+        "set_num": "75389-1",
+        "name": "The Dark Falcon",
+        "root_theme": "Star Wars",
+        "year": 2024,
+        "degree": 783
+      },
+      {
+        "set_num": "75357-1",
+        "name": "Ghost & Phantom II",
+        "root_theme": "Star Wars",
+        "year": 2023,
+        "degree": 776
+      },
+      {
+        "set_num": "21334-1",
+        "name": "Jazz Quartet",
+        "root_theme": "LEGO Ideas and CUUSOO",
+        "year": 2022,
+        "degree": 773
+      },
+      {
+        "set_num": "21311-1",
+        "name": "Voltron",
+        "root_theme": "LEGO Ideas and CUUSOO",
+        "year": 2018,
+        "degree": 763
+      },
+      {
+        "set_num": "75379-1",
+        "name": "R2-D2",
+        "root_theme": "Star Wars",
+        "year": 2024,
+        "degree": 755
+      },
+      {
+        "set_num": "75244-1",
+        "name": "Tantive IV",
+        "root_theme": "Star Wars",
+        "year": 2019,
+        "degree": 751
+      }
+    ],
+    "strength": [
+      {
+        "set_num": "40502-1",
+        "name": "The Brick Moulding Machine",
+        "root_theme": "LEGO Exclusive",
+        "year": 2021,
+        "strength": 279.80367577888535
+      },
+      {
+        "set_num": "75308-1",
+        "name": "R2-D2",
+        "root_theme": "Star Wars",
+        "year": 2021,
+        "strength": 257.9809376223341
+      },
+      {
+        "set_num": "75341-1",
+        "name": "Luke Skywalker's Landspeeder",
+        "root_theme": "Star Wars",
+        "year": 2022,
+        "strength": 244.83675510956377
+      },
+      {
+        "set_num": "10272-1",
+        "name": "Old Trafford - Manchester United",
+        "root_theme": "Creator",
+        "year": 2020,
+        "strength": 229.93234694218722
+      },
+      {
+        "set_num": "75389-1",
+        "name": "The Dark Falcon",
+        "root_theme": "Star Wars",
+        "year": 2024,
+        "strength": 227.72090372992636
+      },
+      {
+        "set_num": "75357-1",
+        "name": "Ghost & Phantom II",
+        "root_theme": "Star Wars",
+        "year": 2023,
+        "strength": 227.04687244405233
+      },
+      {
+        "set_num": "21334-1",
+        "name": "Jazz Quartet",
+        "root_theme": "LEGO Ideas and CUUSOO",
+        "year": 2022,
+        "strength": 226.69248818898808
+      },
+      {
+        "set_num": "21311-1",
+        "name": "Voltron",
+        "root_theme": "LEGO Ideas and CUUSOO",
+        "year": 2018,
+        "strength": 217.51435044620536
+      },
+      {
+        "set_num": "75244-1",
+        "name": "Tantive IV",
+        "root_theme": "Star Wars",
+        "year": 2019,
+        "strength": 217.12792909192322
+      },
+      {
+        "set_num": "75309-1",
+        "name": "Republic Gunship",
+        "root_theme": "Star Wars",
+        "year": 2021,
+        "strength": 210.86200980422916
+      }
+    ],
+    "betweenness": [
+      {
+        "set_num": "21050-1",
+        "name": "Architecture Studio",
+        "root_theme": "Architecture",
+        "year": 2013,
+        "betweenness": 0.03700386313465784
+      },
+      {
+        "set_num": "21005-1",
+        "name": "Fallingwater",
+        "root_theme": "Architecture",
+        "year": 2009,
+        "betweenness": 0.029581753647102884
+      },
+      {
+        "set_num": "9763-1",
+        "name": "NANO QUEST Challenge Kit",
+        "root_theme": "FIRST LEGO League",
+        "year": 2006,
+        "betweenness": 0.023570640176600443
+      },
+      {
+        "set_num": "5525-1",
+        "name": "Amusement Park",
+        "root_theme": "Factory",
+        "year": 2005,
+        "betweenness": 0.017502869757174393
+      },
+      {
+        "set_num": "5526-1",
+        "name": "Skyline",
+        "root_theme": "Factory",
+        "year": 2005,
+        "betweenness": 0.016341169977924945
+      },
+      {
+        "set_num": "75308-1",
+        "name": "R2-D2",
+        "root_theme": "Star Wars",
+        "year": 2021,
+        "betweenness": 0.015336203090507728
+      },
+      {
+        "set_num": "HOUSTON-2",
+        "name": "LEGO Store Grand Opening Exclusive Set, The Galleria, Houston, TX",
+        "root_theme": "LEGO Brand Store",
+        "year": 2010,
+        "betweenness": 0.014878174302984187
+      },
+      {
+        "set_num": "45802-1",
+        "name": "ANIMAL ALLIES Challenge Kit",
+        "root_theme": "FIRST LEGO League",
+        "year": 2016,
+        "betweenness": 0.014688741721854305
+      },
+      {
+        "set_num": "40290-1",
+        "name": "60 Years of the LEGO Brick",
+        "root_theme": "Promotional",
+        "year": 2018,
+        "betweenness": 0.012985871964679912
+      },
+      {
+        "set_num": "40502-1",
+        "name": "The Brick Moulding Machine",
+        "root_theme": "LEGO Exclusive",
+        "year": 2021,
+        "betweenness": 0.012567328918322296
+      }
+    ],
+    "eigenvector": [
+      {
+        "set_num": "75389-1",
+        "name": "The Dark Falcon",
+        "root_theme": "Star Wars",
+        "year": 2024,
+        "eigenvector": 0.07027300118996084
+      },
+      {
+        "set_num": "75357-1",
+        "name": "Ghost & Phantom II",
+        "root_theme": "Star Wars",
+        "year": 2023,
+        "eigenvector": 0.07025913066728086
+      },
+      {
+        "set_num": "75308-1",
+        "name": "R2-D2",
+        "root_theme": "Star Wars",
+        "year": 2021,
+        "eigenvector": 0.07006969199189998
+      },
+      {
+        "set_num": "75341-1",
+        "name": "Luke Skywalker's Landspeeder",
+        "root_theme": "Star Wars",
+        "year": 2022,
+        "eigenvector": 0.0697495061693019
+      },
+      {
+        "set_num": "21334-1",
+        "name": "Jazz Quartet",
+        "root_theme": "LEGO Ideas and CUUSOO",
+        "year": 2022,
+        "eigenvector": 0.06832876507995674
+      },
+      {
+        "set_num": "76193-1",
+        "name": "The Guardians' Ship",
+        "root_theme": "Super Heroes Marvel",
+        "year": 2021,
+        "eigenvector": 0.06725117579867153
+      },
+      {
+        "set_num": "75309-1",
+        "name": "Republic Gunship",
+        "root_theme": "Star Wars",
+        "year": 2021,
+        "eigenvector": 0.06720982029408501
+      },
+      {
+        "set_num": "75290-1",
+        "name": "Mos Eisley Cantina",
+        "root_theme": "Star Wars",
+        "year": 2020,
+        "eigenvector": 0.06661718864550167
+      },
+      {
+        "set_num": "76328-1",
+        "name": "Batman: The Classic TV Series Batmobile",
+        "root_theme": "Super Heroes DC",
+        "year": 2024,
+        "eigenvector": 0.06575452220179188
+      },
+      {
+        "set_num": "75367-1",
+        "name": "Venator-Class Republic Attack Cruiser",
+        "root_theme": "Star Wars",
+        "year": 2023,
+        "eigenvector": 0.06530351869599034
+      }
+    ]
+  },
+  "exclusive_part_share": 0.05767397645664689,
+  "communities": {
+    "algorithm": "Louvain (networkx.community.louvain_communities)",
+    "resolution": 1.0,
+    "seed": 42,
+    "n_communities": 1677,
+    "n_communities_size_ge_10": 35,
+    "modularity_louvain": 0.6270996011723159,
+    "modularity_root_themes": 0.28178115287415084,
+    "modularity_decades": 0.3601015048480768,
+    "modularity_shuffled_themes": -0.0003194682964001653,
+    "nmi_vs_root_theme": 0.4907076166653896,
+    "ari_vs_root_theme": 0.09621717499734288,
+    "nmi_vs_theme": 0.5173607016274632,
+    "n_isolated_singletons": 1462,
+    "nmi_vs_root_theme_non_isolated": 0.4519259401931651,
+    "ari_vs_root_theme_non_isolated": 0.10265721041945035
+  }
+}

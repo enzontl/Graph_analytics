@@ -1,0 +1,425 @@
+root_theme,part,n_sets_in_theme,specificity,coverage,name
+4 Juniors,30640,11,0.8461538461538461,0.6470588235294118,Steering Wheel Holder 2 x 2
+4 Juniors,40996,10,0.45454545454545453,0.5882352941176471,Brick Curved 1 x 4 with Sloped Ends and Two Top Studs
+4 Juniors,30285,11,0.1746031746031746,0.6470588235294118,Wheel 18 x 14 with Tread Small Hub
+4 Juniors,30663,12,0.08,0.7058823529411765,"Steering Wheel Small, 2 x 2"
+4 Juniors,3003,11,0.0028841111693759833,0.6470588235294118,Brick 2 x 2
+Adventurers,30161pr0001,11,0.9166666666666666,0.3142857142857143,Windscreen 1 x 4 x 1 1/3 with Bottom Hinge with Wipers Print
+Adventurers,30147,17,0.85,0.4857142857142857,Grille 1 x 2 x 2 Round Top [Lights & Centre Top Stud]
+Adventurers,30148,13,0.5416666666666666,0.37142857142857144,Equipment Camera / Camcorder [Movie Style]
+Adventurers,30155,19,0.5135135135135135,0.5428571428571428,Wheel Spoked 2 x 2 with Pin Hole
+Adventurers,30141,27,0.5094339622641509,0.7714285714285715,Weapon Rifle/Gun
+Agents,15391,13,0.07692307692307693,0.48148148148148145,"Launcher, Weapon Gun / Blaster / Shooter Mini"
+Agents,47755,10,0.06666666666666667,0.37037037037037035,"Wheel Arch, Curved Wedge 4 x 3 with 2 x 2 Opening and 4 Studs"
+Agents,60849,14,0.046511627906976744,0.5185185185185185,Equipment Hose Nozzle / Gun with Side String Hole Simplified
+Agents,43713,11,0.04330708661417323,0.4074074074074074,"Brick Wedged, Curved Inverted 6 x 4"
+Agents,15392,13,0.033419023136246784,0.48148148148148145,"Launcher Trigger, Weapon Gun Trigger"
+Alpha Team,4589,13,0.01808066759388039,0.6190476190476191,Cone 1 x 1 [No Top Groove]
+Alpha Team,32013,10,0.008071025020177562,0.47619047619047616,Technic Axle and Pin Connector Angled #1
+Alpha Team,4081b,10,0.006949270326615705,0.47619047619047616,"Plate Special 1 x 1 with Clip Light, Bar Hole [Thick Ring]"
+Alpha Team,2432,10,0.006020469596628537,0.47619047619047616,Tile Special 1 x 2 with Handle
+Alpha Team,2780,13,0.00563014291901256,0.6190476190476191,Technic Pin with Friction Ridges Lengthwise and Center Slots
+Animal Crossing,5256,11,0.7857142857142857,0.7333333333333333,Brick Round 2 x 2 Special with Roots
+Animal Crossing,66789,12,0.13636363636363635,0.8,Plate Round Corners 6 x 6 x 2/3 Circle with Reduced Knobs
+Animal Crossing,1750,10,0.06451612903225806,0.6666666666666666,Brick Curved Inverted 2 x 2 with 1 x 2 Cutouts
+Animal Crossing,86876,11,0.041353383458646614,0.7333333333333333,"Brick Special 1 x 2 with 1 Center Stud on 1 Side, Bottom Stud Holder"
+Animal Crossing,24866,13,0.011861313868613138,0.8666666666666667,"Plant, Flower, Plate Round 1 x 1 with 5 Petals"
+Aquazone,6042,11,1.0,0.4230769230769231,Brick Special Octagonal 2 x 2 x 3 1/3 with Side Studs
+Aquazone,3612,12,0.8,0.46153846153846156,Arm Piece Straight with 2 and 3 Fingers
+Aquazone,6039,11,0.7333333333333333,0.4230769230769231,"Cone 2 x 2 x 1 2/3 Octagonal, Open Stud"
+Aquazone,30014,12,0.6666666666666666,0.46153846153846156,Arm Holder Brick 1 x 2 with 2 Horizontal Fingers
+Aquazone,412,12,0.631578947368421,0.46153846153846156,Arm Piece 90° Turn [2 / 3 Fingers]
+Architecture,90398,12,0.07547169811320754,0.1935483870967742,Minifig Trophy Statuette
+Architecture,87609,16,0.06299212598425197,0.25806451612903225,"Plate Special 2 x 6 x 2/3 with 4 Studs on Side, 1 Support Wall on Bottom"
+Architecture,4490,10,0.034482758620689655,0.16129032258064516,Brick Arch 1 x 3
+Architecture,6231,23,0.03125,0.3709677419354839,Panel 1 x 1 x 1 Corner
+Architecture,4733,25,0.02962085308056872,0.4032258064516129,Brick Special 1 x 1 Studs on 4 Sides
+Atlantis,30088,13,0.22413793103448276,0.7222222222222222,Weapon Spear Gun with Rounded Trigger and Thin Spear Base
+Atlantis,92290,11,0.22,0.6111111111111112,Weapon Trident
+Atlantis,59275,15,0.19480519480519481,0.8333333333333334,Minifig Footwear Flipper [Thin]
+Atlantis,53989,10,0.08928571428571429,0.5555555555555556,Arm Mechanical with Clip [Thin Support]
+Atlantis,61678,11,0.06432748538011696,0.6111111111111112,Brick Curved 4 x 1 No Studs [Stud Holder with Asymmetric Ridges]
+Belville,30112c,23,1.0,0.4339622641509434,"Belville, Equipment, Bow Small"
+Belville,33213,18,1.0,0.33962264150943394,Belville Wall 6 x 8 x 12 - Tower with Window
+Belville,6162,18,1.0,0.33962264150943394,Brick Round Corner 12 x 12
+Belville,6197,14,1.0,0.2641509433962264,"Belville, Cupboard 4 x 4 x 4 with Elliptical Hole for Sink"
+Belville,6195,13,1.0,0.24528301886792453,Sink 4 x 4 with Elliptical Basin
+Bionicle,47312,34,1.0,0.2446043165467626,Large Figure Head Connector Block (Toa Metru)
+Bionicle,19049,29,1.0,0.20863309352517986,Large Figure Head Connector Block (Toa Okoto)
+Bionicle,19050,22,1.0,0.15827338129496402,Large Figure Head Connector Block Eye/Brain Stalk (Toa Okoto)
+Bionicle,44813,17,1.0,0.1223021582733813,Large Figure Weapon Staff (Staff of Light Blade)
+Bionicle,57536,16,1.0,0.11510791366906475,Large Figure Head Connector Block Eye/Brain Stalk - Short
+Botanicals,67811,10,0.2857142857142857,0.35714285714285715,Steering Wheel with 4 Studs on Center
+Botanicals,90202,10,0.13513513513513514,0.35714285714285715,Technic Pin Connector Round with 4 Clips
+Botanicals,15469,11,0.09821428571428571,0.39285714285714285,"Plant, Leaves, Round 2 x 2 x 2/3 with + Axle Hole and 4 Leaf Extensions"
+Botanicals,39262,11,0.09322033898305085,0.39285714285714285,Crown / Flower / Egg Shell Half
+Botanicals,53923,10,0.08264462809917356,0.35714285714285715,Hinge Cylinder 1 x 2 Locking with 1 Finger and Axle Hole On Ends [No Side Slots]
+BrickLink Designer Program,39789pr0001,13,1.0,0.24528301886792453,Brick Special 2 x 4 with 3 Axle Holes with '60 Years' Print
+BrickLink Designer Program,36756pr0001,14,0.4117647058823529,0.2641509433962264,"Animal, Rodent, Rat / Mouse with Black Eyes Print"
+BrickLink Designer Program,3068bpr0240,13,0.3023255813953488,0.24528301886792453,"Tile 2 x 2 with Map with Red 'X', Sail Boat, Compass and Blue and Yellow Print"
+BrickLink Designer Program,5630,11,0.28205128205128205,0.20754716981132076,Bar 7 x 3 with Double Clips (Ladder) [Round Clips]
+BrickLink Designer Program,14769pr1054,10,0.23809523809523808,0.18867924528301888,Tile Round 2 x 2 with Roman Numerals Clock Print
+Brickheadz,87079pr0124,12,1.0,0.06629834254143646,Tile 2 x 4 with White Squares in Black Circles and Red Number 1 Pattern
+Brickheadz,98138pr0060,155,0.9935897435897436,0.856353591160221,Tile Round 1 x 1 with Large and Small White Squares Print (Brickheadz Eye)
+Brickheadz,22885,180,0.15177065767284992,0.994475138121547,Brick Special 1 x 2 x 1 2/3 with 4 Studs on 1 Side
+Brickheadz,11476,162,0.12394797245600613,0.8950276243093923,Plate Special 1 x 2 with Clip Horizontal on Side
+Brickheadz,92593,84,0.11491108071135431,0.46408839779005523,"Plate Special 1 x 4 with 2 Studs, 3 Bottom Tubes"
+Cars,6636,10,0.003676470588235294,0.5882352941176471,Tile 1 x 6 with Groove
+Cars,6141,12,0.0021145374449339205,0.7058823529411765,Plate Round 1 x 1 with Solid Stud
+Cars,3020,11,0.001878415300546448,0.6470588235294118,Plate 2 x 4
+Cars,3023,11,0.001655379984951091,0.6470588235294118,Plate 1 x 2
+Castle,3847a,10,1.0,0.09803921568627451,Weapon Sword / Shortsword [Shiny Solid Smooth ABS]
+Castle,48492,15,0.9375,0.14705882352941177,"Animal / Creature Accessory, Horse Battle Helmet [Angular, Front Clip]"
+Castle,3846pr0016,10,0.9090909090909091,0.09803921568627451,Shield Triangular with Crown on Dark / Medium Blue Quarters Print
+Castle,4493c01pr0011,31,0.7380952380952381,0.30392156862745096,"Animal, Horse, Movable Head, Black Eyes, White Pupils, Brown Bridle Print"
+Castle,3847,42,0.7368421052631579,0.4117647058823529,Weapon Sword / Shortsword
+Chinese Traditional Festivals,25375,14,0.12612612612612611,0.4666666666666667,Tassel with 1 x 1 Round Stud
+Chinese Traditional Festivals,49307,16,0.024096385542168676,0.5333333333333333,"Brick Curved 1 x 1 x 2/3 Double Curved Top, No Studs"
+Chinese Traditional Festivals,32607,19,0.02186421173762946,0.6333333333333333,"Plant, Plate 1 x 1 Round with 3 Leaves"
+Chinese Traditional Festivals,73825,11,0.019784172661870502,0.36666666666666664,Bracket 1 x 1 - 1 x 2 Inverted
+Chinese Traditional Festivals,24866,19,0.017335766423357664,0.6333333333333333,"Plant, Flower, Plate Round 1 x 1 with 5 Petals"
+City,3068bpr0699,10,1.0,0.01718213058419244,Tile 2 x 2 with Modern Classic Space Logo Print
+City,71771,29,0.9666666666666667,0.04982817869415808,Brick Curved 5 x 8 x 2/3 with No Studs on Top
+City,15210pr0005,22,0.9565217391304348,0.037800687285223365,Road Sign Clip-on 2 x 2 Square with Curved Blue Lines and Small Black Squares Print
+City,65886pr0008,14,0.9333333333333333,0.024054982817869417,Tile Special 2 x 3 with 2 Clips with Solar Panel Print
+City,92710,12,0.9230769230769231,0.020618556701030927,Boat Hull 8 x 28 x 3
+Classic,98138pr9978,13,0.8666666666666667,0.19696969696969696,Tile Round 1 x 1 with Black Star Print
+Classic,98138pr9979,12,0.8571428571428571,0.18181818181818182,Tile Round 1 x 1 with Black Heart Print
+Classic,98138pr9980,13,0.8125,0.19696969696969696,Tile Round 1 x 1 with Large Black < Print
+Classic,98138pr9977,13,0.7222222222222222,0.19696969696969696,Tile Round 1 x 1 with Thin Black Halve Circle / Closed Eye Print
+Classic,98138pr9976,11,0.6875,0.16666666666666666,Tile Round 1 x 1 with Black Eye with Central Pupil Partially Closed Print
+Clikits,46391a,11,1.0,0.2619047619047619,Clikits Part Separator with Clikits Logo on Handle
+Clikits,46391b,11,1.0,0.2619047619047619,"Clikits Part Separator with Heart, Flower and Star on Handle"
+Clikits,46296,33,0.9428571428571428,0.7857142857142857,"Clikits Bead, Ring, Thick Small with Hole"
+Clikits,45462,15,0.9375,0.35714285714285715,"Clikits Icon, Star 2 x 2 Large with Pin"
+Clikits,45473,15,0.9375,0.35714285714285715,"Clikits Bead, Ring Thin Large with Hole and High Connector"
+Creator,47674,10,0.9090909090909091,0.02188183807439825,"Pod, Center Barrel Section 10 x 10 x 3 1/3 X-Pod"
+Creator,47675,10,0.9090909090909091,0.02188183807439825,"Pod, Top Cap 9 x 9 x 1 1/3 X-Pod"
+Creator,47676,10,0.8333333333333334,0.02188183807439825,"Pod, Bottom Cap 9 x 9 x 1 X-Pod"
+Creator,3005pr9994,13,0.6842105263157895,0.028446389496717725,Brick 1 x 1 with Angry Eye Right / Sad Eye Left Print
+Creator,3005pr9995,13,0.6842105263157895,0.028446389496717725,Brick 1 x 1 with Angry Eye Left / Sad Eye Right Print
+DC Super Hero Girls,4733,11,0.013033175355450236,1.0,Brick Special 1 x 1 Studs on 4 Sides
+DC Super Hero Girls,54200,10,0.0024248302618816685,0.9090909090909091,Brick Sloped 30° 1 x 1 x 2/3 (Cheese Slope)
+DC Super Hero Girls,3069b,10,0.0020959966464053656,0.9090909090909091,Tile 1 x 2 with Groove
+DC Super Hero Girls,6141,11,0.0019383259911894273,1.0,Plate Round 1 x 1 with Solid Stud
+DC Super Hero Girls,3710,10,0.001759014951627089,0.9090909090909091,Plate 1 x 4
+DOTS,78169,21,0.6176470588235294,0.35,Tile Remover Key Diamond [DOTS]
+DOTS,73767,14,0.6086956521739131,0.23333333333333334,Attachment Ring (DOTS)
+DOTS,25269,60,0.03858520900321544,1.0,Tile Round 1 x 1 Quarter
+DOTS,24246,26,0.030696576151121605,0.43333333333333335,Tile Round 1 x 1 Half Circle
+DOTS,49307,14,0.02108433734939759,0.23333333333333334,"Brick Curved 1 x 1 x 2/3 Double Curved Top, No Studs"
+Dimensions,18868c00,29,1.0,0.58,Function Brick Round 4 x 4 x 2/3 with 4 Studs (Generic for Gadgets)
+Dimensions,18868c01,21,1.0,0.42,Function Brick Round 4 x 4 x 2/3 with 4 Studs and Trans Orange Bottom Pattern (Generic for Gadgets)
+Dimensions,21445,20,0.2564102564102564,0.4,"Plate Special 1 x 2 with Wheel Holder, Single Slit"
+Dimensions,74967,14,0.1320754716981132,0.28,"Wheel 8 x 9 with Hole Notched for Wheels Holder Pin, Re-inforced Back"
+Dimensions,30028,14,0.07407407407407407,0.28,Tyre 14 x 9 Smooth Small Wide Slick
+Disney,65200,10,1.0,0.046296296296296294,Plate Special Book Cover Back 6 x 16 with Pin Holes
+Disney,35565,22,0.7586206896551724,0.10185185185185185,Panel 2 x 6 x 6 with Gothic Arch
+Disney,35563,16,0.5925925925925926,0.07407407407407407,Tower Roof 2 x 4 x 4 Half Cone Shaped with Roof Tiles
+Disney,33322,27,0.48214285714285715,0.125,Headwear Accessory Crown / Tiara
+Disney,42409,19,0.3958333333333333,0.08796296296296297,Snowflake / Star 4 x 4
+Dreamzzz,98138pr0365,12,1.0,0.3,Tile Round 1 x 1 with Black Hourglass Print
+Dreamzzz,23945pat0003,14,0.8235294117647058,0.35,Equipment Hourglass with Pearl Gold Sand Pattern
+Dreamzzz,65473,10,0.19607843137254902,0.25,Brick Round 2 x 2 D. Tube with 45° Elbow and Axle Holes (Crossholes) at Each End [SHORT]
+Dreamzzz,80431,10,0.1694915254237288,0.25,Brick Special 1 x 2 x 1 1/3 with Rotation Joint Socket
+Dreamzzz,69754,16,0.12307692307692308,0.4,"Launcher, Plate Special 1 x 2 with Mini Blaster Square"
+Duplo,65273,23,1.0,0.06784660766961652,Duplo Chair with no Back / Stool
+Duplo,70676,16,1.0,0.0471976401179941,Duplo Brick 2 x 2 x 2 Slope
+Duplo,54246,11,1.0,0.032448377581120944,Duplo Food Steak
+Duplo,27395,10,1.0,0.029498525073746312,Duplo Cabinet 2 x 4 x 5
+Duplo,56151,10,1.0,0.029498525073746312,"Sticker Sheet for Sets 5419-1, 5481-1, 5486-1, 5488-1, 5492-1, 5538-1, 5548-1, 5511-1, 4540313-1"
+Educational and Dacta,71082,28,1.0,0.06682577565632458,"Storage Bin Lid, Dacta, 19 x 24"
+Educational and Dacta,6309,17,1.0,0.0405727923627685,Duplo Tile 2 x 2
+Educational and Dacta,upn0032,16,1.0,0.03818615751789976,"Storage Bin, Dacta, Small"
+Educational and Dacta,71094,12,1.0,0.028639618138424822,Storage Bin Lid
+Educational and Dacta,upn0038,12,1.0,0.028639618138424822,"Storage Bin, Dacta, Medium"
+Elves,14769pr1042,12,1.0,0.36363636363636365,Tile Round 2 x 2 with Green Foliage Print
+Elves,24199,12,1.0,0.36363636363636365,"Creature Body Part, Dragon Head Lower Jaw with 1 Stud"
+Elves,19121,13,0.14942528735632185,0.3939393939393939,Fence Ornamented 1 x 4 x 2 with 4 Studs
+Elves,22667,18,0.07563025210084033,0.5454545454545454,"Plant, Cherries"
+Elves,33291,25,0.06983240223463687,0.7575757575757576,"Plant, Flower, Plate Round 1 x 1 with 4 Petals"
+Exo-Force,54605,10,1.0,0.3225806451612903,Light Brick 2 x 4 [Red LED]
+Exo-Force,3069bpr0073,11,0.9166666666666666,0.3548387096774194,Tile 1 x 2 with Engraved Code for Exo-Force
+Exo-Force,47757,12,0.75,0.3870967741935484,"Brick Wedged, Sloped 4 x 4 Pyramid Center"
+Exo-Force,47432,12,0.5714285714285714,0.3870967741935484,"Technic Brick Special 2 x 3 with Pin Holes, Rotation Joint Ball Half [Vertical Side], Rotation Joint Socket"
+Exo-Force,47452,13,0.48148148148148145,0.41935483870967744,"Technic Brick Special 2 x 2 with Pin Hole, Rotation Joint Ball Half [Horizontal Top], Rotation Joint Socket"
+FIRST LEGO League,64782,22,0.1864406779661017,0.43137254901960786,Technic Panel 5 x 11 x 1
+FIRST LEGO League,15458,11,0.10891089108910891,0.21568627450980393,Technic Panel 3 x 11 x 1
+FIRST LEGO League,64179,13,0.09027777777777778,0.2549019607843137,Technic Beam Frame 5 x 7 with 3 x 5 Opening Thick
+FIRST LEGO League,99008,10,0.06097560975609756,0.19607843137254902,Technic Axle 4 with Centre Stop
+FIRST LEGO League,18575,13,0.05963302752293578,0.2549019607843137,Technic Gear 20 Tooth Double Bevel with Axle Hole Type 1 [+ Opening]
+Fortnite,15712,10,0.005252100840336135,0.9090909090909091,Tile Special 1 x 1 with Clip with Rounded Edges
+Fortnite,15068,10,0.004083299305839118,0.9090909090909091,Brick Curved 2 x 2 x 2/3
+Fortnite,3024,11,0.002667313288069835,1.0,Plate 1 x 1
+Fortnite,54200,10,0.0024248302618816685,0.9090909090909091,Brick Sloped 30° 1 x 1 x 2/3 (Cheese Slope)
+Fortnite,3021,10,0.00203210729526519,0.9090909090909091,Plate 2 x 3
+Freestyle,6214pr0003,10,0.7142857142857143,0.20833333333333334,Brick Curved 2 x 8 x 4 Triple Curved Ends with 7 Apples Print
+Freestyle,601,19,0.6785714285714286,0.3958333333333333,Window 1 x 3 x 4 Pane for Window 2 x 6 x 6 Freestyle
+Freestyle,6236,19,0.6785714285714286,0.3958333333333333,Window 2 x 6 x 6 Freestyle
+Freestyle,6243pr0001,12,0.5714285714285714,0.25,"Animal Body Part, Dog Head 2 x 4 x 2 1/3 with Dog Head Print"
+Freestyle,6216,20,0.5555555555555556,0.4166666666666667,"Brick Curved 2 x 4 x 2 Triple, No Studs"
+Friends,93087,14,1.0,0.03482587064676617,"Animal / Creature Accessory, Horse Bridle"
+Friends,98393h,13,1.0,0.03233830845771144,Headwear Accessory Hat with Small Pin (Nurse)
+Friends,3068bpr0255,12,1.0,0.029850746268656716,"Tile 2 x 2 with Prize Ribbon, Dog and 'What's at Heart?' Newspaper Print"
+Friends,3899pr0007,11,1.0,0.02736318407960199,Equipment Cup / Mug with Black 'I Heart HLC' Print
+Friends,94718,17,0.9444444444444444,0.04228855721393035,Equipment Animal Grooming Kit Award Ribbon with Number 1
+Games,3068bpr0142,10,1.0,0.2564102564102564,Tile 2 x 2 with 2 Black Dots Print
+Games,64776pat0001,37,0.9736842105263158,0.9487179487179487,Die - 6 Sided Rubber Frame with Red Centre Studs (Board Games)
+Games,92585,17,0.11258278145695365,0.4358974358974359,Tool Crowbar
+Games,3048c,15,0.054945054945054944,0.38461538461538464,Brick Sloped 45° 2 x 1 Triple with Ovoid Bottom Pin
+Games,4006,18,0.036585365853658534,0.46153846153846156,Tool Screwdriver and Spanner / Wrench
+Harry Potter,3069bpr0120,10,1.0,0.06289308176100629,Tile 1 x 2 with Spider and Bag Print
+Harry Potter,98138pr0353,10,0.9090909090909091,0.06289308176100629,Tile Round 1 x 1 with Gold Dragon Print
+Harry Potter,37704,10,0.8333333333333334,0.06289308176100629,"Sports Quidditch Ball, Golden Snitch"
+Harry Potter,92084pr0003,14,0.8235294117647058,0.0880503144654088,"Animal, Bird, Owl Small, Angular Features with Yellow Eyes and Light Bluish Gray Rippled Chest Feathers Print"
+Harry Potter,40232,22,0.7586206896551724,0.13836477987421383,"Animal, Bird, Owl Large, Rounded Features"
+Hero Factory,98570pat0001,21,1.0,0.42857142857142855,Large Figure Chest Badge with 'H' Hero Factory Logo on Light Bluish Gray Background Pattern
+Hero Factory,11270,11,1.0,0.22448979591836735,Large Figure Head with Handle
+Hero Factory,98563,10,0.9090909090909091,0.20408163265306123,"Large Figure Weapon, Zamor Sphere Launcher, Top with Barrel and Sight"
+Hero Factory,98592,11,0.8461538461538461,0.22448979591836735,"Large Figure Limb Cover, Armor, Knee / Shoulder"
+Hero Factory,90625,21,0.8076923076923077,0.42857142857142855,"Large Figure Skeletal, Torso with 9 Ball Joints, and 6 Holes, Medium"
+Hidden Side,3069bpr0266,15,1.0,0.7142857142857143,Tile 1 x 2 with Smart Phone and Medium Azure Ghost Print
+Hidden Side,3069bpr0269,11,1.0,0.5238095238095238,Tile 1 x 2 with Smart Phone and Yellow Ghost Print
+Hidden Side,52672pat0001,11,1.0,0.5238095238095238,"Animal, Dog, Ghost with Trans-Clear Marble"
+Hidden Side,33909,21,0.01639344262295082,1.0,Plate Special 2 x 2 with Only 2 Studs
+Hidden Side,27925,13,0.015046296296296295,0.6190476190476191,"Tile 2 x 2 Curved, Macaroni"
+Icons,15460,12,0.22641509433962265,0.18181818181818182,"Technic Steering Gear with 3 Towball Joints, Compact"
+Icons,73831,15,0.1744186046511628,0.22727272727272727,Plate 2 x 3 with 1 x 1 Cutout
+Icons,32005a,17,0.13385826771653545,0.25757575757575757,Technic Link 1 x 6 without Stoppers
+Icons,42862,10,0.13333333333333333,0.15151515151515152,"Brick Wedged, Sloped 45° 3 x 3 Left"
+Icons,48165,10,0.13157894736842105,0.15151515151515152,"Brick Wedged, Sloped 45° 3 x 3 Right"
+Indiana Jones,61975,18,0.46153846153846156,0.8571428571428571,Equipment Whip [Coiled]
+Indiana Jones,61976,15,0.18518518518518517,0.7142857142857143,Bag / Messenger Pouch with Long Strap
+Indiana Jones,30132,14,0.13592233009708737,0.6666666666666666,"Weapon Gun / Pistol / Revolver Large Barrel, Long Grip"
+Indiana Jones,2555,11,0.017133956386292833,0.5238095238095238,Tile Special 1 x 1 with Clip and Straight Tips
+Indiana Jones,4865a,12,0.01602136181575434,0.5714285714285714,Panel 1 x 2 x 1 [Square Corners]
+Juniors,12622c03,11,0.6875,0.171875,"Vehicle Base 4 x 10 x 2 1/2 with Mudguards, Wheel Pins and 6 x 2 Centre Recess with 3 Holes, Black Wheel Holders"
+Juniors,15624,27,0.47368421052631576,0.421875,Plate Special 8 x 9 x 2/3 with 1 x 4 Recessed
+Juniors,2431pr0077,10,0.4,0.15625,Tile 1 x 4 with Red and White Danger Stripes Red Print
+Juniors,18922,11,0.3548387096774194,0.171875,Plate Special 9 x 16 x 2/3 with 1 x 4 Recessed
+Juniors,60599,11,0.1111111111111111,0.171875,Door Frame 2 x 4 x 6
+Jurassic World,3005pr0024,10,0.9090909090909091,0.15384615384615385,Brick 1 x 1 with Mosquito Print
+Jurassic World,98068pr0003,10,0.9090909090909091,0.15384615384615385,"Animal Body Part, Dinosaur, Raptor / Dilophosaurus Arm / Leg, Left, Black Claws Print"
+Jurassic World,98069pr0003,10,0.9090909090909091,0.15384615384615385,"Animal Body Part, Dinosaur, Raptor / Dilophosaurus Arm / Leg, Right, Black Claws Print"
+Jurassic World,37407pr0001,10,0.6666666666666666,0.15384615384615385,"Animal Body Part, Dinosaur, Raptor / Dilophosaurus Lower Jaw with Tan Teeth Print"
+Jurassic World,15445,30,0.5084745762711864,0.46153846153846156,Weapon Gun Automatic Pistol with Top Clip
+LEGO Art,55819,11,1.0,0.4782608695652174,Brick Separator 4 Studs Wide
+LEGO Art,65803,14,0.7368421052631579,0.6086956521739131,Brick Special 16 x 16 x 1 1/3 with Pin Holes
+LEGO Art,67139,19,0.6785714285714286,0.8260869565217391,Technic Panel 3 x 5 with Wall Mount Hole
+LEGO Art,11212,18,0.02195121951219512,0.782608695652174,Plate 3 x 3
+LEGO Art,2465,13,0.02090032154340836,0.5652173913043478,Brick 1 x 16
+LEGO Brand Store,1751pr9999,23,0.9583333333333334,0.13142857142857142,Tile 4 x 4 with LEGO Logo Print
+LEGO Brand Store,3068bpr0163,17,0.4857142857142857,0.09714285714285714,Tile 2 x 2 with LEGO Logo Type 2 Print
+LEGO Brand Store,30340,24,0.11059907834101383,0.13714285714285715,Equipment Flotation Ring [Life Preserver]
+LEGO Brand Store,60602,23,0.10407239819004525,0.13142857142857142,Glass for Window 1 x 2 x 3 Flat Front
+LEGO Brand Store,20310,23,0.09387755102040816,0.13142857142857142,Brick Special 1 x 1 with Scroll with Open Stud
+LEGO Exclusive,33291,10,0.027932960893854747,0.1724137931034483,"Plant, Flower, Plate Round 1 x 1 with 4 Petals"
+LEGO Exclusive,34103,21,0.027202072538860103,0.3620689655172414,Plate Special 1 x 3 with 2 Studs with Groove and Inside Stud Holder (Jumper)
+LEGO Exclusive,41682,13,0.023008849557522124,0.22413793103448276,Bracket 2 x 2 with 1 x 2 Vertical Studs
+LEGO Exclusive,92438,11,0.02127659574468085,0.1896551724137931,Plate 8 x 16
+LEGO Exclusive,63864,39,0.01948051948051948,0.6724137931034483,Tile 1 x 3
+LEGO Ideas and CUUSOO,38799,10,0.17857142857142858,0.10869565217391304,Equipment Cup / Teacup Saucer with Recessed Stud on Top [Plain]
+LEGO Ideas and CUUSOO,38320,15,0.12605042016806722,0.16304347826086957,Window Pane Latticed 1 x 2 x 2
+LEGO Ideas and CUUSOO,85975,26,0.10441767068273092,0.2826086956521739,Cone 1.17 x 1.17 x 2/3 (Fez)
+LEGO Ideas and CUUSOO,38014,12,0.0967741935483871,0.13043478260869565,Equipment Cup / Teacup
+LEGO Ideas and CUUSOO,51270,10,0.09523809523809523,0.10869565217391304,"Plant, Pumpkin"
+Legends of Chima,11767,22,1.0,0.25287356321839083,Fly Wheel with Plate 2 x 8 and Dark Azure Tire [Complete Assembly] (Rip Cord Base)
+Legends of Chima,11107,15,1.0,0.1724137931034483,Weapon Sword Serrated with Bar Holder
+Legends of Chima,11126,27,0.9642857142857143,0.3103448275862069,Rip Cord Flexible with Handle
+Legends of Chima,11103,13,0.9285714285714286,0.14942528735632185,Weapon Sword Double Blade with Bar Holder [Chi Sword]
+Legends of Chima,16768pat0001,13,0.9285714285714286,0.14942528735632185,Bar 4L with Flame Protrusions and Marbled Trans-Yellow Pattern
+Legoland Parks,30089b,15,0.055970149253731345,0.3125,Equipment Camera Handheld with Central Viewfinder
+Legoland Parks,4495b,10,0.028409090909090908,0.20833333333333334,Flag 4 x 1 Wavy [First Wave Right]
+Legoland Parks,3794a,14,0.01383399209486166,0.2916666666666667,Plate Special 1 x 2 with 1 Stud without Groove (Jumper)
+Legoland Parks,3659,12,0.013043478260869565,0.25,Brick Arch 1 x 4
+Legoland Parks,3832,17,0.008594539939332659,0.3541666666666667,Plate 2 x 10
+Make & Create,3004pr0001,10,0.625,0.10309278350515463,"Brick 1 x 2 with Eyes, Freckles and Smile Print"
+Make & Create,4130,12,0.3157894736842105,0.12371134020618557,Door Frame 2 x 4 x 5
+Make & Create,4131,12,0.3157894736842105,0.12371134020618557,Door 1 x 4 x 5
+Make & Create,3005pr0003,12,0.2727272727272727,0.12371134020618557,Brick 1 x 1 with Simple Black Eye with White Pupil Print
+Make & Create,4744pr0002,10,0.2702702702702703,0.10309278350515463,Brick Curved 2 x 4 x 2 Double with Freckled Face Print
+Master Builder Academy,4733,11,0.013033175355450236,0.7857142857142857,Brick Special 1 x 1 Studs on 4 Sides
+Master Builder Academy,4599b,10,0.011560693641618497,0.7142857142857143,Tap 1 x 1 without Hole in Spout
+Master Builder Academy,59900,10,0.0038774718883288098,0.7142857142857143,Cone 1 x 1 [Top Groove]
+Master Builder Academy,54200,13,0.0031522793404461687,0.9285714285714286,Brick Sloped 30° 1 x 1 x 2/3 (Cheese Slope)
+Master Builder Academy,3623,10,0.0026028110359187923,0.7142857142857143,Plate 1 x 3
+Mindstorms,4019,10,0.062111801242236024,0.5555555555555556,Technic Gear 16 Tooth with Round Holes [Old Style]
+Mindstorms,85543,10,0.04608294930875576,0.5555555555555556,Rubber Belt Small [15mm ID] [Round Cross Section]
+Mindstorms,3647,11,0.037037037037037035,0.6111111111111112,Technic Gear 8 Tooth
+Mindstorms,6538b,13,0.036312849162011177,0.7222222222222222,Technic Axle Connector Ridged [with x Hole x Orientation]
+Mindstorms,3648b,12,0.03625377643504532,0.6666666666666666,Technic Gear 24 Tooth [New Style with Single Axle Hole]
+Minecraft,65510,13,1.0,0.10743801652892562,"Weapon Crossbow and Bolt, Blocky"
+Minecraft,19729pr0005,12,1.0,0.09917355371900827,"Minifig Head Special, Cube with Pumpkin Jack O' Lantern Print"
+Minecraft,3004pr0014,53,0.9814814814814815,0.4380165289256198,Brick 1 x 2 with Reddish Brown and Dark Brown Lines Print
+Minecraft,3068bpr0236,53,0.9814814814814815,0.4380165289256198,Tile 2 x 2 with Dark Brown Minecraft Grid Print (Crafting Table)
+Minecraft,18792,38,0.9743589743589743,0.3140495867768595,"Weapon Bow and Arrow, Blocky"
+Mixels,32474pr1001,29,1.0,0.37662337662337664,Technic Ball Joint with Black Eye Print
+Mixels,3626cpr1001,15,1.0,0.19480519480519481,"Minifig Head Mixel Eye, Large Black Eye with Pupil Print [Hollow Stud]"
+Mixels,14769pr1002,12,1.0,0.15584415584415584,Tile Round 2 x 2 with Grinning Nixel Face Print
+Mixels,14769pr1003,13,0.22413793103448276,0.16883116883116883,Tile Round 2 x 2 with Offset Black Eye Print
+Mixels,15209,29,0.21014492753623187,0.37662337662337664,Tile Special 1 x 2 with Two Vertical Teeth / Tooth
+Model Team,298c03,11,0.18333333333333332,0.8461538461538461,Lever Small Base with Light Gray Lever
+Model Team,4275b,11,0.07006369426751592,0.8461538461538461,Hinge Plate 1 x 2 with 3 Fingers [Hollow Studs]
+Model Team,4287a,10,0.04329004329004329,0.7692307692307693,Brick Sloped Inverted 34° 3 x 1 without Internal Stopper
+Model Team,3647,11,0.037037037037037035,0.8461538461538461,Technic Gear 8 Tooth
+Model Team,4175,11,0.030726256983240222,0.8461538461538461,Plate Special 1 x 2 with Ladder
+Modular Buildings,11062,13,0.17567567567567569,0.6190476190476191,Lamp Post 2 x 2 x 7 with 4 Base Flutes
+Modular Buildings,3811,14,0.1728395061728395,0.6666666666666666,Baseplate 32 x 32
+Modular Buildings,60603,13,0.0755813953488372,0.6190476190476191,Glass for Window 1 x 4 x 3 [Opening]
+Modular Buildings,30134,11,0.06962025316455696,0.5238095238095238,Stairs 7 x 4 x 6 Straight Open
+Modular Buildings,60602,15,0.06787330316742081,0.7142857142857143,Glass for Window 1 x 2 x 3 Flat Front
+Monkie Kid,80519,10,0.9090909090909091,0.18181818181818182,Wave / Flame with Clip
+Monkie Kid,68547,26,0.5416666666666666,0.4727272727272727,Cloud / Dust with Bar
+Monkie Kid,23860,16,0.38095238095238093,0.2909090909090909,"Weapon Sword, Blade with Bar, Double Edge"
+Monkie Kid,36017,22,0.2972972972972973,0.4,Weapon Sword Hilt with Dragon Head
+Monkie Kid,66909,45,0.24725274725274726,0.8181818181818182,Weapon Hilt Symmetric
+Monster Fighters,6141,10,0.001762114537444934,1.0,Plate Round 1 x 1 with Solid Stud
+Monster Fighters,3020,10,0.0017076502732240437,1.0,Plate 2 x 4
+Nexo Knights,22408,40,1.0,0.7272727272727273,Shield Pentagonal
+Nexo Knights,22487,11,1.0,0.2,"Launcher, Weapon Gun / Blaster / Shooter"
+Nexo Knights,22391,28,0.42424242424242425,0.509090909090909,"Brick Wedged, Sloped 4 x 4 Pointed"
+Nexo Knights,27257,11,0.2619047619047619,0.2,Weapon Pike / Spear Tip with Bar
+Nexo Knights,64867,16,0.21052631578947367,0.2909090909090909,"Brick Wedged, Sloped 4 x 4 Fractured Polygon Top"
+Ninja,30173a,10,0.47619047619047616,1.0,Weapon Sword / Katana [Octagonal Guard]
+Ninja,3849,10,0.050505050505050504,1.0,Weapon Lance
+Ninja,3062b,10,0.002815315315315315,1.0,Brick Round 1 x 1 Open Stud
+Ninjago,98341,27,1.0,0.08157099697885196,Ring 4 x 4 with 2 x 2 Opening and 4 Arrow Ends (Ninjago Spinner Crown)
+Ninjago,18585,13,1.0,0.03927492447129909,Brick Special 2 x 4 with Pin Holes and Flywheel Socket [Airjitzu]
+Ninjago,3214pat0001,10,1.0,0.030211480362537766,Weapon Sword with Trans-Orange Blade Pattern
+Ninjago,76919,28,0.9655172413793104,0.08459214501510574,Fin Jagged with Axle Hole
+Ninjago,37341a,25,0.9615384615384616,0.0755287009063444,Weapon Sword Curved Blade with Bar
+Other,91405,12,0.04081632653061224,0.08,Plate 16 x 16
+Other,26604,16,0.030710172744721688,0.10666666666666667,Brick Special 1 x 1 with Studs on 2 Adjacent Sides
+Other,59349,12,0.02510460251046025,0.08,Panel 1 x 6 x 5
+Other,32607,21,0.024165707710011506,0.14,"Plant, Plate 1 x 1 Round with 3 Leaves"
+Other,4304,10,0.022123893805309734,0.06666666666666667,Plate Special 2 x 2 x 2/3 with Two Studs On Side and Two Raised [Half Hollow Anti-stud] - Updated Version
+Pirates,2335pr0006,17,1.0,0.37777777777777777,Flag 2 x 2 Square with Skull and Crossbones Print
+Pirates,6067,11,0.8461538461538461,0.24444444444444444,"Boat, Mast Section Base, Plate 4 x 4 x 1 2/3"
+Pirates,3068bpr0058,14,0.7777777777777778,0.3111111111111111,Tile 2 x 2 with Blue and Yellow Map Print
+Pirates,2551,25,0.6410256410256411,0.5555555555555556,Boat / Rowing Boat 14 x 5 x 2 with Oarlocks [2 Hollow Inside Studs]
+Pirates,4319,13,0.5416666666666666,0.28888888888888886,Hinge Bar 8L with 3 Fingers and Open End Stud
+Power Miners,64728,14,0.12389380530973451,0.9333333333333333,Equipment Dynamite Sticks
+Power Miners,60470a,11,0.06832298136645963,0.7333333333333333,Plate Special 1 x 2 with Clips Horizontal [Thick U-Clips]
+Power Miners,30385,13,0.04887218045112782,0.8666666666666667,Rock 1 x 1 Crystal 5 Point
+Power Miners,61409,13,0.010699588477366255,0.8666666666666667,Brick Sloped 18° 2 x 1 x 2/3 with 4 Slots / Grate
+Power Miners,6587,11,0.01020408163265306,0.7333333333333333,Technic Axle 3 with Stud
+Promotional,3068bpr0163,16,0.45714285714285713,0.08376963350785341,Tile 2 x 2 with LEGO Logo Type 2 Print
+Promotional,98138pr0008,21,0.0875,0.1099476439790576,Tile Round 1 x 1 with Offset Black Eye Print
+Promotional,90398,13,0.08176100628930817,0.06806282722513089,Minifig Trophy Statuette
+Promotional,19119,10,0.06993006993006994,0.05235602094240838,"Plant, Flower Stem with Bar and 6 Stems"
+Promotional,32606,12,0.06486486486486487,0.06282722513089005,"Plant, Flower, Minifig Accessory with 7 Thick Petals and Pin"
+Racers,86501,10,1.0,0.06622516556291391,"Box / Case, Fold-Out Race Track 34 x 42"
+Racers,47715,28,0.9655172413793104,0.18543046357615894,Pullback Motor 9 x 4 x 2 2/3
+Racers,50944pr0001,27,0.7714285714285715,0.17880794701986755,Wheel 11 x 6 mm with Five Spokes and Silver Print
+Racers,44292,10,0.7692307692307693,0.06622516556291391,Wheel 30.4 x 20 with 3 Pinholes
+Racers,44352,13,0.5,0.08609271523178808,"Technic Panel Fairing #22 Large Short, Small Hole, Side A"
+Scala,6953,13,1.0,0.6842105263157895,"Scala, Building, Wall, Panel 6 x 10"
+Scala,6836,12,1.0,0.631578947368421,"Scala, Building, Wall Panel 5 x 6 with Four Studs"
+Scala,6874,12,1.0,0.631578947368421,"Scala, Cupboard / Dresser 6 x 6 x 7 2/3 without Top"
+Scala,6875,11,1.0,0.5789473684210527,"Scala, Cupboard / Cabinet / Bookshelf 6 x 3 x 7 2/3"
+Scala,6943,11,1.0,0.5789473684210527,"Scala, Building, Wall Shelf 6 x 3 x 4"
+Seasonal,3878,19,0.3220338983050847,0.05555555555555555,Top Hat
+Seasonal,18746,10,0.30303030303030304,0.029239766081871343,Sports Snowboard Small
+Seasonal,93555,24,0.2926829268292683,0.07017543859649122,Sports Ice Skate
+Seasonal,10169,24,0.27906976744186046,0.07017543859649122,Bag / Sack with Handle
+Seasonal,11609,53,0.27461139896373055,0.15497076023391812,"Tile, Star with Stud Holder, Pin Hole"
+Sonic The Hedgehog,79389,10,0.02336448598130841,0.5555555555555556,Bracket 1 x 1 - 1 x 2
+Sonic The Hedgehog,30153,14,0.0206794682422452,0.7777777777777778,Rock 1 x 1 Jewel / Gem 24 Facet
+Sonic The Hedgehog,61332,13,0.013903743315508022,0.7222222222222222,Technic Pin with Friction Ridges Lengthwise with No Center Slots
+Sonic The Hedgehog,32803,11,0.01373283395755306,0.6111111111111112,Brick Curved Inverted 2 x 2 x 2/3
+Sonic The Hedgehog,36840,12,0.013143483023001095,0.6666666666666666,Bracket 1 x 1 - 1 x 1 Inverted
+Space,30034,11,0.9166666666666666,0.102803738317757,Panel 3 x 5 Solar / Deltoid with Clip [Hexagonal]
+Space,4229,22,0.7333333333333333,0.205607476635514,"Engine, Strakes, 2 x 2 Thin Top Plate"
+Space,2609a,10,0.7142857142857143,0.09345794392523364,Magnet Holder Tile 2 x 2 - Short Arms
+Space,4591,16,0.6956521739130435,0.14953271028037382,Brick Round 2 x 2 x 2 with Axle Hole and Fins
+Space,2593,10,0.6666666666666666,0.09345794392523364,Wheel Hard Plastic Medium (35mm D. x 31mm)
+Speed Champions,53118pr0003,13,1.0,0.14942528735632185,Game Controller with F1 Steering Wheel Controls Print
+Speed Champions,3070bpr9897,10,1.0,0.11494252873563218,Tile 1 x 1 with 15 Silver Dots Print
+Speed Champions,6813,10,1.0,0.11494252873563218,"Suspension Mount with Fender, Formula 1"
+Speed Champions,3385,15,0.9375,0.1724137931034483,"Vehicle Base 6 x 12 x 1 with Holes, 6 Studs On Sides, 1 x 2 Cutouts on Ends"
+Speed Champions,18978b,12,0.9230769230769231,0.13793103448275862,Wheel Cover 10 Spoke - for Wheel 18976
+SpongeBob SquarePants,6091,10,0.005330490405117271,0.7142857142857143,Brick Curved 1 x 2 x 1 1/3 with Curved Top
+SpongeBob SquarePants,3032,11,0.0044408558740411785,0.7857142857142857,Plate 4 x 6
+SpongeBob SquarePants,3009,10,0.003661662394727206,0.7142857142857143,Brick 1 x 6
+SpongeBob SquarePants,3941,10,0.00363901018922853,0.7142857142857143,Brick Round 2 x 2 with Axle Hole
+SpongeBob SquarePants,3062b,12,0.0033783783783783786,0.8571428571428571,Brick Round 1 x 1 Open Stud
+Sports,72824pr0006,27,1.0,0.5094339622641509,Sports Soccer / Basket Ball with Black Pentagons Print
+Sports,30492,17,1.0,0.32075471698113206,Sports Field Section 8 x 8
+Sports,30488,13,1.0,0.24528301886792453,Sports Soccer Minifig Stand
+Sports,30489,13,1.0,0.24528301886792453,Sports Field Section 8 x 16
+Sports,30493,11,1.0,0.20754716981132076,Sports Soccer Goalie Stick
+Star Wars,98138pr0010,31,1.0,0.04299583911234397,Tile Round 1 x 1 with Thermal Detonator Print
+Star Wars,30372pr0001,21,1.0,0.02912621359223301,Windscreen 7 x 4 x 1 2/3 with Hinges with Light and Dark Gray Frame Print
+Star Wars,3039pr0008,18,1.0,0.024965325936199722,"Brick Sloped 45° 2 x 2 with '000195', Death Star Trench Computer Print"
+Star Wars,26831,14,1.0,0.019417475728155338,"Large Figure Limb Cover, Armor with Ball Joint Socket and 2 Holes [Plain]"
+Star Wars,4150pr0005,13,1.0,0.018030513176144243,Tile Round 2 x 2 with Republic Eight-point Star Print
+Studios,298c02,10,0.008628127696289905,0.8333333333333334,Lever Small Base with Black Lever
+Studios,3005,10,0.002552322613578356,0.8333333333333334,Brick 1 x 1
+Studios,6141,11,0.0019383259911894273,0.9166666666666666,Plate Round 1 x 1 with Solid Stud
+Studios,3020,11,0.001878415300546448,0.9166666666666666,Plate 2 x 4
+Studios,3023,10,0.0015048908954100827,0.8333333333333334,Plate 1 x 2
+Super Heroes DC,28779,18,0.8571428571428571,0.11842105263157894,Tail 4 x 1 with Pin Hole
+Super Heroes DC,24144,12,0.8571428571428571,0.07894736842105263,Weapon Gun / Blaster with Hollow Studs on Sides and Inside Axle Holder
+Super Heroes DC,98721,92,0.8141592920353983,0.6052631578947368,Weapon Batarang
+Super Heroes DC,85973,11,0.6875,0.07236842105263158,Weapon Gun [Automatic Long Barrel and Round Magazine]
+Super Heroes DC,55706,20,0.5882352941176471,0.13157894736842105,"Creature Body Part, Dragon Wing 8 x 10 [Plain]"
+Super Heroes Marvel,80487,13,0.9285714285714286,0.04887218045112782,"Insect Accessory, Spider Web, Dome Shaped with Bar, Clips"
+Super Heroes Marvel,36083e,20,0.9090909090909091,0.07518796992481203,Web Effect Large Bar on Back Handles on Sides
+Super Heroes Marvel,36083f,20,0.9090909090909091,0.07518796992481203,Web Effect Two Branches Bars on Each End
+Super Heroes Marvel,36083a,19,0.9047619047619048,0.07142857142857142,Web Effect Long and Narrow Bars at Both Ends
+Super Heroes Marvel,36083c,18,0.9,0.06766917293233082,Web Effect Medium Bar on Back
+Super Mario,3068bpr9978,19,1.0,0.2087912087912088,Tile 2 x 2 with Goomba and Barcode Print (Sticker)
+Super Mario,66859,19,1.0,0.2087912087912088,"Feet, 2 x 3 x 2/3 with 6 Studs on Top"
+Super Mario,66787,14,1.0,0.15384615384615385,Pipe 6 x 6 (Warp Pipe)
+Super Mario,67013pat0001,14,1.0,0.15384615384615385,"Brick Wedged, Sloped 4 x 4 with White Underside Pattern (Koopa Troopa Shell)"
+Super Mario,3004pr0056,13,1.0,0.14285714285714285,Brick 1 x 2 with Blue Eyes (Yoshi) Print
+Technic,2717,57,1.0,0.1360381861575179,Technic Seat / Chair [3 x 2 Base]
+Technic,42531,17,1.0,0.0405727923627685,Technic Panel Car Mudguard Arched 9 x 2 x 3 #30
+Technic,2791,15,1.0,0.03579952267303103,Technic Steering Gear Holder
+Technic,61927b,15,1.0,0.03579952267303103,Technic Linear Actuator with Dark Bluish Gray Ends [Improved Version]
+Technic,65766,14,1.0,0.03341288782816229,"Technic Steering Wheel Hub Holder with 2 Pin Holes and 2 Axle Holes, No Slots"
+Teenage Mutant Ninja Turtles,30173b,10,0.14084507042253522,0.5882352941176471,Weapon Sword / Katana / Shamshir with Uncapped Pommel [Square Guard]
+Teenage Mutant Ninja Turtles,12825,11,0.03503184713375796,0.6470588235294118,Tile Special 1 x 1 with Clip with Rounded Tips
+Teenage Mutant Ninja Turtles,3794b,10,0.015337423312883436,0.5882352941176471,Plate Special 1 x 2 with 1 Stud with Groove (Jumper)
+Teenage Mutant Ninja Turtles,298c02,10,0.008628127696289905,0.5882352941176471,Lever Small Base with Black Lever
+Teenage Mutant Ninja Turtles,63868,10,0.006609385327164574,0.5882352941176471,Plate Special 1 x 2 with Clip Horizontal on End
+The Hobbit and Lord of the Rings,95673,10,0.8333333333333334,0.37037037037037035,Weapon Sword with Thin Crossguard (Roman Gladius)
+The Hobbit and Lord of the Rings,98370,12,0.631578947368421,0.4444444444444444,Weapon Sword / Greatsword Pointed with Thin Crossguard
+The Hobbit and Lord of the Rings,93231,10,0.5555555555555556,0.37037037037037035,Weapon Bow and Arrow Long
+The Hobbit and Lord of the Rings,12825,13,0.041401273885350316,0.48148148148148145,Tile Special 1 x 1 with Clip with Rounded Tips
+The Hobbit and Lord of the Rings,2489,13,0.03735632183908046,0.48148148148148145,Barrel 2 x 2 x 2
+The LEGO Movie,12825,12,0.03821656050955414,0.23529411764705882,Tile Special 1 x 1 with Clip with Rounded Tips
+The LEGO Movie,30553,13,0.03367875647668394,0.2549019607843137,"Hinge Cylinder 1 x 2 Locking with 2 Click Fingers and Axle Hole, 9 Teeth"
+The LEGO Movie,52031,12,0.031578947368421054,0.23529411764705882,"Brick Wedged, Curved Triple 4 x 6 x 2/3 with 4 Studs"
+The LEGO Movie,10201,12,0.02977667493796526,0.23529411764705882,Bracket 1 x 2 - 1 x 4 [Rounded Corners]
+The LEGO Movie,10247,16,0.02593192868719611,0.3137254901960784,Plate Special 2 x 2 with 1 Pin Hole [Complete Underside Rib]
+Town,30278c01,11,1.0,0.044715447154471545,Vehicle Base 4 x 12 x 1 2/3
+Town,3613,11,1.0,0.044715447154471545,"Arm Piece with Towball Socket, 3 Fingers"
+Town,4867,17,0.8947368421052632,0.06910569105691057,Tail Wedge
+Town,3474,14,0.875,0.056910569105691054,Wedge Plate 4 x 8 Tail
+Town,4629c01,16,0.8421052631578947,0.06504065040650407,Tool Jack [Complete Assembly]
+Train,2878c01,41,0.8913043478260869,0.7454545454545455,"Wheel Holder, Train with Wheels [Complete Assembly]"
+Train,2920,44,0.8148148148148148,0.8,Train Coupling New
+Train,2871a,13,0.8125,0.23636363636363636,Train Motor Decorative Side 10 x 2 x 2 with Closed Hub Points (for 9V Train Motor)
+Train,4022,40,0.7843137254901961,0.7272727272727273,Train Buffer Beam
+Train,70358,10,0.7692307692307693,0.18181818181818182,"Motor, Train Base, 9V [Complete Assembly]"
+Universal Building Set,4180c02,18,0.8571428571428571,0.20454545454545456,"Brick Special 2 x 4 with Wheels, Freestyle Red"
+Universal Building Set,3003pr0052,15,0.75,0.17045454545454544,"Brick 2 x 2 with Eye [No Pupils] Print on Two Sides, Offset"
+Universal Building Set,4130,22,0.5789473684210527,0.25,Door Frame 2 x 4 x 5
+Universal Building Set,4131,22,0.5789473684210527,0.25,Door 1 x 4 x 5
+Universal Building Set,4743,19,0.5135135135135135,0.2159090909090909,Brick Arch 2 x 8 x 3
+VIDIYO,65132,13,1.0,1.0,"Hinge Bracket 4 x 5 x 5 Locking with 2 Fingers, Two on Each Side, 7 Teeth"
+VIDIYO,65133,13,0.9285714285714286,1.0,Hinge Plate 4 x 6 with Two 1 x 6 Studs and Recessed 2 x 6 Middle
+VIDIYO,65140,11,0.6470588235294118,0.8461538461538461,Plate Round Corners 8 x 8
+VIDIYO,27925,12,0.013888888888888888,0.9230769230769231,"Tile 2 x 2 Curved, Macaroni"
+VIDIYO,96874,13,0.008403361344537815,1.0,Brick and Axle Separator v2.0
+Western,4491b,11,0.1774193548387097,0.8461538461538461,"Animal / Creature Accessory, Saddle [Two Clips]"
+Western,6064,11,0.07482993197278912,0.8461538461538461,"Plant, Bush 2 x 2 x 4"
+Western,4865a,12,0.01602136181575434,0.9230769230769231,Panel 1 x 2 x 1 [Square Corners]
+Western,2555,10,0.01557632398753894,0.7692307692307693,Tile Special 1 x 1 with Clip and Straight Tips
+Western,4286,11,0.006543723973825104,0.8461538461538461,Brick Sloped 33° 3 x 1
+Wicked,24866,10,0.009124087591240875,0.9090909090909091,"Plant, Flower, Plate Round 1 x 1 with 5 Petals"
+Wicked,25269,11,0.00707395498392283,1.0,Tile Round 1 x 1 Quarter
+Wicked,35480,10,0.006535947712418301,0.9090909090909091,Plate Special 1 x 2 Rounded with 2 Open Studs
+Wicked,87580,11,0.004585243851604835,1.0,Plate Special 2 x 2 with Groove and Center Stud (Jumper)
+Wicked,3941,10,0.00363901018922853,0.9090909090909091,Brick Round 2 x 2 with Axle Hole
