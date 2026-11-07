@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="160" viewBox="0 0 200 160" role="img" aria-label="Deux briques LEGO en ASCII qui s'emboîtent">
+  <style>
+    text { font: 15px ui-monospace, Menlo, Consolas, monospace; white-space: pre; fill: #d01012; }
+    .clic { fill: #f2a900; font-weight: bold; }
+    g { opacity: 0; animation: 3s infinite; }
+    .f1 { animation-name: f1; } .f2 { animation-name: f2; }
+    .f3 { animation-name: f3; } .f4 { animation-name: f4; }
+    @keyframes f1 { 0%, 16.6% { opacity: 1 } 16.7%, 100% { opacity: 0 } }
+    @keyframes f2 { 0%, 16.6% { opacity: 0 } 16.7%, 33.3% { opacity: 1 } 33.4%, 100% { opacity: 0 } }
+    @keyframes f3 { 0%, 33.3% { opacity: 0 } 33.4%, 49.9% { opacity: 1 } 50%, 100% { opacity: 0 } }
+    @keyframes f4 { 0%, 49.9% { opacity: 0 } 50%, 100% { opacity: 1 } }
+    @media (prefers-reduced-motion: reduce) { g { animation: none; } .f4 { opacity: 1; } }
+  </style>
+  <g class="f1">
+    <text x="20" y="18"> _[]_[]_[]_[]_</text>
+    <text x="20" y="36">|             |</text>
+    <text x="20" y="54">|_____________|</text>
+    <text x="20" y="108"> _[]_[]_[]_[]_</text>
+    <text x="20" y="126">|             |</text>
+    <text x="20" y="144">|_____________|</text>
+  </g>
+  <g class="f2">
+    <text x="20" y="36"> _[]_[]_[]_[]_</text>
+    <text x="20" y="54">|             |</text>
+    <text x="20" y="72">|_____________|</text>
+    <text x="20" y="108"> _[]_[]_[]_[]_</text>
+    <text x="20" y="126">|             |</text>
+    <text x="20" y="144">|_____________|</text>
+  </g>
+  <g class="f3">
+    <text x="20" y="54"> _[]_[]_[]_[]_</text>
+    <text x="20" y="72">|             |</text>
+    <text x="20" y="90">|_____________|</text>
+    <text x="20" y="108"> _[]_[]_[]_[]_</text>
+    <text x="20" y="126">|             |</text>
+    <text x="20" y="144">|_____________|</text>
+  </g>
+  <g class="f4">
+    <text x="20" y="54"> _[]_[]_[]_[]_</text>
+    <text x="20" y="72">|             |</text>
+    <text x="20" y="90">|_____________|</text>
+    <text x="20" y="108">|             |</text>
+    <text x="20" y="126">|_____________|</text>
+    <text x="150" y="90" class="clic">clic !</text>
+  </g>
+</svg>
