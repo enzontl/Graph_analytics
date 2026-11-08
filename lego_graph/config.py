@@ -35,6 +35,9 @@ class Params:
     # Retire les pièces présentes dans plus de cette part des sets
     # (comme les « mots vides » en texte). None = aucune pièce retirée.
     max_part_share: float | None = None
+    # True : retire les autocollants (catégorie « Stickers »). Une planche
+    # d'autocollants est propre à un set et gonfle les pièces exclusives.
+    drop_stickers: bool = False
 
     # --- Projection sets-sets -------------------------------------------
     # "count"   : nombre de pièces partagées

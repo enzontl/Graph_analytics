@@ -62,10 +62,19 @@ def select_sets(tables: dict[str, pd.DataFrame], params: Params) -> pd.DataFrame
     return sets.loc[keep].reset_index(drop=True)
 
 
+def sticker_parts(tables: dict[str, pd.DataFrame]) -> set[str]:
+    """Numéros des autocollants (catégories dont le nom contient « Sticker »)."""
+    cats = tables["part_categories"]
+    sticker_cats = cats.loc[cats["name"].astype(str).str.contains("Sticker", case=False), "id"]
+    parts = tables["parts"]
+    return set(parts.loc[parts["part_cat_id"].isin(sticker_cats), "part_num"].astype(str))
+
+
 def set_part_pairs(
     tables: dict[str, pd.DataFrame], sets: pd.DataFrame, params: Params
 ) -> pd.DataFrame:
-    """Couples (set, pièce) distincts, hors pièces de rechange.
+    """Couples (set, pièce) distincts, hors pièces de rechange (et hors
+    autocollants si `params.drop_stickers`).
 
     Pour un set qui a plusieurs versions d'inventaire, on garde la plus petite
     version (l'inventaire d'origine).
@@ -79,6 +88,9 @@ def set_part_pairs(
     )
     is_spare = ip["is_spare"].astype(str).str.strip().str.lower().isin(["t", "true", "1"])
     ip = ip.loc[~is_spare]
+
+    if params.drop_stickers:
+        ip = ip[~ip["part_num"].astype(str).isin(sticker_parts(tables))]
 
     if params.ignore_color:
         ip = ip.assign(part=ip["part_num"].astype(str))

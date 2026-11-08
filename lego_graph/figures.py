@@ -61,21 +61,57 @@ def part_theme_distribution(universal: pd.DataFrame, path: Path) -> None:
     plt.close(fig)
 
 
+def _fr(x: float) -> str:
+    """0.25 -> « 0,25 »."""
+    return f"{x:g}".replace(".", ",")
+
+
 def temporal_plot(df: pd.DataFrame, path: Path) -> None:
+    """Évolution par période, en trois panneaux à échelles séparées.
+
+    1. modularité des thèmes officiels (trait plein) et de Louvain (tirets),
+       une couleur par seuil de projection ;
+    2. part de pièces exclusives à un thème (%), avec et sans autocollants ;
+    3. nombre moyen de pièces exclusives par set, avec et sans autocollants.
+
+    `df` vient de `analysis.temporal` (une seule configuration) ou de
+    temporal_robustness.py (plusieurs seuils, avec et sans autocollants).
+    """
     if df.empty:
         return
-    fig, ax = plt.subplots(figsize=(6, 4))
-    for col, label in [
-        ("modularity_root_themes", "Modularité des thèmes officiels"),
-        ("modularity_louvain", "Modularité Louvain"),
-        ("exclusive_part_share", "Part de pièces exclusives à un thème"),
-    ]:
-        ax.plot(df["period"], df[col], marker="o", label=label)
-    ax.set_xlabel("Période")
+    fig, axes = plt.subplots(1, 3, figsize=(13, 4))
+
+    # 1. Modularité : dépend du seuil. Avec autocollants si disponible.
+    ax = axes[0]
+    ref = df[~df["drop_stickers"]] if (~df["drop_stickers"]).any() else df
+    for k, (threshold, g) in enumerate(ref.groupby("min_weight", sort=True)):
+        ax.plot(g["period"], g["modularity_root_themes"], marker="o", color=f"C{k}",
+                label=f"Thèmes, seuil {_fr(threshold)}")
+        ax.plot(g["period"], g["modularity_louvain"], marker="o", linestyle="--", color=f"C{k}",
+                label=f"Louvain, seuil {_fr(threshold)}")
     ax.set_ylim(0, 1)
-    ax.legend()
-    ax.set_title("Spécialisation des thèmes dans le temps")
-    plt.setp(ax.get_xticklabels(), rotation=30, ha="right")
+    ax.set_ylabel("Modularité")
+    ax.set_title("Structure du graphe")
+    ax.legend(fontsize=8)
+
+    # 2 et 3. Pièces exclusives : ne dépendent pas du seuil, une seule courbe par réglage.
+    first = df[df["min_weight"] == df["min_weight"].iloc[0]]
+    for k, (drop, g) in enumerate(first.groupby("drop_stickers", sort=True)):
+        label = "sans autocollants" if drop else "avec autocollants"
+        style = dict(marker="o", color=f"C{k + 4}", label=label)
+        axes[1].plot(g["period"], 100 * g["exclusive_part_share"], **style)
+        axes[2].plot(g["period"], g["exclusive_parts_per_set"], **style)
+    axes[1].set_ylabel("% des pièces du set")
+    axes[1].set_title("Part de pièces exclusives au thème")
+    axes[2].set_ylabel("Pièces par set (moyenne)")
+    axes[2].set_title("Nombre de pièces exclusives au thème")
+    for ax in axes[1:]:
+        ax.set_ylim(bottom=0)
+        ax.legend(fontsize=8)
+
+    for ax in axes:
+        ax.set_xlabel("Période")
+        plt.setp(ax.get_xticklabels(), rotation=30, ha="right")
     fig.tight_layout()
     fig.savefig(path, dpi=200)
     plt.close(fig)

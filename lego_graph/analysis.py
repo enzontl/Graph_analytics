@@ -297,25 +297,40 @@ def theme_cohesion(G: nx.Graph, min_sets: int = 30) -> pd.DataFrame:
 # ---------------------------------------------------------------------------
 # Évolution dans le temps
 # ---------------------------------------------------------------------------
-def exclusive_part_share(pairs: pd.DataFrame, sets: pd.DataFrame, set_nums=None) -> float:
-    """Part moyenne des pièces d'un set qu'on ne trouve dans aucun autre thème racine.
+def exclusive_parts(pairs: pd.DataFrame, sets: pd.DataFrame, set_nums=None) -> pd.DataFrame:
+    """Pour chaque set : nombre de pièces, nombre et part de pièces exclusives à son thème.
 
-    Indicateur de spécialisation qui ne dépend pas du seuil de la projection.
-    L'exclusivité se juge sur tous les `pairs` ; `set_nums` restreint seulement la
-    moyenne (une période), pour ne pas dépendre du nombre de thèmes de la période.
+    Une pièce est exclusive si on ne la trouve dans aucun autre thème racine.
+    L'exclusivité se juge sur tous les `pairs` ; `set_nums` restreint seulement les
+    sets renvoyés (une période), pour ne pas dépendre du nombre de thèmes de la période.
     """
     df = pairs.merge(sets[["set_num", "root_theme"]], on="set_num")
     themes_per_part = df.groupby("part")["root_theme"].nunique()
     df["exclusive"] = df["part"].map(themes_per_part) == 1
     if set_nums is not None:
         df = df[df["set_num"].isin(set_nums)]
-    return float(df.groupby("set_num")["exclusive"].mean().mean())
+    out = df.groupby("set_num").agg(n_parts=("part", "size"), n_exclusive=("exclusive", "sum"))
+    out["exclusive_share"] = out["n_exclusive"] / out["n_parts"]
+    return out.reset_index()
+
+
+def exclusive_part_share(pairs: pd.DataFrame, sets: pd.DataFrame, set_nums=None) -> float:
+    """Part moyenne des pièces d'un set qu'on ne trouve dans aucun autre thème racine.
+
+    Indicateur de spécialisation qui ne dépend pas du seuil de la projection
+    (voir `exclusive_parts`).
+    """
+    return float(exclusive_parts(pairs, sets, set_nums)["exclusive_share"].mean())
 
 
 def temporal(
     tables: dict[str, pd.DataFrame], params: Params, periods: list[tuple[int, int]]
 ) -> pd.DataFrame:
-    """Reconstruit le graphe pour chaque période avec les mêmes paramètres."""
+    """Reconstruit le graphe pour chaque période avec les mêmes paramètres.
+
+    Les colonnes `min_weight` et `drop_stickers` rappellent les paramètres
+    utilisés, pour pouvoir empiler plusieurs configurations (temporal_robustness.py).
+    """
     all_sets, all_pairs, _ = prepare(tables, params)
     rows = []
     for start, end in periods:
@@ -325,6 +340,7 @@ def temporal(
             continue
         comm_summary, _, _ = communities(G, p)
         conn, _ = connectivity(G)
+        excl = exclusive_parts(all_pairs, all_sets, sets["set_num"])
         rows.append(
             {
                 "period": f"{start}-{end}",
@@ -338,7 +354,12 @@ def temporal(
                 "nmi_vs_root_theme": comm_summary["nmi_vs_root_theme"],
                 "nmi_vs_root_theme_non_isolated": comm_summary["nmi_vs_root_theme_non_isolated"],
                 "ari_vs_root_theme_non_isolated": comm_summary["ari_vs_root_theme_non_isolated"],
-                "exclusive_part_share": exclusive_part_share(all_pairs, all_sets, sets["set_num"]),
+                "exclusive_part_share": float(excl["exclusive_share"].mean()),
+                # En nombre : la part peut baisser seulement parce que les sets grossissent.
+                "exclusive_parts_per_set": float(excl["n_exclusive"].mean()),
+                "parts_per_set": float(excl["n_parts"].mean()),
+                "min_weight": params.min_weight,
+                "drop_stickers": params.drop_stickers,
             }
         )
     return pd.DataFrame(rows)

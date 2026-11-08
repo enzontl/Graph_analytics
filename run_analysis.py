@@ -44,6 +44,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--min-parts", type=int, default=d.min_parts)
     p.add_argument("--with-color", action="store_true", help="une pièce = (forme, couleur)")
     p.add_argument("--max-part-share", type=float, default=d.max_part_share)
+    p.add_argument("--drop-stickers", action="store_true", help="retirer les autocollants")
     p.add_argument("--weighting", choices=WEIGHTINGS, default=d.weighting)
     p.add_argument("--min-weight", type=float, default=d.min_weight)
     p.add_argument("--top-k", type=int, default=d.top_k)
@@ -63,6 +64,7 @@ def main() -> None:
         min_parts=args.min_parts,
         ignore_color=not args.with_color,
         max_part_share=args.max_part_share,
+        drop_stickers=args.drop_stickers,
         weighting=args.weighting,
         min_weight=args.min_weight,
         top_k=args.top_k,
