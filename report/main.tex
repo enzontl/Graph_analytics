@@ -200,6 +200,12 @@ sets).
 \section{Description of the Analysis}
 \label{sec:methods}
 
+In short, the analysis has four steps: we describe the graph (connectivity,
+distances, central sets), we look for groups of sets that share many parts
+(communities), we compare these groups with the official themes, and we check
+against random graphs that what we see is not due to chance. We then repeat
+the main measures decade by decade.
+
 \paragraph{Software.} The analysis is written in Python 3.11 with NetworkX
 3.7 \cite{hagberg2008}, pandas, NumPy, SciPy, scikit-learn
 \cite{pedregosa2011} and matplotlib. The projection is computed with sparse
@@ -508,18 +514,15 @@ DC 6\%, Jurassic World 3\%.
 The null model qualifies the reading of these low values
 (Figure~\ref{fig:cohesion}). When parts are shuffled between sets, the
 modularity of the themes falls from 0.28 to 0.004--0.005, and \emph{all 57
-themes are more cohesive than in each of the 10 null graphs}. The median ratio
-to the null model is 19, and 33 themes are at least 10 times above chance;
-those with their own parts are far above it (Castle 53, Town 30, Technic 18).
-Film franchises are only 2 to 4 times above chance (Harry Potter 3.9, Marvel
-3.4, Jurassic World 2.6, Disney 2.2, DC 2.1), and the theme closest to chance,
-LEGO Ideas (1.7), is by design a collection of fan projects with no common
-world. Minecraft is the exception among licences (cohesion 0.65, 43 times
-chance), because its sets are built from dedicated block-shaped parts. The
-ratio is lower for large themes, whose null cohesion is high simply because
-they hold many sets, which is why Star Wars and City (3.4 and 3.7) are close to
-the film franchises in ratio while their cohesion is three to five times
-higher. Film franchises are therefore not mere labels, but \emph{weak
+themes are more cohesive than in each of the 10 null graphs}. Most themes are far above chance (median ratio 19), especially those with
+their own parts such as Castle, Town or Technic. Film franchises are only 2 to
+4 times above chance (Harry Potter, Marvel, Disney, DC, Jurassic World), and
+the theme closest to chance, LEGO Ideas, is by design a collection of fan
+projects with no common world. Minecraft is the exception among licences: its
+sets use dedicated block-shaped parts. Note that the ratio is lower for large
+themes, whose cohesion is already high by chance, which is why Star Wars and
+City have a ratio close to the film franchises although they are much more
+cohesive. Film franchises are therefore not mere labels, but \emph{weak
 universes}: their sets share a little more than chance, much less than Technic
 or Duplo.
 
