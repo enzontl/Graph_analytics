@@ -132,7 +132,7 @@ parts are stored in separate inventories). The bipartite graph has 9,062 sets,
 28,856 parts and 735,437 set--part edges.
 
 \paragraph{Projection.} Two sets $A$ and $B$, with sets of distinct parts $P_A$
-and $P_B$, are linked with the Jaccard weight \cite{jaccard1912}
+and $P_B$, are linked with the Jaccard weight
 \begin{equation}
   w(A,B) = \frac{|P_A \cap P_B|}{|P_A \cup P_B|} \in [0,1],
 \end{equation}
@@ -215,7 +215,7 @@ the largest component only, with the exact bounding algorithm of NetworkX
 (\texttt{usebounds=True}) \cite{takes2011}. Distances count edges (unweighted):
 a path is a chain of sets that pairwise share at least a quarter of their
 parts. The mean distance is estimated from 200 random sources. The weighted
-clustering coefficient follows Onnela et al.\ \cite{onnela2005}.
+clustering coefficient is the weighted version of NetworkX.
 
 \paragraph{Centrality.} We use four measures, each answering a different
 question about a set. The \emph{degree} counts the sets that share at least a
@@ -224,9 +224,9 @@ these links: both tell how ``generic'' a set's parts are. The
 \emph{betweenness} \cite{brandes2001} counts how often a set lies on shortest
 paths between other sets; it identifies sets that bridge otherwise distant
 regions of the catalogue. Since a strong similarity should mean a short
-distance, the length of an edge is $1/w$ \cite{newman2001}; the measure is
-estimated from 500 random sources \cite{brandes2007}. The weighted
-\emph{eigenvector} centrality \cite{bonacich1987}, computed on the largest
+distance, the length of an edge is $1/w$; the measure is
+estimated from 500 random sources. The weighted
+\emph{eigenvector} centrality, computed on the largest
 component, is high for sets connected to other well-connected sets, i.e.\ the
 core of the graph.
 
@@ -240,13 +240,13 @@ where $s_i$ is the strength of set $i$ and $2m$ the sum of all strengths. We
 compare the partition found with the root themes in two ways: the modularity
 of the theme partition itself, against two baselines (themes shuffled at
 random among sets with the same sizes, and a partition by decade), and the
-normalised mutual information (NMI) \cite{danon2005} and adjusted Rand index
-(ARI) \cite{hubert1985} between communities and themes. The 1,462 isolated sets
+normalised mutual information (NMI) and adjusted Rand index
+(ARI) between communities and themes. The 1,462 isolated sets
 each form a one-set community, which inflates the NMI, so we also report NMI
 and ARI without them. To check that the conclusion does not depend on the
 algorithm, we rerun Louvain at resolutions 0.5, 2 and 4 and run label
 propagation \cite{raghavan2007}, in its asynchronous weighted version and in
-its deterministic semi-synchronous version \cite{cordasco2010}. The modularity
+its deterministic semi-synchronous version. The modularity
 of all these partitions is evaluated at resolution 1 so that the values are
 comparable.
 
@@ -445,7 +445,7 @@ themes. Even then, the ARI stays at 0.22, far from a match.
   \includegraphics[width=0.4\textwidth]{figures/gephi_communities.png}
   \hspace{0.04\textwidth}
   \includegraphics[width=0.4\textwidth]{figures/gephi_root_themes.png}
-  \caption{The set graph drawn with Gephi (ForceAtlas2 \cite{jacomy2014},
+  \caption{The set graph drawn with Gephi (ForceAtlas2 layout,
   isolated sets removed, same layout in both panels). Left: coloured by
   Louvain community; right: coloured by root theme. Colours come from Gephi's
   partition palette, in which many small themes get similar colours: the
