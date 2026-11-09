@@ -256,7 +256,7 @@ def theme_graph_figure(T: nx.Graph, path, min_sets: int = 30, per_node: int = 3,
     # Un thème sans aucun lien serait rejeté au bord de la figure : on le nomme dans le titre.
     isolated = sorted(nx.isolates(B))
     B.remove_nodes_from(isolated)
-    fig, ax = plt.subplots(figsize=(13, 10))
+    fig, ax = plt.subplots(figsize=(15, 11))
     if B.number_of_nodes() == 0:
         ax.text(0.5, 0.5, "aucun thème assez grand", ha="center")
         fig.savefig(path, dpi=200)
@@ -267,7 +267,7 @@ def theme_graph_figure(T: nx.Graph, path, min_sets: int = 30, per_node: int = 3,
     # liés entre eux se rapprochent sans que les gros thèmes écrasent tout.
     for _, _, d in B.edges(data=True):
         d["layout_weight"] = float(np.log1p(d["lift"]))
-    pos = nx.spring_layout(B, weight="layout_weight", k=1.6 / np.sqrt(B.number_of_nodes()),
+    pos = nx.spring_layout(B, weight="layout_weight", k=2.6 / np.sqrt(B.number_of_nodes()),
                            iterations=300, seed=seed)
 
     sizes = np.array([B.nodes[t]["n_sets"] for t in B.nodes])
@@ -280,7 +280,10 @@ def theme_graph_figure(T: nx.Graph, path, min_sets: int = 30, per_node: int = 3,
         B, pos, ax=ax, node_size=40 + 1.2 * sizes, node_color=colors,
         cmap="viridis", vmin=0, vmax=1, edgecolors="white", linewidths=0.8,
     )
-    nx.draw_networkx_labels(B, pos, ax=ax, font_size=7)
+    # Étiquette au-dessus du nœud, sur fond blanc : lisible même quand deux noms se touchent.
+    label_pos = {t: (x, y + 0.025) for t, (x, y) in pos.items()}
+    nx.draw_networkx_labels(B, label_pos, ax=ax, font_size=7,
+                            bbox=dict(facecolor="white", edgecolor="none", alpha=0.75, pad=0.6))
     fig.colorbar(nodes, ax=ax, shrink=0.6, label="part des liens internes au thème (internal_share)")
     ax.set_title(
         f"Graphe des thèmes (thèmes d'au moins {min_sets} sets, {per_node} liens les plus forts par thème)\n"

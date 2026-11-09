@@ -76,7 +76,9 @@ def main() -> None:
     log("Louvain à plusieurs résolutions et label propagation...")
     seeds = [args.seed + i for i in range(args.n_seeds)]
     comparison = extensions.compare_communities(G, resolutions=args.resolutions, seeds=seeds, log=log)
-    comparison.to_csv(results / "communities_comparison.csv", index=False)
+    # Les durées changent à chaque lancement : on les garde pour le journal, pas pour le CSV versionné.
+    csv = comparison.drop(columns="seconds").astype({"seed": "Int64"})
+    csv.to_csv(results / "communities_comparison.csv", index=False)
 
     # 2. Graphe des thèmes ----------------------------------------------
     log("Graphe des thèmes...")
