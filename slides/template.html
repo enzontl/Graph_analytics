@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Les thèmes LEGO sont-ils de vrais univers ?</title>
+<style>
+@font-face{font-family:"Archivo";src:url(data:font/woff2;base64,/*FONT*/) format("woff2");
+  font-weight:100 900;font-stretch:62% 125%;font-display:block}
+:root{
+  --bg:#0b0a09; --ink:#efe9df; --ink2:#c9c2b6; --mut:#948d82; --line:rgba(239,233,223,.12); --grid:rgba(239,233,223,.08);
+  --mark:#8a8278; --gray:#6f685f; --red:#da291c; --yel:#ffcd00; --ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+p,dd,li{text-wrap:pretty}
+.nw{white-space:nowrap}
+::selection{background:var(--yel);color:#111}
+html,body{height:100%;background:var(--bg);color:var(--ink);overflow:hidden;
+  font-family:"Archivo",system-ui,sans-serif;font-stretch:100%;-webkit-font-smoothing:antialiased}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:0 0}
+.slide{position:absolute;inset:0;overflow:hidden;opacity:0;visibility:hidden;background:var(--bg);
+  transition:opacity .6s var(--ease)}
+.slide.on{opacity:1;visibility:visible}
+/* grain de pellicule + vignettage : la seule texture, la même partout */
+.slide::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:5;opacity:.07;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.slide::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:radial-gradient(ellipse 115% 95% at 55% 45%,transparent 50%,rgba(0,0,0,.55))}
+.pad{position:absolute;inset:0;padding:112px 120px;z-index:2}
+h1{font-size:100px;line-height:.98;letter-spacing:-.022em;font-weight:820;font-stretch:112%;text-wrap:balance}
+h2{font-size:62px;line-height:1.03;letter-spacing:-.018em;font-weight:780;font-stretch:108%;text-wrap:balance;max-width:1480px}
+.hl{color:var(--yel)}
+.lead{font-size:31px;line-height:1.42;color:var(--ink2);font-weight:400;max-width:32ch}
+.facts{display:flex;font-size:24px;color:var(--mut);font-variant-numeric:tabular-nums}
+.facts span{padding:0 28px;border-left:1px solid var(--line)} .facts span:first-child{padding-left:0;border:0}
+.facts b{color:var(--ink);font-weight:650}
+canvas.c3d,img.c3d{position:absolute;display:block}
+.foot{position:absolute;left:120px;right:120px;bottom:48px;display:flex;justify-content:space-between;align-items:baseline;
+  font-size:19px;color:var(--mut);z-index:3;font-variant-numeric:tabular-nums}
+.bar{position:absolute;left:0;bottom:0;height:3px;background:var(--red);transition:width .5s var(--ease);z-index:9}
+
+/* blocs communs */
+.fig{position:absolute;left:120px;top:330px;width:1080px;height:600px}
+.side{position:absolute;left:1290px;top:330px;width:510px}
+.side p{font-size:24px;line-height:1.45;color:var(--ink2)}
+.side p+p{margin-top:20px}
+.sub{font-size:20px!important;line-height:1.45;color:var(--mut)!important}
+.big{font-size:120px;line-height:.9;font-weight:800;letter-spacing:-.035em;font-stretch:108%}
+.note{font-size:19px;line-height:1.45;color:var(--mut);margin-top:26px;max-width:60ch}
+.pairs div{display:grid;grid-template-columns:190px 1fr;gap:24px;padding:15px 0;border-top:1px solid var(--line)}
+.pairs dt{font-size:23px;font-weight:650;color:var(--ink)} .pairs dd{font-size:23px;line-height:1.4;color:var(--ink2)}
+.kv div{display:flex;justify-content:space-between;align-items:baseline;padding:13px 0;border-top:1px solid var(--line)}
+.kv dt{font-size:21px;color:var(--ink2)} .kv dd{font-size:30px;font-weight:700}
+.kv dd small{font-size:19px;font-weight:400;color:var(--mut);margin-left:8px}
+.defs dt{font-size:22px;font-weight:650} .defs dd{font-size:21px;line-height:1.45;color:var(--ink2);margin:4px 0 20px}
+.list li{list-style:none;font-size:24px;line-height:1.4;color:var(--ink2);padding:13px 0;border-top:1px solid var(--line)}
+
+/* 2 · pièces */
+.cap{position:absolute;z-index:3;transform:translate(-50%,0);text-align:center;white-space:nowrap;pointer-events:none;opacity:0}
+.cap b{display:block;font-size:20px;font-weight:600;color:var(--ink)}
+.cap span{display:block;font-size:18px;color:var(--ink2);margin-top:2px}
+
+/* 3 · exemple de projection */
+.ex{position:absolute;left:800px;top:316px;overflow:visible}
+.ex .st{font-size:22px;font-weight:600;fill:var(--ink2)}
+.ex .bi path{fill:none;stroke:var(--mark);stroke-width:2;stroke-dasharray:1;stroke-dashoffset:1}
+.slide.on .ex .bi path{stroke-dashoffset:0;transition:stroke-dashoffset .7s var(--ease) var(--d)}
+.ex .sets rect{fill:#c8160f} .ex .sets .std{fill:#d42a20}
+.ex .sets text,.ex .nl{fill:#fff;font-size:24px;font-weight:700;text-anchor:middle}
+.ex .parts circle{fill:#3a3631} .ex .parts .in{fill:none;stroke:var(--gray);stroke-width:2}
+.ex .arr{fill:none;stroke:var(--mut);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:0}
+.slide.on .ex .arr{opacity:1;transition:opacity .5s var(--ease) 1.1s}
+.ex .gr{opacity:0} .slide.on .ex .gr{opacity:1;transition:opacity .5s var(--ease) 1.25s}
+.ex .e{stroke:var(--yel);stroke-dasharray:1;stroke-dashoffset:1} .ex .e1{stroke-width:9} .ex .e2{stroke-width:5}
+.slide.on .ex .e{stroke-dashoffset:0;transition:stroke-dashoffset .8s var(--ease) 1.45s} .slide.on .ex .e2{transition-delay:1.65s}
+.ex .e0{stroke:var(--gray);stroke-width:2;stroke-dasharray:7 7}
+.ex .nd{fill:#c8160f}
+.ex .el{font-size:22px;font-weight:650;fill:var(--ink)} .ex .el.dim{font-size:19px;font-weight:400;fill:var(--mut)}
+.fx{position:absolute;left:860px;top:878px}
+.fx p{font-size:26px;color:var(--ink)} .fx p+p{margin-top:8px}
+.tot{font-size:22px;color:var(--mut);margin-top:30px} .tot b{font-size:40px;font-weight:750;color:var(--ink);margin-right:6px}
+
+/* 4 · seuil */
+.ch{position:absolute;left:0;top:0;overflow:visible}
+.ch .gl{stroke:var(--grid);stroke-width:1}
+.ch .ax{font-size:18px;fill:var(--mut);font-variant-numeric:tabular-nums}
+.ch .ln{fill:none;stroke:var(--mark);stroke-width:2;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1}
+.slide.on .ch .ln{stroke-dashoffset:0;transition:stroke-dashoffset 1.4s var(--ease) .1s}
+.ch .mk{fill:var(--mark);stroke:var(--bg);stroke-width:2;opacity:0} .ch .mk.sel{fill:var(--yel)}
+.slide.on .ch .mk{opacity:1;transition:opacity .3s var(--ease) var(--d)}
+.ch .vl{font-size:20px;fill:var(--ink2);paint-order:stroke;stroke:var(--bg);stroke-width:6px;stroke-linejoin:round}
+.yt{position:absolute;left:0;top:-44px;font-size:20px;color:var(--ink2)}
+.ann{position:absolute;top:-4px}
+.ann .hero{font-size:84px;font-weight:800;line-height:1;letter-spacing:-.03em}
+.ann p{font-size:22px;color:var(--ink2);margin-top:8px}
+
+/* 5 · composantes */
+.glab{position:absolute;top:492px;transform:translateX(-50%);text-align:center;white-space:nowrap}
+.glab b{display:block;font-size:24px;font-weight:700}
+.glab span{display:block;font-size:18px;color:var(--ink2);margin-top:2px}
+
+/* 6 · modularité */
+.br{display:grid;grid-template-columns:330px 1fr;align-items:center;height:96px}
+.bn{font-size:23px;color:var(--ink2);text-align:right;padding-right:22px}
+.bt{display:flex;align-items:center;height:100%;border-left:1px solid var(--mut)}
+.bt i{display:block;height:24px;width:var(--w);background:var(--gray);border-radius:0 4px 4px 0;transform:scaleX(0);transform-origin:left}
+.slide.on .bt i{transform:none;transition:transform 1s var(--ease) var(--d)}
+.br.acc i{background:var(--yel)}
+.bt b{font-size:28px;font-weight:700;padding-left:14px}
+
+/* 7 · graphe des thèmes */
+.lab{position:absolute;font-size:18px;font-weight:600;color:var(--ink);white-space:nowrap;pointer-events:none;z-index:2;
+  text-shadow:0 1px 2px rgba(0,0,0,.95),0 3px 12px rgba(0,0,0,.7);transform:translate(-50%,-100%)}
+.cmp{margin-top:56px}
+.row{padding:22px 0;border-top:1px solid var(--line)}
+.row .top{display:flex;justify-content:space-between;align-items:baseline}
+.row .name{font-size:24px;color:var(--ink2)}
+.row .val{font-size:44px;font-weight:700;font-stretch:105%;color:var(--ink2);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.row.main .val{font-size:92px;color:var(--ink);font-weight:800;line-height:1;font-variant-numeric:proportional-nums}
+.row.main .name{color:var(--ink)}
+.track{height:10px;margin-top:14px;background:rgba(239,233,223,.07);overflow:hidden}
+.track i{display:block;height:100%;width:0;background:var(--mut);border-radius:0 4px 4px 0;transition:width 1.2s var(--ease)}
+.row.main .track i{background:var(--yel)}
+.slide.on .track i{width:calc(var(--v)*1%)}
+.row:nth-child(2) .track i{transition-delay:.12s} .row:nth-child(3) .track i{transition-delay:.24s}
+.legend{position:absolute;left:120px;top:112px;z-index:3;width:340px}
+.legend .t{font-size:20px;color:var(--ink2);font-weight:600}
+.legend .s{font-size:17px;color:var(--mut);margin-top:4px}
+.ramp{height:8px;border-radius:2px;margin-top:14px;background:linear-gradient(90deg,#5a5148,#ffcd00)}
+.legend .ends{display:flex;justify-content:space-between;font-size:16px;color:var(--mut);margin-top:6px}
+
+/* 8 · modèle nul */
+.lgd{position:absolute;left:200px;top:0;display:flex;gap:36px;font-size:20px;color:var(--ink2)}
+.lgd span{display:flex;align-items:center;gap:10px}
+.sw{width:14px;height:14px;border-radius:50%;background:var(--mark)} .sw.y{background:var(--yel)}
+.dumb{position:absolute;left:0;top:56px;width:1080px}
+.dgrid{position:absolute;left:200px;right:80px;top:0;bottom:-34px}
+.dgrid i{position:absolute;top:0;bottom:34px;width:1px;background:var(--grid)}
+.dgrid span{position:absolute;bottom:0;transform:translateX(-50%);font-size:17px;color:var(--mut)}
+.db{position:relative;display:grid;grid-template-columns:200px 1fr 80px;align-items:center;height:44px}
+.db.gap{margin-bottom:22px}
+.dn{font-size:22px;color:var(--ink2)}
+.dt{position:relative;height:100%}
+.dt .ln{position:absolute;top:50%;height:2px;margin-top:-1px;left:calc(var(--n)*1%);width:calc((var(--o) - var(--n))*1%);
+  background:var(--mark);transform:scaleX(0);transform-origin:left}
+.dt .pt{position:absolute;top:50%;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;border:2px solid var(--bg);
+  left:calc(var(--n)*1%);background:var(--mark)}
+.dt .mv{position:absolute;inset:0}
+.dt .mv .pt{background:var(--yel)}
+.slide.on .dt .ln{transform:none;transition:transform 1.2s var(--ease) var(--d)}
+.slide.on .dt .mv{transform:translateX(calc((var(--o) - var(--n))*1%));transition:transform 1.2s var(--ease) var(--d)}
+.dv{font-size:22px;font-weight:650;text-align:right;font-variant-numeric:tabular-nums}
+.dnote{position:absolute;left:200px;top:602px;font-size:19px;color:var(--mut)}
+
+/* 9 · évolution */
+.sm{position:absolute;top:0;width:470px}
+.sm h3{font-size:23px;font-weight:600;color:var(--ink2);margin-bottom:28px}
+.cols{display:flex;justify-content:space-around;align-items:flex-end;height:400px;border-bottom:1px solid var(--mut)}
+.cl{position:relative;width:24px;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center}
+.cl i{display:block;width:24px;height:var(--h);background:var(--mark);border-radius:4px 4px 0 0;transform:scaleY(0);transform-origin:bottom}
+.slide.on .cl i{transform:none;transition:transform .9s var(--ease) var(--d)}
+.cl b{font-size:22px;font-weight:650;margin-bottom:10px;white-space:nowrap}
+.cl span{position:absolute;top:100%;margin-top:12px;font-size:18px;color:var(--mut);white-space:nowrap}
+.sh{font-size:24px;font-weight:650;margin-bottom:6px}
+
+@media (prefers-reduced-motion:reduce){ *{transition:none!important} }
+@media print{
+ @page{size:1920px 1080px;margin:0}
+ html,body{overflow:visible;height:auto}
+ #stage{position:static;transform:none!important;width:1920px;height:auto}
+ .slide{position:relative;opacity:1;visibility:visible;height:1080px;break-after:page;page-break-after:always}
+ .slide::before{display:none}
+ .bar{display:none}
+ .lab{text-shadow:none;background:rgba(11,10,9,.55);padding:1px 8px;border-radius:4px}
+}
+body.print *{transition:none!important}
+body.print{overflow:visible;height:auto}
+body.print #stage{position:static;transform:none!important;height:auto}
+body.print .slide{position:relative;opacity:1;visibility:visible;height:1080px}
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- 1 · Titre -->
+<section class="slide" data-s="1">
+  <canvas class="c3d" id="hero" style="left:0;top:0;width:1920px;height:1080px"></canvas>
+  <div class="pad" style="padding-top:190px">
+    <h1 style="max-width:980px">Les thèmes LEGO sont-ils de <span class="hl">vrais univers</span>&#8239;?</h1>
+    <p class="lead" style="margin-top:52px">Quelques-uns, oui. Pour la plupart, non&#8239;: des univers faibles, bâtis avec les mêmes briques.</p>
+    <div class="facts" style="margin-top:64px"><span><b>{{n_sets}}</b> sets</span><span><b>{{n_edges}}</b> liens</span><span><b>{{years}}</b></span></div>
+  </div>
+  <div class="foot"><span>Enzo · Keira · Amandine</span><span>Graph Analytics, Albert School · données Rebrickable</span></div>
+</section>
+
+<!-- 2 · Les pièces -->
+<section class="slide" data-s="2">
+  <canvas class="c3d" id="plates" style="left:0;top:0;width:1920px;height:1080px"></canvas>
+  <div class="pad">
+    <h2 style="max-width:1300px">Beaucoup de pièces propres, mais les <span class="hl">mêmes plaques</span> partout</h2>
+    <div style="position:absolute;left:120px;top:330px;width:700px">
+      <div class="big">{{parts_one}}</div>
+      <p style="font-size:26px;line-height:1.42;color:var(--ink2);margin-top:18px;max-width:36ch">des {{parts_n}} pièces n'apparaissent que dans un seul thème. À l'inverse, {{parts_ge100}} pièces servent dans 100 thèmes ou plus.</p>
+      <p style="font-size:21px;color:var(--mut);margin:38px 0 10px">Quelques thèmes ont leurs propres pièces&#8239;:</p>
+      <dl class="pairs">
+        <div><dt>Technic</dt><dd>siège 3×2, vérin, garde-boue</dd></div>
+        <div><dt>Duplo</dt><dd>une autre échelle&#8239;: tabouret, steak</dd></div>
+        <div><dt>Super Mario</dt><dd>tuyau Warp, tuile Goomba</dd></div>
+      </dl>
+      <p class="note" style="margin-top:18px">Star Wars, Friends&#8239;: surtout des pièces standard imprimées et des accessoires.</p>
+    </div>
+  </div>
+  <div class="foot"><span>results/parts_universality.csv · signature_parts.csv</span><span class="num"></span></div>
+</section>
+
+<!-- 3 · Données et graphe -->
+<section class="slide" data-s="3">
+  <div class="pad">
+    <h2>Deux sets sont reliés s'ils partagent <span class="hl">assez de pièces</span></h2>
+    <div style="position:absolute;left:120px;top:330px;width:600px">
+      <ul class="list">
+        <li>Inventaires de pièces Rebrickable</li>
+        <li>Sets de {{years}}, au moins {{min_parts}} pièces</li>
+        <li>Hors produits dérivés, livres, porte-clés, vrac et minifigurines à collectionner</li>
+        <li>Sous-thèmes rangés dans leur thème&#8239;: Police → City</li>
+        <li>Une pièce = une forme, couleur ignorée</li>
+      </ul>
+      <p class="tot"><b>{{n_sets}}</b> sets · <b>{{n_edges}}</b> liens</p>
+    </div>
+    <svg class="ex" viewBox="0 -40 1000 530" width="1000" height="530" role="img" aria-label="Exemple : trois sets reliés à leurs pièces, puis le graphe des sets qui en découle">
+      <text class="st" x="60" y="-12">Exemple&#8239;: 3 sets, 7 pièces</text>
+      <text class="st" x="660" y="-12">Graphe des sets</text>
+      <g class="bi">
+        <path pathLength="1" style="--d:0ms" d="M190 140C275 140 275 36 360 36"/>
+        <path pathLength="1" style="--d:60ms" d="M190 140C275 140 275 106 360 106"/>
+        <path pathLength="1" style="--d:120ms" d="M190 140C275 140 275 176 360 176"/>
+        <path pathLength="1" style="--d:180ms" d="M190 140C275 140 275 246 360 246"/>
+        <path pathLength="1" style="--d:350ms" d="M190 246C275 246 275 106 360 106"/>
+        <path pathLength="1" style="--d:410ms" d="M190 246C275 246 275 176 360 176"/>
+        <path pathLength="1" style="--d:470ms" d="M190 246C275 246 275 246 360 246"/>
+        <path pathLength="1" style="--d:530ms" d="M190 246C275 246 275 316 360 316"/>
+        <path pathLength="1" style="--d:700ms" d="M190 352C275 352 275 246 360 246"/>
+        <path pathLength="1" style="--d:760ms" d="M190 352C275 352 275 316 360 316"/>
+        <path pathLength="1" style="--d:820ms" d="M190 352C275 352 275 386 360 386"/>
+        <path pathLength="1" style="--d:880ms" d="M190 352C275 352 275 456 360 456"/>
+      </g>
+      <g class="sets">
+        <g transform="translate(60 116)"><rect class="std" x="9" y="-7" width="22" height="10" rx="2"/><rect class="std" x="39" y="-7" width="22" height="10" rx="2"/><rect class="std" x="69" y="-7" width="22" height="10" rx="2"/><rect class="std" x="99" y="-7" width="22" height="10" rx="2"/><rect width="130" height="48" rx="3"/><text x="65" y="33">A</text></g>
+        <g transform="translate(60 222)"><rect class="std" x="9" y="-7" width="22" height="10" rx="2"/><rect class="std" x="39" y="-7" width="22" height="10" rx="2"/><rect class="std" x="69" y="-7" width="22" height="10" rx="2"/><rect class="std" x="99" y="-7" width="22" height="10" rx="2"/><rect width="130" height="48" rx="3"/><text x="65" y="33">B</text></g>
+        <g transform="translate(60 328)"><rect class="std" x="9" y="-7" width="22" height="10" rx="2"/><rect class="std" x="39" y="-7" width="22" height="10" rx="2"/><rect class="std" x="69" y="-7" width="22" height="10" rx="2"/><rect class="std" x="99" y="-7" width="22" height="10" rx="2"/><rect width="130" height="48" rx="3"/><text x="65" y="33">C</text></g>
+      </g>
+      <g class="parts">
+        <circle cx="380" cy="36" r="20"/><circle class="in" cx="380" cy="36" r="10"/>
+        <circle cx="380" cy="106" r="20"/><circle class="in" cx="380" cy="106" r="10"/>
+        <circle cx="380" cy="176" r="20"/><circle class="in" cx="380" cy="176" r="10"/>
+        <circle cx="380" cy="246" r="20"/><circle class="in" cx="380" cy="246" r="10"/>
+        <circle cx="380" cy="316" r="20"/><circle class="in" cx="380" cy="316" r="10"/>
+        <circle cx="380" cy="386" r="20"/><circle class="in" cx="380" cy="386" r="10"/>
+        <circle cx="380" cy="456" r="20"/><circle class="in" cx="380" cy="456" r="10"/>
+      </g>
+      <path class="arr" d="M450 246H552M538 233L554 246L538 259"/>
+      <g class="gr">
+        <line class="e0" x1="700" y1="140" x2="700" y2="352"/>
+        <line class="e e1" pathLength="1" x1="700" y1="140" x2="930" y2="246"/>
+        <line class="e e2" pathLength="1" x1="930" y1="246" x2="700" y2="352"/>
+        <circle class="nd" cx="700" cy="140" r="26"/><text class="nl" x="700" y="149">A</text>
+        <circle class="nd" cx="930" cy="246" r="26"/><text class="nl" x="930" y="255">B</text>
+        <circle class="nd" cx="700" cy="352" r="26"/><text class="nl" x="700" y="361">C</text>
+        <text class="el" x="828" y="176">0,60</text>
+        <text class="el" x="828" y="334">0,33</text>
+        <text class="el dim" x="716" y="240">0,14</text><text class="el dim" x="716" y="264">pas de lien</text>
+      </g>
+    </svg>
+    <div class="fx"><p>Jaccard(A, B) = pièces en commun ÷ pièces de A ou de B</p><p class="sub">Lien si J ≥ {{thr}}. Ici A–B&#8239;: 3 ÷ 5 = 0,60</p></div>
+  </div>
+  <div class="foot"><span>results/summary.json</span><span class="num"></span></div>
+</section>
+
+<!-- 4 · Le seuil -->
+<section class="slide" data-s="4">
+  <div class="pad">
+    <h2>À {{thr}}, {{giant_at}} des sets restent dans un même bloc</h2>
+    <div class="fig">
+      <p class="yt">Part des sets dans le plus grand bloc</p>
+      <svg class="ch" id="sens" viewBox="0 0 1080 600" width="1080" height="600" role="img" aria-label="Part des sets dans le plus grand bloc selon le seuil"></svg>
+      <div class="ann" id="ann"><div class="hero">{{giant_at}}</div><p>dans le plus grand bloc</p><p class="sub" style="margin-top:4px">{{edges_at}} liens · {{iso_at}} sets isolés</p></div>
+    </div>
+    <div class="side">
+      <p>On a testé {{thr_n}} seuils, de {{thr_lo}} à {{thr_hi}}.</p>
+      <p>Plus bas, presque tout se relie&#8239;: {{edges_lo}} de liens à {{thr_lo}}.</p>
+      <p>Plus haut, le graphe se défait&#8239;: {{giant_hi}} des sets seulement dans le plus grand bloc à {{thr_hi}}.</p>
+      <p class="sub">Seuls les résultats qui tiennent à plusieurs seuils sont présentés comme des conclusions.</p>
+    </div>
+  </div>
+  <div class="foot"><span>results/sensitivity.csv</span><span class="num"></span></div>
+</section>
+
+<!-- 5 · Structure du graphe -->
+<section class="slide" data-s="5">
+  <div class="pad">
+    <h2>Un grand bloc qui mêle presque tous les thèmes, et Duplo à part</h2>
+    <div class="fig">
+      <canvas id="comp" width="2160" height="1200" style="position:absolute;left:0;top:0;width:1080px;height:600px" role="img" aria-label="Chaque point est un set, regroupé par composante connexe"></canvas>
+      <div class="glab" style="left:194px"><b>{{giant_n}} sets</b><span>le plus grand bloc ({{giant_pct}})</span></div>
+      <div class="glab" style="left:472px"><b>{{duplo_comp}} sets</b><span>dont {{duplo_in}} Duplo</span></div>
+      <div class="glab" style="left:681px"><b>{{small_sets}} sets</b><span>{{small_n}} petits groupes</span></div>
+      <div class="glab" style="left:949px"><b>{{n_iso}} sets</b><span>isolés, sans aucun lien</span></div>
+    </div>
+    <div class="side">
+      <dl class="kv">
+        <div><dt>Densité</dt><dd>{{density}}</dd></div>
+        <div><dt>Degré moyen</dt><dd>{{mean_deg}}<small>voisins</small></dd></div>
+        <div><dt>Diamètre</dt><dd>{{diam}}<small>étapes</small></dd></div>
+        <div><dt>Distance moyenne (estimée)</dt><dd>{{mean_dist}}<small>étapes</small></dd></div>
+      </dl>
+      <p style="margin-top:30px">Le grand bloc mêle {{giant_themes}} des {{n_themes}} thèmes.</p>
+      <p class="sub">Les sets les plus reliés (<span class="nw">{{deg1}}</span>, <span class="nw">{{deg2}}</span>) ne sont pas les ponts entre groupes (<span class="nw">{{btw1}}</span>, <span class="nw">{{btw2}}</span>).</p>
+    </div>
+  </div>
+  <div class="foot"><span>results/lego_sets.gexf · summary.json</span><span class="num"></span></div>
+</section>
+
+<!-- 6 · Communautés contre thèmes -->
+<section class="slide" data-s="6">
+  <div class="pad">
+    <h2>L'époque structure plus le graphe que le thème</h2>
+    <div class="fig">
+      <p class="yt" style="left:330px">Modularité du découpage</p>
+      <div id="mod"></div>
+      <p class="note" style="margin-left:330px;max-width:56ch">Modularité&#8239;: part des liens qui restent dans les groupes, moins ce qu'on attendrait au hasard (0 = pas mieux que le hasard).</p>
+    </div>
+    <div class="side">
+      <div class="big">{{nmi}}</div>
+      <p style="margin-top:22px">NMI entre les communautés Louvain et les thèmes officiels, sets non isolés (1 = identiques, 0 = aucun lien).</p>
+      <p class="sub">Louvain à {{n_res}} résolutions et {{n_lp}} variantes de label propagation&#8239;: NMI entre {{nmi_lo}} et {{nmi_hi}}.</p>
+    </div>
+  </div>
+  <div class="foot"><span>results/summary.json · communities_comparison.csv</span><span class="num"></span></div>
+</section>
+
+<!-- 7 · Graphe des thèmes en 3D + thème deviné -->
+<section class="slide" data-s="7">
+  <canvas class="c3d" id="tg" style="left:0;top:0;width:1240px;height:1040px"></canvas>
+  <div class="legend">
+    <div class="t">Cohésion du thème</div>
+    <div class="s">part des liens qui restent dans le thème</div>
+    <div class="ramp"></div>
+    <div class="ends"><span>0&#8239;%</span><span>100&#8239;%</span></div>
+    <div class="s" style="margin-top:22px">{{tg_n}} thèmes d'au moins 30 sets, reliés à leurs 3 voisins les plus forts. Taille = nombre de sets.</div>
+  </div>
+  <div class="pad" style="left:auto;width:720px;padding-left:0;padding-right:120px">
+    <h2>Le thème d'un set se devine à ses voisins</h2>
+    <div class="cmp">
+      <div class="row main"><div class="top"><span class="name">Vote des voisins</span><span class="val" id="p-acc"></span></div><div class="track"><i id="b-acc"></i></div></div>
+      <div class="row"><div class="top"><span class="name">Toujours le plus gros thème</span><span class="val" id="p-maj"></span></div><div class="track"><i id="b-maj"></i></div></div>
+      <div class="row"><div class="top"><span class="name">Au hasard</span><span class="val" id="p-rnd"></span></div><div class="track"><i id="b-rnd"></i></div></div>
+    </div>
+    <p class="note">Part des sets dont le thème est retrouvé par le vote pondéré de leurs voisins, le set lui-même exclu (sets non isolés).</p>
+  </div>
+  <div class="foot"><span>results/theme_graph_edges.csv · extensions_summary.json</span><span class="num"></span></div>
+</section>
+
+<!-- 8 · Cohésion et modèle nul -->
+<section class="slide" data-s="8">
+  <div class="pad">
+    <h2>Quelques univers fermés, beaucoup d'univers faibles</h2>
+    <div class="fig">
+      <div class="lgd"><span><i class="sw y"></i>cohésion observée</span><span><i class="sw"></i>au hasard (moyenne de {{n_draws}} tirages)</span></div>
+      <div class="dumb"><div class="dgrid" id="dgrid"></div><div id="dumb"></div></div>
+      <p class="dnote">{{n_closed}} des {{coh_n}} thèmes dépassent 80&#8239;%&#8239;: les 4 du haut, plus {{closed_other}}.</p>
+    </div>
+    <div class="side">
+      <dl class="defs">
+        <dt>Cohésion</dt><dd>part des liens du thème qui restent dans le thème</dd>
+        <dt>Au hasard</dt><dd>on mélange les pièces entre les sets, en gardant la taille de chaque set et la fréquence de chaque pièce</dd>
+      </dl>
+      <p>Tous les thèmes ({{null_all}} sur {{null_n}}) sont plus cohésifs que dans chacun des {{n_draws}} tirages.</p>
+      <p>Licences&#8239;: {{lic_lo}} à {{lic_hi}} fois plus qu'au hasard, loin des univers fermés.</p>
+    </div>
+  </div>
+  <div class="foot"><span>results/theme_cohesion_null.csv</span><span class="num"></span></div>
+</section>
+
+<!-- 9 · Évolution et limites -->
+<section class="slide" data-s="9">
+  <div class="pad">
+    <h2>Pas de spécialisation&#8239;: les sets grossissent avec des pièces communes</h2>
+    <div class="fig">
+      <div class="sm" style="left:0"><h3>Part des pièces exclusives au thème</h3><div class="cols" id="c-excl"></div></div>
+      <div class="sm" style="left:560px"><h3>Pièces distinctes par set</h3><div class="cols" id="c-parts"></div></div>
+      <p class="note" style="position:absolute;top:532px;margin:0;max-width:none">Même tendance sans les autocollants&#8239;: {{ns_first}} → {{ns_last}}. Ce calcul ne dépend pas du seuil.</p>
+    </div>
+    <div class="side">
+      <h3 class="sh">Limites</h3>
+      <ul class="list">
+        <li>Le seuil de {{thr}} est un choix qui change fortement le graphe.</li>
+        <li>Pièces imprimées et autocollants comptés comme des pièces à part.</li>
+        <li>Modèle nul&#8239;: {{n_draws}} tirages seulement.</li>
+        <li>La couleur des pièces est ignorée.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span>results/temporal.csv · temporal_robustness.csv</span><span class="num"></span></div>
+</section>
+
+<!-- 10 · Conclusion -->
+<section class="slide" data-s="10">
+  <canvas class="c3d" id="stack" style="left:0;top:0;width:1920px;height:1080px"></canvas>
+  <div class="pad" style="padding-top:150px">
+    <h2 style="max-width:1000px">Quelques thèmes sont de vrais univers&#8239;; la plupart sont des <span class="hl">univers faibles</span>, bâtis avec les mêmes briques.</h2>
+    <dl class="pairs" style="margin-top:64px;width:900px">
+      <div><dt>Univers fermés</dt><dd>{{n_closed}} thèmes sur {{coh_n}} gardent plus de 80&#8239;% de leurs liens, dont Duplo et Technic.</dd></div>
+      <div><dt>Univers faibles</dt><dd>les licences, seulement {{lic_lo}} à {{lic_hi}} fois plus cohésives qu'au hasard.</dd></div>
+      <div><dt>Pas de spécialisation</dt><dd>pièces exclusives au thème&#8239;: {{ex_first}} dans les années 1990, {{ex_last}} depuis 2020.</dd></div>
+    </dl>
+  </div>
+  <div class="foot"><span>github.com/enzontl/Graph_analytics</span><span class="num"></span></div>
+</section>
+
+<div class="bar" id="bar"></div>
+</div>
+
+<script>/*THREE*/</script>
+<script>
+/*DATA*/
+const fr=(x)=>String(x).replace('.',','), NB=' ';
+const slides=[...document.querySelectorAll('.slide')], stage=document.getElementById('stage'), bar=document.getElementById('bar');
+const PRINT=new URLSearchParams(location.search).has('print'), RMQ=matchMedia('(prefers-reduced-motion: reduce)');
+if(PRINT) document.body.classList.add('print');
+let cur=0, since=0;
+document.querySelectorAll('.num').forEach(n=>{const k=+n.closest('.slide').dataset.s; n.textContent=String(k).padStart(2,'0')+' / '+slides.length;});
+
+function fit(){ if(PRINT) return; const s=Math.min(innerWidth/1920,innerHeight/1080);
+  stage.style.transform=`scale(${s}) translate(-50%,-50%)`; }
+addEventListener('resize',fit); fit();
+
+// ---------- outils 3D ----------
+const BX=3.3, F=-1.1;   // position de la brique et hauteur du sol, communes aux scènes de studio
+function mkRenderer(canvas){
+  const w=canvas.clientWidth,h=canvas.clientHeight;
+  const r=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true,preserveDrawingBuffer:true});
+  r.setPixelRatio(PRINT?1.5:Math.min(devicePixelRatio,2)); r.setSize(w,h,false);
+  r.outputEncoding=THREE.sRGBEncoding; r.toneMapping=THREE.ACESFilmicToneMapping; r.toneMappingExposure=1.0;
+  return [r,w,h];
+}
+function lin(hex){ return new THREE.Color(hex).convertSRGBToLinear(); }
+function ramp(t){ // une seule teinte, du gris chaud au jaune, comme la légende
+  const a=[90,81,72], b=[255,205,0];
+  return new THREE.Color(...a.map((v,j)=>(v+(b[j]-v)*t)/255)).convertSRGBToLinear();
+}
+function radialTex(stops){ const c=document.createElement('canvas'); c.width=c.height=256; const x=c.getContext('2d');
+  const g=x.createRadialGradient(128,128,0,128,128,128); stops.forEach(([o,col])=>g.addColorStop(o,col));
+  x.fillStyle=g; x.fillRect(0,0,256,256); return new THREE.CanvasTexture(c); }
+function rrect(w,h,r){ const s=new THREE.Shape(),x=-w/2,y=-h/2;
+  s.moveTo(x+r,y); s.lineTo(x+w-r,y); s.quadraticCurveTo(x+w,y,x+w,y+r); s.lineTo(x+w,y+h-r); s.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+  s.lineTo(x+r,y+h); s.quadraticCurveTo(x,y+h,x,y+h-r); s.lineTo(x,y+r); s.quadraticCurveTo(x,y,x+r,y); return s; }
+const ease=(dt,start,dur)=>{ const k=Math.min(1,Math.max(0,(dt-start)/dur)); return 1-(1-k)**3; };
+
+// Studio photo : grandes sources douces, fond sans raccord, lumière diffusée dans l'air, poussière.
+function studio(id,camPos,camTgt,o={}){
+  const c=document.getElementById(id), [r,w,h]=mkRenderer(c), sc=new THREE.Scene();
+  const cam=new THREE.PerspectiveCamera(26,w/h,.1,100); cam.position.set(...camPos); cam.lookAt(...camTgt); cam.updateMatrixWorld();
+
+  // reflets : grande boîte à lumière au plafond, panneau de débouchage à gauche, fine bande froide derrière
+  const pm=new THREE.PMREMGenerator(r), st=new THREE.Scene();
+  st.add(new THREE.Mesh(new THREE.BoxGeometry(40,40,40),new THREE.MeshBasicMaterial({color:0x050404,side:THREE.BackSide})));
+  const panel=(pw,ph,col,p)=>{ const m=new THREE.Mesh(new THREE.PlaneGeometry(pw,ph),new THREE.MeshBasicMaterial({color:col,side:THREE.DoubleSide}));
+    m.position.set(...p); m.lookAt(0,0,0); st.add(m); };
+  panel(14,14,new THREE.Color(2.3,2.1,1.85),[2,12,3]);
+  panel(10,12,new THREE.Color(.5,.47,.44),[-13,2,6]);
+  panel(14,1.6,new THREE.Color(1.2,1.5,2.1),[8,3,-12]);
+  sc.environment=pm.fromScene(st,.04).texture;
+
+  // fond de studio sans raccord : le sol remonte en mur par un quart de cercle
+  const R=5,L=18,A=Math.PI*R/2, sw=new THREE.PlaneGeometry(60,40,1,200), pa=sw.attributes.position;
+  for(let i=0;i<pa.count;i++){ const s=pa.getY(i)+20; let y,z;
+    if(s<L){ z=12-s; y=F; } else if(s<L+A){ const a=(s-L)/R; z=12-L-R*Math.sin(a); y=F+R*(1-Math.cos(a)); }
+    else { z=12-L-R; y=F+R+s-L-A; }
+    pa.setXYZ(i,pa.getX(i)+BX,y,z); }
+  sw.computeVertexNormals();
+  sc.add(new THREE.Mesh(sw,new THREE.MeshStandardMaterial({color:lin(0x221e1b),roughness:1,metalness:0,envMapIntensity:.04})));
+
+  // lumières : une source douce au-dessus du sujet, une autre qui éclaire le mur derrière
+  const kt=o.key||[BX,-1], key=new THREE.SpotLight(0xffe6c4,o.int||5.5,45,o.angle||.46,1,1.5);
+  key.position.set(...(o.keyPos||[BX+1.2,11,3])); key.target.position.set(kt[0],F,kt[1]);
+  const wall=new THREE.SpotLight(0xffdcb4,1.6,50,.5,1,1); wall.position.set(BX-.5,7,6); wall.target.position.set(BX,1.2,-11);
+  sc.add(key,key.target,wall,wall.target,new THREE.HemisphereLight(0xfff2e2,0x080504,.08));
+
+  // lumière diffusée dans l'air au-dessus du sujet : une tache douce, sans bord
+  if(o.haze!==false){
+    const hz=document.createElement('canvas'); hz.width=256; hz.height=512; const y=hz.getContext('2d'); y.scale(1,2);
+    const gr=y.createRadialGradient(128,128,0,128,128,128);
+    [[0,'rgba(255,226,190,.20)'],[.45,'rgba(255,220,180,.07)'],[1,'rgba(255,220,180,0)']].forEach(([o,cl])=>gr.addColorStop(o,cl));
+    y.fillStyle=gr; y.fillRect(0,0,256,256);
+    const haze=new THREE.Mesh(new THREE.PlaneGeometry(8,14),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(hz),transparent:true,depthWrite:false,
+      blending:THREE.AdditiveBlending,toneMapped:false}));
+    haze.position.set(BX+.4,F+5.6,-1.6); sc.add(haze);
+  }
+
+  // poussière qui monte lentement, plus visible près de l'axe de la lumière (tirage fixe : même image à chaque export)
+  const ND=240, pos=new Float32Array(ND*3), col=new Float32Array(ND*3), base=new Float32Array(ND), spd=new Float32Array(ND);
+  let sd=11; const rnd=()=>(sd=(sd*16807)%2147483647)/2147483647;
+  for(let i=0;i<ND;i++){ const a=rnd()*6.283, rr=2.8*Math.sqrt(rnd()), k=Math.exp(-rr*rr/2.4)*(.35+.65*rnd());
+    pos[i*3]=BX+.4+rr*Math.cos(a); pos[i*3+2]=rr*Math.sin(a)-.4; base[i]=rnd()*9; spd[i]=.4+rnd();
+    col[i*3]=k; col[i*3+1]=k*.88; col[i*3+2]=k*.72; }
+  const pg=new THREE.BufferGeometry(); pg.setAttribute('position',new THREE.BufferAttribute(pos,3)); pg.setAttribute('color',new THREE.BufferAttribute(col,3));
+  const dust=new THREE.Points(pg,new THREE.PointsMaterial({size:.04,vertexColors:true,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,toneMapped:false,
+    map:radialTex([[0,'rgba(255,255,255,1)'],[.35,'rgba(255,255,255,.4)'],[1,'rgba(255,255,255,0)']])}));
+  sc.add(dust);
+
+  return {c,r,sc,cam,w,h,tick(t){
+    for(let i=0;i<ND;i++) pos[i*3+1]=F+.2+(base[i]+t*spd[i]*.00006)%8.5;
+    pg.attributes.position.needsUpdate=true; r.render(sc,cam); }};
+}
+
+// Brique ou plaque LEGO : arêtes adoucies, tenons tournés, ombre de contact en trois couches floues.
+const STUD=new THREE.LatheGeometry([[0,0],[.3,0],[.3,.165],[.296,.185],[.284,.197],[.265,.2],[0,.2]].map(([x,y])=>new THREE.Vector2(x,y)),48);
+const MATS={};
+const absMat=hex=>MATS[hex]||(MATS[hex]=new THREE.MeshPhysicalMaterial({color:lin(hex),roughness:.36,metalness:0,clearcoat:.25,clearcoatRoughness:.4,envMapIntensity:1}));
+function brick(wx,dz,hgt,hex,shadow=true){
+  const g=new THREE.Group(), m=absMat(hex), b=.04;
+  const body=new THREE.ExtrudeGeometry(rrect(wx-2*b,dz-2*b,.05),{depth:hgt-2*b,bevelEnabled:true,bevelThickness:b,bevelSize:b,bevelSegments:4,curveSegments:8});
+  body.rotateX(-Math.PI/2); body.translate(0,b,0); g.add(new THREE.Mesh(body,m));
+  for(let i=0;i<wx;i++)for(let j=0;j<dz;j++){ const s=new THREE.Mesh(STUD,m); s.position.set(-wx/2+.5+i,hgt,-dz/2+.5+j); g.add(s); }
+  if(shadow){
+    const S=Math.max(wx,dz)+4, px=512/S, k=hgt<1?.6:1, cv=document.createElement('canvas'); cv.width=cv.height=512;
+    const x=cv.getContext('2d'); x.translate(256,256);
+    [[.9375,.55,1.3],[.25,.7,1.06],[.046875,.95,1.005]].forEach(([u,a,kk])=>{ x.filter=`blur(${u*k*px}px)`; x.fillStyle=`rgba(0,0,0,${a})`;
+      x.fillRect(-wx*px*kk/2,-dz*px*kk/2,wx*px*kk,dz*px*kk); });
+    const sh=new THREE.Mesh(new THREE.PlaneGeometry(S,S),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false,
+      toneMapped:false,polygonOffset:true,polygonOffsetFactor:-2}));
+    sh.rotation.x=-Math.PI/2; sh.position.y=.003; g.add(sh); g.userData.shadow=sh;
+  }
+  return g;
+}
+// pose une brique tombée de « lift » unités : l'ombre reste au sol et apparaît à l'atterrissage
+function land(g,y0,lift,e){ g.position.y=y0+lift*(1-e); const sh=g.userData.shadow;
+  if(sh){ sh.position.y=.003-lift*(1-e); sh.material.opacity=e; } }
+
+const scenes={}, flat={};
+
+// ---------- slide 1 : une brique dans un studio photo ----------
+scenes[1]=(()=>{ let S,g;
+  return {render(t){ if(!S){ S=studio('hero',[0,2.3,15.5],[0,.25,0]); g=brick(4,2,1.2,0xc8160f); g.position.set(BX,F,0); S.sc.add(g); }
+    g.rotation.y=-.62+t*.00009; S.tick(t); }};
+})();
+
+// ---------- slide 2 : les quatre pièces les plus répandues, posées au sol ----------
+scenes[2]=(()=>{ let S; const P=[];
+  function setup(){
+    S=studio('plates',[-.8,10.5,20],[0,-.3,.6],{key:[BX+.1,1],keyPos:[BX+1.2,11,5],angle:.62,haze:false,int:4});
+    const cols={2:BX-2.6,4:BX+1.6}, rows=[-1.2,3.8];   // bord avant de chaque rangée
+    DATA.plates.forEach((p,i)=>{ const g=brick(p.w,p.d,.4,0xc8160f), fz=rows[i>>1], x=cols[p.w];
+      g.position.set(x,F,fz-p.d/2); S.sc.add(g);
+      const d=document.createElement('div'); d.className='cap';
+      d.innerHTML=`<b>${p.label}</b><span>dans ${p.share}${NB}% des sets</span>`; S.c.parentNode.appendChild(d);
+      const v=new THREE.Vector3(x,F,fz+.25).project(S.cam);
+      d.style.left=((v.x+1)/2*S.w)+'px'; d.style.top=((1-v.y)/2*S.h)+'px'; P.push([g,d]); });
+  }
+  return {render(t,dt){ if(!S) setup();
+    P.forEach(([g,d],i)=>{ const e=ease(dt,i*120,700); land(g,F,1.5,e); d.style.opacity=e; });
+    S.tick(t); }};
+})();
+
+// ---------- slide 7 : graphe des thèmes ----------
+const LABELS=['Duplo','Technic','Mixels','DOTS','Star Wars','City','Friends','Harry Potter','Disney','Creator','Ninjago'];
+// cadre fixe (export, mouvement réduit) : angle et côtés calculés pour qu'aucune étiquette ne couvre une sphère (propre de 19 à 29°)
+const A0=.42, SIDE={Technic:1,City:2}, TR=['translate(-50%,-100%)','translate(-50%,0)','translate(0,-50%)'];   // 0 dessus, 1 dessous, 2 à droite
+scenes[7]=(()=>{ let init=false,r,cam,sc,g,w,h,labels=[],drag=null,rot={x:.25,y:A0},auto=true;
+  function setup(){ const c=document.getElementById('tg'); [r,w,h]=mkRenderer(c);
+    sc=new THREE.Scene(); cam=new THREE.PerspectiveCamera(38,w/h,.1,200); cam.position.set(0,0,38);
+    g=new THREE.Group(); sc.add(g);
+    const N=DATA.graph.nodes, E=DATA.graph.edges;
+    N.forEach(n=>{ const col=ramp(n.share), rad=.14+Math.sqrt(n.n)*.026;
+      const m=new THREE.Mesh(new THREE.SphereGeometry(rad,32,22),
+        new THREE.MeshStandardMaterial({color:col,emissive:col,emissiveIntensity:.35,roughness:.45}));
+      m.position.set(...n.p); g.add(m);
+      if(LABELS.includes(n.name)){ const d=document.createElement('div'), s=SIDE[n.name]||0; d.className='lab'; d.textContent=n.name;
+        d.style.transform=TR[s]; c.parentNode.appendChild(d); labels.push([d,m,rad,s]); } });
+    const maxw=Math.max(...E.map(e=>e[2])), pts=[], cols=[];
+    E.forEach(([a,b,wt])=>{ const k=.2+.8*Math.sqrt(wt/maxw);
+      [a,b].forEach(i=>{ pts.push(...N[i].p); const c=ramp(N[i].share); cols.push(c.r*k,c.g*k,c.b*k); }); });
+    const lg=new THREE.BufferGeometry(); lg.setAttribute('position',new THREE.Float32BufferAttribute(pts,3));
+    lg.setAttribute('color',new THREE.Float32BufferAttribute(cols,3));
+    g.add(new THREE.LineSegments(lg,new THREE.LineBasicMaterial({vertexColors:true,transparent:true,opacity:.5})));
+    sc.add(new THREE.HemisphereLight(0xfff4e6,0x0b0a09,.5)); const p=new THREE.DirectionalLight(0xffffff,.9); p.position.set(8,12,16); sc.add(p);
+    c.style.cursor='grab';
+    c.addEventListener('pointerdown',e=>{drag=[e.clientX,e.clientY,rot.x,rot.y];auto=false;c.setPointerCapture(e.pointerId)});
+    c.addEventListener('pointermove',e=>{ if(!drag)return; rot.y=drag[3]+(e.clientX-drag[0])*.006; rot.x=drag[2]+(e.clientY-drag[1])*.006;});
+    c.addEventListener('pointerup',()=>{drag=null;});
+    c.addEventListener('dblclick',()=>{auto=true});
+    init=true; }
+  return {render(t,dt,still){ if(!init) setup(); if(auto&&!still) rot.y=A0+dt*.00012; g.rotation.set(rot.x,rot.y,0);
+    r.render(sc,cam); g.updateMatrixWorld();
+    const k=h/2/Math.tan(cam.fov*Math.PI/360); // pixels par unité, à distance 1
+    labels.forEach(([d,m,rad,s])=>{ const wp=new THREE.Vector3().setFromMatrixPosition(m.matrixWorld), v=wp.clone().project(cam);
+      const x=(v.x+1)/2*w, y=(1-v.y)/2*h, R=rad*k/wp.distanceTo(cam.position);
+      d.style.left=(s===2?x+R+8:x)+'px'; d.style.top=(s===0?y-R-6:s===1?y+R+6:y)+'px'; }); }};
+})();
+
+// ---------- slide 10 : on empile les briques ----------
+scenes[10]=(()=>{ let S,G; const B=[];
+  return {render(t,dt){
+    if(!S){ S=studio('stack',[0,2.3,15.5],[0,.25,0]); G=new THREE.Group(); G.position.set(BX,F,0); S.sc.add(G);
+      [[4,2,0xc8160f,0,0,true],[4,2,0xf2c41c,1,1.2,false],[2,2,0xa0a5a9,.5,2.4,false]].forEach(([wx,dz,hex,x,y,sh])=>{
+        const g=brick(wx,dz,1.2,hex,sh); g.position.set(x,y,0); G.add(g); B.push([g,y]); }); }
+    G.rotation.y=-.62+t*.00009;
+    B.forEach(([g,y],i)=>land(g,y,6,ease(dt,200+i*260,650)));   // partent hors champ, au-dessus
+    S.tick(t); }};
+})();
+
+// ---------- slide 5 : un point par set, groupé par composante ----------
+flat[5]=(()=>{ let x,last=-1; const P=[];
+  function setup(){ const c=document.getElementById('comp'); x=c.getContext('2d'); x.scale(2,2);
+    const B=470, C=2.25;   // ligne de base, écart entre points
+    const phy=(n,cx,cy,col,t0,t1)=>{ for(let i=0;i<n;i++){ const r=C*Math.sqrt(i+.5), a=i*2.39996;
+      P.push([cx+r*Math.cos(a),cy+r*Math.sin(a),col,t0+i/n*t1]); } };
+    const [g,d]=DATA.comps.sizes;
+    phy(g,194,B-C*Math.sqrt(g),'#c9c2b6',0,1300);
+    phy(d,472,B-C*Math.sqrt(d),'#ffcd00',300,600);
+    let xx=566, yb=B, rowH=0; const sm=DATA.comps.small;
+    sm.forEach((s,k)=>{ const R=C*Math.sqrt(s)+1.5; if(xx+2*R>796){ xx=566; yb-=rowH+4; rowH=0; }
+      phy(s,xx+R,yb-R,'#8a8278',700+k/sm.length*500,150); xx+=2*R+4; rowH=Math.max(rowH,2*R); });
+    let sd=7; const rnd=()=>(sd=(sd*16807)%2147483647)/2147483647;
+    for(let i=0;i<DATA.comps.isolated;i++) P.push([855+(i%28)*7+(rnd()-.5)*2, B-3-Math.floor(i/28)*7+(rnd()-.5)*2,'#5c564e',900+rnd()*800]);
+  }
+  return {render(t,dt){ if(!x) setup(); if(dt>2000&&last>2000) return; last=dt;
+    x.clearRect(0,0,1080,600);
+    for(const [px,py,col,t0] of P){ const a=Math.min(1,Math.max(0,(dt-t0)/300)); if(!a) continue;
+      x.globalAlpha=a; x.fillStyle=col; x.beginPath(); x.arc(px,py,1.4,0,6.2832); x.fill(); }
+    x.globalAlpha=1; }};
+})();
+
+// ---------- graphiques construits une fois ----------
+// 4 · part du plus grand bloc selon le seuil
+(()=>{ const S=DATA.sens, W=1080,H=600, ml=84,mr=40,mt=30,mb=64, x0=S[0][0], x1=S[S.length-1][0];
+  const X=v=>ml+(v-x0)/(x1-x0)*(W-ml-mr), Y=v=>mt+(1-v)*(H-mt-mb);
+  let s='';
+  for(const v of [0,.25,.5,.75,1]) s+=`<line class="gl" x1="${ml}" x2="${W-mr}" y1="${Y(v)}" y2="${Y(v)}"/><text class="ax" x="${ml-14}" y="${Y(v)+6}" text-anchor="end">${Math.round(v*100)}${NB}%</text>`;
+  for(const v of [.15,.2,.25,.3,.35,.4]) s+=`<text class="ax" x="${X(v)}" y="${H-mb+34}" text-anchor="middle">${fr(v.toFixed(2))}</text>`;
+  s+=`<text class="ax" x="${(ml+W-mr)/2}" y="${H-2}" text-anchor="middle">seuil de similarité de Jaccard</text>`;
+  s+=`<path class="ln" pathLength="1" d="M${S.map(r=>X(r[0]).toFixed(1)+' '+Y(r[3]).toFixed(1)).join('L')}"/>`;
+  S.forEach(r=>{ const sel=r[0]===DATA.chosen, f=(X(r[0])-ml)/(W-ml-mr);
+    s+=`<circle class="mk${sel?' sel':''}" cx="${X(r[0])}" cy="${Y(r[3])}" r="${sel?8:5}" style="--d:${(.15+f*.6).toFixed(2)}s"><title>Seuil ${fr(r[0])} : ${fr((r[3]*100).toFixed(1))} % des sets dans le plus grand bloc, ${r[1].toLocaleString('fr-FR')} liens</title></circle>`; });
+  const a=S[0], z=S[S.length-1];
+  s+=`<text class="vl" x="${X(a[0])+14}" y="${Y(a[3])-12}">${Math.round(a[3]*100)}${NB}%</text>`;
+  s+=`<text class="vl" x="${X(z[0])}" y="${Y(z[3])-18}" text-anchor="middle">${Math.round(z[3]*100)}${NB}%</text>`;
+  document.getElementById('sens').innerHTML=s;
+  document.getElementById('ann').style.left=(X(DATA.chosen)+44)+'px';
+})();
+
+// 6 · modularité de chaque découpage
+(()=>{ const M=DATA.mod, mx=Math.max(...M.map(m=>m[1]));
+  document.getElementById('mod').innerHTML=M.map(([n,v],i)=>`<div class="br${n==='Décennies'?' acc':''}" style="--w:${(Math.max(0,v)/mx*80).toFixed(2)}%;--d:${i*90}ms"><span class="bn">${n}</span><span class="bt"><i></i><b>${Math.abs(v)<.005?'≈'+NB+'0':fr(v.toFixed(2))}</b></span></div>`).join('');
+})();
+
+// 7 · thème deviné
+[['acc','acc'],['maj','maj'],['rnd','rnd']].forEach(([id,k])=>{
+  document.getElementById('p-'+id).textContent=fr(DATA.pred[k])+NB+'%';
+  document.getElementById('b-'+id).style.setProperty('--v',DATA.pred[k]); });
+
+// 8 · cohésion observée contre hasard
+document.getElementById('dgrid').innerHTML=[0,25,50,75,100].map(v=>`<i style="left:${v}%"></i><span style="left:${v}%">${v}${NB}%</span>`).join('');
+document.getElementById('dumb').innerHTML=DATA.null.map((d,i)=>{ const o=d.obs*100, n=d.rnd*100;
+  return `<div class="db${i===3?' gap':''}" style="--o:${o.toFixed(2)};--n:${n.toFixed(2)};--d:${i*70}ms" title="${d.t} : ${Math.round(o)} % observé, ${fr(n.toFixed(1))} % au hasard en moyenne (maximum ${fr((d.max*100).toFixed(1))} %)"><span class="dn">${d.t}</span><span class="dt"><i class="ln"></i><i class="pt"></i><span class="mv"><i class="pt"></i></span></span><span class="dv">${Math.round(o)}${NB}%</span></div>`; }).join('');
+
+// 9 · évolution par période
+(()=>{ const T=DATA.temporal;
+  const cols=(key,fmt,id)=>{ const mx=Math.max(...T.map(r=>r[key]));
+    document.getElementById(id).innerHTML=T.map((r,i)=>`<div class="cl" style="--h:${(r[key]/mx*80).toFixed(1)}%;--d:${i*90}ms"><b>${fmt(r[key])}</b><i></i><span>${r.p}</span></div>`).join(''); };
+  cols('excl',v=>fr(v.toFixed(1))+NB+'%','c-excl'); cols('parts',v=>String(v),'c-parts');
+})();
+
+// ---------- navigation ----------
+function show(i){ cur=Math.max(0,Math.min(slides.length-1,i)); since=performance.now();
+  slides.forEach((s,k)=>s.classList.toggle('on',k===cur));
+  bar.style.width=((cur+1)/slides.length*100)+'%'; try{history.replaceState(null,'','#'+(cur+1))}catch(e){} }
+addEventListener('keydown',e=>{ if(['ArrowRight','PageDown',' ','Enter'].includes(e.key)){e.preventDefault();show(cur+1)}
+  else if(['ArrowLeft','PageUp','Backspace'].includes(e.key)){e.preventDefault();show(cur-1)}
+  else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  else if(e.key==='f'||e.key==='F'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()} });
+addEventListener('click',e=>{ if(e.target.closest('#tg'))return; show(cur+(e.clientX>innerWidth/2?1:-1)); });
+function loop(t){ const k=cur+1, s=scenes[k]||flat[k], rm=RMQ.matches;
+  if(s) s.render(rm?2500:t, rm?1e6:t-since, rm); requestAnimationFrame(loop); }
+
+if(PRINT){ // état final de chaque slide, et une image fixe par scène 3D pour l'export PDF
+  slides.forEach(s=>s.classList.add('on'));
+  Object.values(flat).forEach(f=>f.render(2500,1e6,true));
+  Object.keys(scenes).forEach(k=>{ const cv=document.querySelector(`.slide[data-s="${k}"] canvas`);
+    scenes[k].render(2500,1e6,true); const im=new Image(); im.src=cv.toDataURL('image/png'); im.className='c3d'; im.style.cssText=cv.style.cssText;
+    cv.replaceWith(im); });
+} else { show((parseInt(location.hash.slice(1))||1)-1); requestAnimationFrame(loop); }
+</script>
+</body>
+</html>

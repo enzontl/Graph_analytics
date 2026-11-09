@@ -260,6 +260,7 @@ uv run pytest
 | Sensibilité au seuil | `results/sensitivity.csv` |
 | Graphe pour Gephi (avec communautés) | `results/lego_sets.gexf` (≈ 80 Mo, non versionné : relancer `run_analysis.py`) |
 | Images Gephi du graphe des sets, colorées par communauté et par thème | `figures/gephi_communities.png`, `figures/gephi_root_themes.png` |
+| Slides de l'oral (HTML autonome, flèches pour avancer, F pour le plein écran ; PDF de 10 pages) | `slides/deck.html`, `slides/deck.pdf` (régénérer le HTML depuis `results/` : `uv run python slides/build.py`) |
 
 ## Méthodes et conventions
 
@@ -400,6 +401,7 @@ assets/         image du README
 data/raw/       données téléchargées
 results/        tableaux et résumé produits
 figures/        figures produites
+slides/         slides de l'oral : build.py remplit template.html avec les chiffres de results/
 pyproject.toml  dépendances (uv)
 uv.lock         versions exactes des dépendances
 ```
