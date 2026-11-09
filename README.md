@@ -30,12 +30,20 @@ Graphe par défaut : sets de 1990 à 2025 d'au moins 50 pièces, poids de Jaccar
   mélangés au hasard. Un découpage par décennie (0,36) structure le graphe
   **mieux** que les thèmes. La NMI communautés/thèmes vaut 0,45 (sets isolés
   exclus). Les grandes communautés mélangent plusieurs thèmes d'une même époque.
+- **Autre algorithme** (`communities_comparison.csv`). _À compléter après
+  `run_extensions.py` : nombre de communautés, modularité et NMI de la label
+  propagation et de Louvain aux résolutions 0,5, 1, 2 et 4._
 - **Quelques thèmes sont de vrais univers.** Part des liens d'un thème qui
   restent dans le thème (`theme_cohesion.csv`) : Duplo 0,91, Technic 0,85,
   Mixels 0,81, DOTS 0,81, Brickheadz 0,77. Les thèmes sous licence sont surtout
   des étiquettes : Harry Potter 0,10, Disney 0,07, Super Heroes DC 0,06,
   Jurassic World 0,03.
   La médiane est de 0,29 sur 57 thèmes.
+- **Graphe des thèmes** (`theme_graph.gexf`, `figures/theme_graph.png`).
+  _À compléter : thèmes les plus liés entre eux, thèmes isolés._
+- **Deviner le thème d'un set par ses voisins** (`theme_prediction.csv`).
+  _À compléter : taux de réussite global, comparé aux repères (thème
+  majoritaire, hasard), thèmes les mieux et les moins bien devinés._
 - **Modèle nul** (`theme_cohesion_null.csv`, `null_model_runs.csv`). Si l'on
   mélange les pièces entre les sets (tailles des sets et fréquences des pièces
   conservées, 10 tirages), environ 180 paires de sets seulement atteignent le
@@ -77,6 +85,10 @@ Graphe par défaut : sets de 1990 à 2025 d'au moins 50 pièces, poids de Jaccar
 Ces résultats concordent avec Bartneck et Moltchanova (2018), qui montrent sur
 les données BrickLink 1955–2015 que les nouvelles pièces sont de moins en moins
 réutilisées.
+
+Le graphe des sets dans Gephi, coloré par communauté Louvain
+(`figures/gephi_communities.png`) puis par thème racine
+(`figures/gephi_root_themes.png`), avec la même disposition.
 
 ## Données
 
@@ -184,6 +196,14 @@ sans autocollants (moins d'une minute) :
 uv run python temporal_robustness.py
 ```
 
+Analyses complémentaires (autre algorithme de communautés, graphe des thèmes,
+thème deviné par les voisins) :
+
+```bash
+uv run python run_extensions.py
+uv run python run_extensions.py --n-seeds 3   # stabilité selon la graine
+```
+
 Exemple avec d'autres paramètres :
 
 ```bash
@@ -197,6 +217,7 @@ signification), puis lancer les tests :
 uv run python run_analysis.py --demo --min-parts 1 --year-min 1980 --min-weight 0.05
 uv run python null_model.py --demo
 uv run python temporal_robustness.py --demo
+uv run python run_extensions.py --demo
 uv run pytest
 ```
 
@@ -211,13 +232,17 @@ uv run pytest
 | Pièces universelles (degré dans le biparti) | `results/parts_universality.csv`, `figures/parts_themes.png` |
 | Pièces signature de chaque thème | `results/signature_parts.csv` |
 | Communautés Louvain et comparaison avec les thèmes (modularité, NMI, ARI) | `summary.json` → `communities`, `results/communities_summary.csv`, `results/communities_assignment.csv`, `figures/communities_vs_themes.png` |
+| Louvain à plusieurs résolutions et label propagation, comparés aux thèmes (modularité, NMI, ARI) | `results/communities_comparison.csv` (`run_extensions.py`) |
 | Cohésion de chaque thème | `results/theme_cohesion.csv` |
 | Cohésion de chaque thème comparée au modèle nul | `results/theme_cohesion_null.csv`, `results/null_model_runs.csv` (`null_model.py`) |
+| Graphe des thèmes (un nœud par thème racine) | `results/theme_graph.gexf`, `results/theme_graph_edges.csv`, `figures/theme_graph.png` (`run_extensions.py`) |
+| Thème deviné par vote des voisins, réussite par thème | `results/theme_prediction.csv`, `results/theme_prediction_sets.csv`, `results/extensions_summary.json` (`run_extensions.py`) |
 | Évolution par décennie | `results/temporal.csv`, `figures/temporal.png` |
 | Évolution par décennie aux seuils 0,25 et 0,35, avec et sans autocollants | `results/temporal_robustness.csv`, `figures/temporal_robustness.png` (`temporal_robustness.py`) |
 | Distribution des degrés | `figures/degree_distribution.png` |
 | Sensibilité au seuil | `results/sensitivity.csv` |
 | Graphe pour Gephi (avec communautés) | `results/lego_sets.gexf` (≈ 80 Mo, non versionné : relancer `run_analysis.py`) |
+| Images Gephi du graphe des sets, colorées par communauté et par thème | `figures/gephi_communities.png`, `figures/gephi_root_themes.png` |
 
 ## Méthodes et conventions
 
@@ -235,9 +260,29 @@ uv run pytest
   calculées aussi sans les sets isolés (chacun forme sa propre communauté,
   ce qui gonfle la NMI). La modularité des thèmes est comparée à deux repères :
   des thèmes mélangés au hasard (mêmes tailles) et un découpage par décennie.
+- **Autre algorithme** (`run_extensions.py`) : Louvain aux résolutions 0,5,
+  1, 2 et 4, et label propagation (Raghavan et al., 2007) en deux versions :
+  asynchrone pondérée, graine fixée, et semi-synchrone non pondérée,
+  déterministe. La modularité est toujours calculée à la résolution 1 pour
+  rester comparable d'une ligne à l'autre. Une résolution plus haute donne
+  plus de communautés, ce qui peut à lui seul faire monter la NMI : la
+  colonne `n_communities` aide à la lire. La ligne « thèmes officiels » sert
+  de repère (NMI = 1 par définition).
 - **Cohésion d'un thème** : `internal_share` = 2 × poids des arêtes internes /
   somme des degrés pondérés des sets du thème. 1 = univers fermé.
   `expected_share` est la valeur attendue si les liens ignoraient les thèmes.
+- **Graphe des thèmes** : un nœud par thème racine. Poids d'une arête = somme
+  des poids Jaccard des arêtes entre sets des deux thèmes ; `n_links` = nombre
+  de ces arêtes ; `lift` = ce poids divisé par le poids attendu si les liens
+  ignoraient les thèmes (volume_a × volume_b / volume total, comme dans la
+  modularité). La figure ne garde que les thèmes d'au moins 30 sets et, pour
+  chacun, ses 3 liens les plus forts.
+- **Thème deviné** : chaque voisin vote pour son thème racine avec le poids
+  de l'arête (`accuracy_unweighted` : un voisin = une voix). Le thème du set
+  lui-même n'est pas utilisé. `accuracy` est calculée sur les sets non isolés,
+  `accuracy_all` compte les sets isolés comme des échecs. Repères : toujours
+  prédire le thème le plus fréquent, et tirer au hasard selon les fréquences
+  des thèmes (somme des p²).
 - **Pièces signature** : `specificity` = part des sets contenant la pièce qui
   sont du thème ; `coverage` = part des sets du thème qui la contiennent.
 - **Spécialisation** : `exclusive_part_share` est la part moyenne des pièces
@@ -265,6 +310,9 @@ uv run pytest
   gonflé quand la cohésion au hasard est presque nulle (Belville 225).
 - **Autocollants** : `--drop-stickers` retire les pièces de la catégorie
   Rebrickable « Stickers » avant de construire le graphe.
+- **Images Gephi** : `results/lego_sets.gexf` ouvert dans Gephi, sets isolés
+  retirés (filtre *Degree Range* ≥ 1), disposition ForceAtlas2 (LinLog,
+  répulsion approchée), couleur par partition `community` puis `root_theme`.
 
 ## Limites
 
@@ -279,6 +327,8 @@ uv run pytest
   d'arêtes) et non au même seuil, où il serait presque vide.
 - La modularité d'une projection ignore une partie de la structure biparti
   (Barber, 2007).
+- La label propagation asynchrone dépend de l'ordre de visite des nœuds :
+  d'une graine à l'autre, la partition peut changer (`--n-seeds`).
 
 ## Références
 
@@ -286,6 +336,8 @@ uv run pytest
   exponential growth of LEGO parts. *PLOS ONE*.
 - Blondel, V. et al. (2008). Fast unfolding of communities in large networks.
   *J. Stat. Mech.*
+- Raghavan, U. N., Albert, R. et Kumara, S. (2007). Near linear time algorithm
+  to detect community structures in large-scale networks. *Physical Review E*.
 - Onnela, J.-P. et al. (2005). Intensity and coherence of motifs in weighted
   complex networks. *Physical Review E*.
 - Takes, F. et Kosters, W. (2011). Determining the diameter of small world
@@ -317,6 +369,7 @@ lego_graph/
   build.py      biparti sets-pièces et projection pondérée
   analysis.py   mesures (connectivité, distances, centralités, pièces, communautés, temps)
   null_model.py modèle nul (mélange curveball) et cohésion comparée au hasard
+  extensions.py autre algorithme de communautés, graphe des thèmes, thème deviné
   figures.py    figures du rapport
   synthetic.py  jeu de données synthétique pour les tests
 download_data.py
@@ -324,6 +377,7 @@ run_analysis.py
 sensitivity.py
 null_model.py           modèle nul de la cohésion des thèmes
 temporal_robustness.py  évolution par période selon le seuil et les autocollants
+run_extensions.py       label propagation, graphe des thèmes, thème deviné
 tests/          tests du pipeline (pytest)
 assets/         image du README
 data/raw/       données téléchargées

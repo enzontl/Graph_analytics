@@ -1,0 +1,43 @@
+{
+  "params": {
+    "year_min": 1990,
+    "year_max": 2025,
+    "min_parts": 50,
+    "exclude_themes": [
+      "Gear",
+      "Books",
+      "Key Chain",
+      "Bulk Bricks",
+      "Service Packs",
+      "Supplemental",
+      "Collectible Minifigures"
+    ],
+    "ignore_color": true,
+    "max_part_share": null,
+    "drop_stickers": false,
+    "weighting": "jaccard",
+    "min_weight": 0.25,
+    "top_k": null,
+    "chunk_size": 2000,
+    "seed": 42,
+    "resolution": 1.0,
+    "betweenness_k": 500
+  },
+  "theme_graph": {
+    "n_themes": 127,
+    "n_edges": 2487,
+    "density": 0.31083614548181476,
+    "n_isolated_themes": 7
+  },
+  "theme_prediction": {
+    "n_sets": 9062,
+    "n_non_isolated": 7600,
+    "accuracy": 0.6385526315789474,
+    "accuracy_all": 0.5355329949238579,
+    "macro_accuracy_themes_ge_30": 0.5947725109260713,
+    "majority_baseline": 0.08421052631578947,
+    "majority_theme": "Star Wars",
+    "random_baseline": 0.031177735457063708,
+    "accuracy_unweighted": 0.6160526315789474
+  }
+}
