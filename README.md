@@ -257,8 +257,12 @@ uv run pytest
   moyenne et l'écart-type au hasard (`null_mean`, `null_std`), le rapport
   `ratio_to_null`, le `z_score` et une p-valeur empirique
   (1 + tirages au moins aussi cohésifs) / (1 + tirages). Avec 10 tirages, la
-  plus petite p-valeur possible est 1/11 ≈ 0,09 : le z-score et le rapport
-  sont plus parlants.
+  plus petite p-valeur possible est 1/11 ≈ 0,09 : on s'appuie donc sur le
+  nombre de thèmes au-dessus de tous les tirages (`n_null_ge_real` = 0) et sur
+  le rapport. Le `z_score` est donné à titre indicatif : avec 10 tirages et un
+  écart-type estimé sur 10 valeurs, il atteint des valeurs énormes (jusqu'à
+  405) qui ne se lisent pas comme une probabilité. Le rapport est lui aussi
+  gonflé quand la cohésion au hasard est presque nulle (Belville 225).
 - **Autocollants** : `--drop-stickers` retire les pièces de la catégorie
   Rebrickable « Stickers » avant de construire le graphe.
 
