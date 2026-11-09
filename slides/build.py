@@ -9,19 +9,18 @@ import numpy as np, pandas as pd, networkx as nx
 REPO = Path(__file__).resolve().parent.parent
 HERE = Path(__file__).parent
 R = REPO / "results"
-NB = " "  # espace fine insécable : séparateur de milliers et avant % : ; ?
 
 
-def n0(x):  # 9062 -> "9 062"
-    return f"{int(round(x)):,}".replace(",", NB)
+def n0(x):  # 9062 -> "9,062"
+    return f"{int(round(x)):,}"
 
 
-def dec(x, k=1):  # 0.627 -> "0,63" avec k=2
-    return f"{x:.{k}f}".replace(".", ",")
+def dec(x, k=1):  # 0.627 -> "0.63" avec k=2
+    return f"{x:.{k}f}"
 
 
-def pct(x, k=0):  # 0.739 -> "74 %"
-    return dec(x * 100, k) + NB + "%"
+def pct(x, k=0):  # 0.739 -> "74%"
+    return dec(x * 100, k) + "%"
 
 
 summary = json.load(open(R / "summary.json", encoding="utf-8"))
@@ -72,7 +71,7 @@ for r in top4.itertuples():
     m = re.fullmatch(r"Plate (\d+) x (\d+)", r.name)
     assert m, f"pièce n° {r.Index + 1} non dessinable : {r.name}"
     a, b = sorted(int(v) for v in m.groups())
-    plates.append({"label": f"Plaque {a}×{b}", "w": b, "d": a, "share": round(r.share_of_sets * 100)})
+    plates.append({"label": f"Plate {a}×{b}", "w": b, "d": a, "share": round(r.share_of_sets * 100)})
 assert [q["w"] for q in plates] == [2, 4, 2, 4], "la scène 3D de la slide 2 range les plaques en 2 colonnes (largeurs 2 et 4)"
 
 # --- slide 4 : seuils testés (pondération Jaccard)
@@ -122,8 +121,8 @@ data = {
              for r in sj.itertuples()],
     "chosen": float(p["min_weight"]),
     "comps": {"sizes": sizes[:2], "small": small, "isolated": conn["n_isolated_nodes"]},
-    "mod": [["Communautés Louvain", cm["modularity_louvain"]], ["Décennies", cm["modularity_decades"]],
-            ["Thèmes officiels", cm["modularity_root_themes"]], ["Thèmes mélangés au hasard", cm["modularity_shuffled_themes"]]],
+    "mod": [["Louvain communities", cm["modularity_louvain"]], ["Decades", cm["modularity_decades"]],
+            ["Official themes", cm["modularity_root_themes"]], ["Randomly shuffled themes", cm["modularity_shuffled_themes"]]],
     "null": [{"t": t, "n": int(r.n_sets), "obs": round(r.internal_share, 4), "rnd": round(r.null_mean, 4),
               "max": round(r.null_max, 4)} for t, r in nl.iterrows()],
     "temporal": [{"p": r.period.replace("-", "–"), "excl": round(r.exclusive_part_share * 100, 1),
@@ -140,7 +139,7 @@ T = {
     # seuil
     "thr_n": str(len(sj)), "thr_lo": dec(lo.min_weight, 2), "thr_hi": dec(hi.min_weight, 2),
     "giant_at": pct(at.largest_component_share), "iso_at": n0(at.n_isolated), "edges_at": n0(at.n_edges),
-    "giant_lo": pct(lo.largest_component_share), "edges_lo": dec(lo.n_edges / 1e6, 1) + " millions",
+    "giant_lo": pct(lo.largest_component_share), "edges_lo": dec(lo.n_edges / 1e6, 1) + " million",
     "giant_hi": pct(hi.largest_component_share), "edges_hi": n0(hi.n_edges),
     # structure
     "density": pct(basic["density"], 2), "mean_deg": n0(basic["mean_degree"]),
@@ -160,7 +159,7 @@ T = {
     "n_lp": str(int(cmp.algorithm.str.startswith("label propagation").sum())),
     # modèle nul
     "null_all": str(int((null.n_null_ge_real == 0).sum())), "null_n": str(len(null)),
-    "n_closed": str(len(closed)), "coh_n": str(len(c30)), "closed_other": " et ".join(closed_other),
+    "n_closed": str(len(closed)), "coh_n": str(len(c30)), "closed_other": " and ".join(closed_other),
     "lic_lo": dec(lic.min(), 0), "lic_hi": dec(lic.max(), 0),
     # évolution
     "ex_first": pct(temp.exclusive_part_share.iloc[0], 1), "ex_last": pct(temp.exclusive_part_share.iloc[-1], 1),

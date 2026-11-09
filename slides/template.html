@@ -1,15 +1,15 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Les thèmes LEGO sont-ils de vrais univers ?</title>
+<title>Are LEGO themes real universes?</title>
 <style>
 @font-face{font-family:"Archivo";src:url(data:font/woff2;base64,/*FONT*/) format("woff2");
   font-weight:100 900;font-stretch:62% 125%;font-display:block}
 :root{
   --bg:#0b0a09; --ink:#efe9df; --ink2:#c9c2b6; --mut:#948d82; --line:rgba(239,233,223,.12); --grid:rgba(239,233,223,.08);
-  --mark:#8a8278; --gray:#6f685f; --red:#da291c; --yel:#ffcd00; --ease:cubic-bezier(.16,1,.3,1);
+  --mark:#8a8278; --gray:#6f685f; --red:#da291c; --yel:#ffcd00; --blue:#078bc9; --green:#4b9f4a; --ease:cubic-bezier(.16,1,.3,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 p,dd,li{text-wrap:pretty}
@@ -18,7 +18,8 @@ p,dd,li{text-wrap:pretty}
 html,body{height:100%;background:var(--bg);color:var(--ink);overflow:hidden;
   font-family:"Archivo",system-ui,sans-serif;font-stretch:100%;-webkit-font-smoothing:antialiased}
 #stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:0 0}
-.slide{position:absolute;inset:0;overflow:hidden;opacity:0;visibility:hidden;background:var(--bg);
+.slide{position:absolute;inset:0;overflow:hidden;opacity:0;visibility:hidden;
+  background:radial-gradient(ellipse 85% 95% at 72% 0%,rgba(44,92,190,.55),transparent 72%),linear-gradient(#0c1631,#06080e);
   transition:opacity .6s var(--ease)}
 .slide.on{opacity:1;visibility:visible}
 /* grain de pellicule + vignettage : la seule texture, la même partout */
@@ -27,6 +28,7 @@ html,body{height:100%;background:var(--bg);color:var(--ink);overflow:hidden;
 .slide::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
   background:radial-gradient(ellipse 115% 95% at 55% 45%,transparent 50%,rgba(0,0,0,.55))}
 .pad{position:absolute;inset:0;padding:112px 120px;z-index:2}
+.bgb{position:absolute;z-index:0;pointer-events:none;filter:blur(10px);opacity:.6}
 h1{font-size:100px;line-height:.98;letter-spacing:-.022em;font-weight:820;font-stretch:112%;text-wrap:balance}
 h2{font-size:62px;line-height:1.03;letter-spacing:-.018em;font-weight:780;font-stretch:108%;text-wrap:balance;max-width:1480px}
 .hl{color:var(--yel)}
@@ -66,6 +68,8 @@ canvas.c3d,img.c3d{position:absolute;display:block}
 .ex .bi path{fill:none;stroke:var(--mark);stroke-width:2;stroke-dasharray:1;stroke-dashoffset:1}
 .slide.on .ex .bi path{stroke-dashoffset:0;transition:stroke-dashoffset .7s var(--ease) var(--d)}
 .ex .sets rect{fill:#c8160f} .ex .sets .std{fill:#d42a20}
+.ex .sets g:nth-child(2) rect{fill:#078bc9} .ex .sets g:nth-child(2) .std{fill:#1d98d2}
+.ex .sets g:nth-child(3) rect{fill:#3f8f3e} .ex .sets g:nth-child(3) .std{fill:#4b9f4a}
 .ex .sets text,.ex .nl{fill:#fff;font-size:24px;font-weight:700;text-anchor:middle}
 .ex .parts circle{fill:#3a3631} .ex .parts .in{fill:none;stroke:var(--gray);stroke-width:2}
 .ex .arr{fill:none;stroke:var(--mut);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:0}
@@ -74,7 +78,7 @@ canvas.c3d,img.c3d{position:absolute;display:block}
 .ex .e{stroke:var(--yel);stroke-dasharray:1;stroke-dashoffset:1} .ex .e1{stroke-width:9} .ex .e2{stroke-width:5}
 .slide.on .ex .e{stroke-dashoffset:0;transition:stroke-dashoffset .8s var(--ease) 1.45s} .slide.on .ex .e2{transition-delay:1.65s}
 .ex .e0{stroke:var(--gray);stroke-width:2;stroke-dasharray:7 7}
-.ex .nd{fill:#c8160f}
+.ex .nd{fill:#c8160f} .ex .nd:nth-of-type(2){fill:#078bc9} .ex .nd:nth-of-type(3){fill:#3f8f3e}
 .ex .el{font-size:22px;font-weight:650;fill:var(--ink)} .ex .el.dim{font-size:19px;font-weight:400;fill:var(--mut)}
 .fx{position:absolute;left:860px;top:878px}
 .fx p{font-size:26px;color:var(--ink)} .fx p+p{margin-top:8px}
@@ -84,9 +88,9 @@ canvas.c3d,img.c3d{position:absolute;display:block}
 .ch{position:absolute;left:0;top:0;overflow:visible}
 .ch .gl{stroke:var(--grid);stroke-width:1}
 .ch .ax{font-size:18px;fill:var(--mut);font-variant-numeric:tabular-nums}
-.ch .ln{fill:none;stroke:var(--mark);stroke-width:2;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1}
+.ch .ln{fill:none;stroke:var(--blue);stroke-width:2;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1}
 .slide.on .ch .ln{stroke-dashoffset:0;transition:stroke-dashoffset 1.4s var(--ease) .1s}
-.ch .mk{fill:var(--mark);stroke:var(--bg);stroke-width:2;opacity:0} .ch .mk.sel{fill:var(--yel)}
+.ch .mk{fill:var(--blue);stroke:var(--bg);stroke-width:2;opacity:0} .ch .mk.sel{fill:var(--yel)}
 .slide.on .ch .mk{opacity:1;transition:opacity .3s var(--ease) var(--d)}
 .ch .vl{font-size:20px;fill:var(--ink2);paint-order:stroke;stroke:var(--bg);stroke-width:6px;stroke-linejoin:round}
 .yt{position:absolute;left:0;top:-44px;font-size:20px;color:var(--ink2)}
@@ -105,7 +109,7 @@ canvas.c3d,img.c3d{position:absolute;display:block}
 .bt{display:flex;align-items:center;height:100%;border-left:1px solid var(--mut)}
 .bt i{display:block;height:24px;width:var(--w);background:var(--gray);border-radius:0 4px 4px 0;transform:scaleX(0);transform-origin:left}
 .slide.on .bt i{transform:none;transition:transform 1s var(--ease) var(--d)}
-.br.acc i{background:var(--yel)}
+.br.acc i{background:var(--yel)} .br:nth-child(1) i{background:var(--blue)} .br:nth-child(3) i{background:var(--red)}
 .bt b{font-size:28px;font-weight:700;padding-left:14px}
 
 /* 7 · graphe des thèmes */
@@ -132,7 +136,7 @@ canvas.c3d,img.c3d{position:absolute;display:block}
 /* 8 · modèle nul */
 .lgd{position:absolute;left:200px;top:0;display:flex;gap:36px;font-size:20px;color:var(--ink2)}
 .lgd span{display:flex;align-items:center;gap:10px}
-.sw{width:14px;height:14px;border-radius:50%;background:var(--mark)} .sw.y{background:var(--yel)}
+.sw{width:14px;height:14px;border-radius:50%;background:var(--blue)} .sw.y{background:var(--yel)}
 .dumb{position:absolute;left:0;top:56px;width:1080px}
 .dgrid{position:absolute;left:200px;right:80px;top:0;bottom:-34px}
 .dgrid i{position:absolute;top:0;bottom:34px;width:1px;background:var(--grid)}
@@ -144,7 +148,7 @@ canvas.c3d,img.c3d{position:absolute;display:block}
 .dt .ln{position:absolute;top:50%;height:2px;margin-top:-1px;left:calc(var(--n)*1%);width:calc((var(--o) - var(--n))*1%);
   background:var(--mark);transform:scaleX(0);transform-origin:left}
 .dt .pt{position:absolute;top:50%;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;border:2px solid var(--bg);
-  left:calc(var(--n)*1%);background:var(--mark)}
+  left:calc(var(--n)*1%);background:var(--blue)}
 .dt .mv{position:absolute;inset:0}
 .dt .mv .pt{background:var(--yel)}
 .slide.on .dt .ln{transform:none;transition:transform 1.2s var(--ease) var(--d)}
@@ -158,6 +162,7 @@ canvas.c3d,img.c3d{position:absolute;display:block}
 .cols{display:flex;justify-content:space-around;align-items:flex-end;height:400px;border-bottom:1px solid var(--mut)}
 .cl{position:relative;width:24px;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center}
 .cl i{display:block;width:24px;height:var(--h);background:var(--mark);border-radius:4px 4px 0 0;transform:scaleY(0);transform-origin:bottom}
+#c-excl .cl i{background:var(--red)} #c-parts .cl i{background:var(--blue)}
 .slide.on .cl i{transform:none;transition:transform .9s var(--ease) var(--d)}
 .cl b{font-size:22px;font-weight:650;margin-bottom:10px;white-space:nowrap}
 .cl span{position:absolute;top:100%;margin-top:12px;font-size:18px;color:var(--mut);white-space:nowrap}
@@ -186,28 +191,28 @@ body.print .slide{position:relative;opacity:1;visibility:visible;height:1080px}
 <section class="slide" data-s="1">
   <canvas class="c3d" id="hero" style="left:0;top:0;width:1920px;height:1080px"></canvas>
   <div class="pad" style="padding-top:190px">
-    <h1 style="max-width:980px">Les thèmes LEGO sont-ils de <span class="hl">vrais univers</span>&#8239;?</h1>
-    <p class="lead" style="margin-top:52px">Quelques-uns, oui. Pour la plupart, non&#8239;: des univers faibles, bâtis avec les mêmes briques.</p>
-    <div class="facts" style="margin-top:64px"><span><b>{{n_sets}}</b> sets</span><span><b>{{n_edges}}</b> liens</span><span><b>{{years}}</b></span></div>
+    <h1 style="max-width:980px">Are LEGO themes <span class="hl">real universes</span>?</h1>
+    <p class="lead" style="margin-top:52px">A few are. Most are not: they are weak universes, built from the same bricks.</p>
+    <div class="facts" style="margin-top:64px"><span><b>{{n_sets}}</b> sets</span><span><b>{{n_edges}}</b> links</span><span><b>{{years}}</b></span></div>
   </div>
-  <div class="foot"><span>Enzo · Keira · Amandine</span><span>Graph Analytics, Albert School · données Rebrickable</span></div>
+  <div class="foot"><span>Enzo · Keira · Amandine</span><span>Graph Analytics, Albert School · Rebrickable data</span></div>
 </section>
 
 <!-- 2 · Les pièces -->
 <section class="slide" data-s="2">
   <canvas class="c3d" id="plates" style="left:0;top:0;width:1920px;height:1080px"></canvas>
   <div class="pad">
-    <h2 style="max-width:1300px">Beaucoup de pièces propres, mais les <span class="hl">mêmes plaques</span> partout</h2>
+    <h2 style="max-width:1300px">Many theme-specific parts, but the <span class="hl">same plates</span> everywhere</h2>
     <div style="position:absolute;left:120px;top:330px;width:700px">
       <div class="big">{{parts_one}}</div>
-      <p style="font-size:26px;line-height:1.42;color:var(--ink2);margin-top:18px;max-width:36ch">des {{parts_n}} pièces n'apparaissent que dans un seul thème. À l'inverse, {{parts_ge100}} pièces servent dans 100 thèmes ou plus.</p>
-      <p style="font-size:21px;color:var(--mut);margin:38px 0 10px">Quelques thèmes ont leurs propres pièces&#8239;:</p>
+      <p style="font-size:26px;line-height:1.42;color:var(--ink2);margin-top:18px;max-width:36ch">of the {{parts_n}} parts appear in only one theme. At the other end, {{parts_ge100}} parts are used in 100 themes or more.</p>
+      <p style="font-size:21px;color:var(--mut);margin:38px 0 10px">A few themes have their own parts:</p>
       <dl class="pairs">
-        <div><dt>Technic</dt><dd>siège 3×2, vérin, garde-boue</dd></div>
-        <div><dt>Duplo</dt><dd>une autre échelle&#8239;: tabouret, steak</dd></div>
-        <div><dt>Super Mario</dt><dd>tuyau Warp, tuile Goomba</dd></div>
+        <div><dt>Technic</dt><dd>3×2 seat, linear actuator, mudguard</dd></div>
+        <div><dt>Duplo</dt><dd>a different scale: stool, steak</dd></div>
+        <div><dt>Super Mario</dt><dd>Warp Pipe, Goomba tile</dd></div>
       </dl>
-      <p class="note" style="margin-top:18px">Star Wars, Friends&#8239;: surtout des pièces standard imprimées et des accessoires.</p>
+      <p class="note" style="margin-top:18px">Star Wars, Friends: mostly printed standard parts and accessories.</p>
     </div>
   </div>
   <div class="foot"><span>results/parts_universality.csv · signature_parts.csv</span><span class="num"></span></div>
@@ -216,20 +221,20 @@ body.print .slide{position:relative;opacity:1;visibility:visible;height:1080px}
 <!-- 3 · Données et graphe -->
 <section class="slide" data-s="3">
   <div class="pad">
-    <h2>Deux sets sont reliés s'ils partagent <span class="hl">assez de pièces</span></h2>
+    <h2>Two sets are linked if they share <span class="hl">enough parts</span></h2>
     <div style="position:absolute;left:120px;top:330px;width:600px">
       <ul class="list">
-        <li>Inventaires de pièces Rebrickable</li>
-        <li>Sets de {{years}}, au moins {{min_parts}} pièces</li>
-        <li>Hors produits dérivés, livres, porte-clés, vrac et minifigurines à collectionner</li>
-        <li>Sous-thèmes rangés dans leur thème&#8239;: Police → City</li>
-        <li>Une pièce = une forme, couleur ignorée</li>
+        <li>Rebrickable part inventories</li>
+        <li>Sets from {{years}}, at least {{min_parts}} parts</li>
+        <li>Excluding gear, books, key chains, bulk bricks and collectible minifigures</li>
+        <li>Subthemes merged into their theme: <span class="nw">Police → City</span></li>
+        <li>One part = one shape, color ignored</li>
       </ul>
-      <p class="tot"><b>{{n_sets}}</b> sets · <b>{{n_edges}}</b> liens</p>
+      <p class="tot"><b>{{n_sets}}</b> sets · <b>{{n_edges}}</b> links</p>
     </div>
-    <svg class="ex" viewBox="0 -40 1000 530" width="1000" height="530" role="img" aria-label="Exemple : trois sets reliés à leurs pièces, puis le graphe des sets qui en découle">
-      <text class="st" x="60" y="-12">Exemple&#8239;: 3 sets, 7 pièces</text>
-      <text class="st" x="660" y="-12">Graphe des sets</text>
+    <svg class="ex" viewBox="0 -40 1000 530" width="1000" height="530" role="img" aria-label="Example: three sets linked to their parts, then the resulting set graph">
+      <text class="st" x="60" y="-12">Example: 3 sets, 7 parts</text>
+      <text class="st" x="660" y="-12">Set graph</text>
       <g class="bi">
         <path pathLength="1" style="--d:0ms" d="M190 140C275 140 275 36 360 36"/>
         <path pathLength="1" style="--d:60ms" d="M190 140C275 140 275 106 360 106"/>
@@ -266,12 +271,12 @@ body.print .slide{position:relative;opacity:1;visibility:visible;height:1080px}
         <circle class="nd" cx="700" cy="140" r="26"/><text class="nl" x="700" y="149">A</text>
         <circle class="nd" cx="930" cy="246" r="26"/><text class="nl" x="930" y="255">B</text>
         <circle class="nd" cx="700" cy="352" r="26"/><text class="nl" x="700" y="361">C</text>
-        <text class="el" x="828" y="176">0,60</text>
-        <text class="el" x="828" y="334">0,33</text>
-        <text class="el dim" x="716" y="240">0,14</text><text class="el dim" x="716" y="264">pas de lien</text>
+        <text class="el" x="828" y="176">0.60</text>
+        <text class="el" x="828" y="334">0.33</text>
+        <text class="el dim" x="716" y="240">0.14</text><text class="el dim" x="716" y="264">no link</text>
       </g>
     </svg>
-    <div class="fx"><p>Jaccard(A, B) = pièces en commun ÷ pièces de A ou de B</p><p class="sub">Lien si J ≥ {{thr}}. Ici A–B&#8239;: 3 ÷ 5 = 0,60</p></div>
+    <div class="fx"><p>Jaccard(A, B) = shared parts ÷ parts in A or B</p><p class="sub">Link if J ≥ {{thr}}. Here A–B: 3 ÷ 5 = 0.60</p></div>
   </div>
   <div class="foot"><span>results/summary.json</span><span class="num"></span></div>
 </section>
@@ -279,17 +284,17 @@ body.print .slide{position:relative;opacity:1;visibility:visible;height:1080px}
 <!-- 4 · Le seuil -->
 <section class="slide" data-s="4">
   <div class="pad">
-    <h2>À {{thr}}, {{giant_at}} des sets restent dans un même bloc</h2>
+    <h2>At {{thr}}, {{giant_at}} of sets stay in a single block</h2>
     <div class="fig">
-      <p class="yt">Part des sets dans le plus grand bloc</p>
-      <svg class="ch" id="sens" viewBox="0 0 1080 600" width="1080" height="600" role="img" aria-label="Part des sets dans le plus grand bloc selon le seuil"></svg>
-      <div class="ann" id="ann"><div class="hero">{{giant_at}}</div><p>dans le plus grand bloc</p><p class="sub" style="margin-top:4px">{{edges_at}} liens · {{iso_at}} sets isolés</p></div>
+      <p class="yt">Share of sets in the largest block</p>
+      <svg class="ch" id="sens" viewBox="0 0 1080 600" width="1080" height="600" role="img" aria-label="Share of sets in the largest block by threshold"></svg>
+      <div class="ann" id="ann"><div class="hero">{{giant_at}}</div><p>in the largest block</p><p class="sub" style="margin-top:4px">{{edges_at}} links · {{iso_at}} isolated sets</p></div>
     </div>
     <div class="side">
-      <p>On a testé {{thr_n}} seuils, de {{thr_lo}} à {{thr_hi}}.</p>
-      <p>Plus bas, presque tout se relie&#8239;: {{edges_lo}} de liens à {{thr_lo}}.</p>
-      <p>Plus haut, le graphe se défait&#8239;: {{giant_hi}} des sets seulement dans le plus grand bloc à {{thr_hi}}.</p>
-      <p class="sub">Seuls les résultats qui tiennent à plusieurs seuils sont présentés comme des conclusions.</p>
+      <p>We tested {{thr_n}} thresholds, from {{thr_lo}} to {{thr_hi}}.</p>
+      <p>Lower, almost everything connects: {{edges_lo}} links at {{thr_lo}}.</p>
+      <p>Higher, the graph falls apart: only {{giant_hi}} of sets in the largest block at {{thr_hi}}.</p>
+      <p class="sub">Only results that hold across several thresholds are presented as conclusions.</p>
     </div>
   </div>
   <div class="foot"><span>results/sensitivity.csv</span><span class="num"></span></div>
@@ -298,23 +303,23 @@ body.print .slide{position:relative;opacity:1;visibility:visible;height:1080px}
 <!-- 5 · Structure du graphe -->
 <section class="slide" data-s="5">
   <div class="pad">
-    <h2>Un grand bloc qui mêle presque tous les thèmes, et Duplo à part</h2>
+    <h2>One large block that mixes almost every theme, with Duplo on its own</h2>
     <div class="fig">
-      <canvas id="comp" width="2160" height="1200" style="position:absolute;left:0;top:0;width:1080px;height:600px" role="img" aria-label="Chaque point est un set, regroupé par composante connexe"></canvas>
-      <div class="glab" style="left:194px"><b>{{giant_n}} sets</b><span>le plus grand bloc ({{giant_pct}})</span></div>
-      <div class="glab" style="left:472px"><b>{{duplo_comp}} sets</b><span>dont {{duplo_in}} Duplo</span></div>
-      <div class="glab" style="left:681px"><b>{{small_sets}} sets</b><span>{{small_n}} petits groupes</span></div>
-      <div class="glab" style="left:949px"><b>{{n_iso}} sets</b><span>isolés, sans aucun lien</span></div>
+      <canvas id="comp" width="2160" height="1200" style="position:absolute;left:0;top:0;width:1080px;height:600px" role="img" aria-label="Each dot is a set, grouped by connected component"></canvas>
+      <div class="glab" style="left:194px"><b>{{giant_n}} sets</b><span>the largest block ({{giant_pct}})</span></div>
+      <div class="glab" style="left:472px"><b>{{duplo_comp}} sets</b><span>including {{duplo_in}} Duplo</span></div>
+      <div class="glab" style="left:681px"><b>{{small_sets}} sets</b><span>{{small_n}} small groups</span></div>
+      <div class="glab" style="left:949px"><b>{{n_iso}} sets</b><span>isolated, with no links</span></div>
     </div>
     <div class="side">
       <dl class="kv">
-        <div><dt>Densité</dt><dd>{{density}}</dd></div>
-        <div><dt>Degré moyen</dt><dd>{{mean_deg}}<small>voisins</small></dd></div>
-        <div><dt>Diamètre</dt><dd>{{diam}}<small>étapes</small></dd></div>
-        <div><dt>Distance moyenne (estimée)</dt><dd>{{mean_dist}}<small>étapes</small></dd></div>
+        <div><dt>Density</dt><dd>{{density}}</dd></div>
+        <div><dt>Mean degree</dt><dd>{{mean_deg}}<small>neighbors</small></dd></div>
+        <div><dt>Diameter</dt><dd>{{diam}}<small>steps</small></dd></div>
+        <div><dt>Mean distance (estimated)</dt><dd>{{mean_dist}}<small>steps</small></dd></div>
       </dl>
-      <p style="margin-top:30px">Le grand bloc mêle {{giant_themes}} des {{n_themes}} thèmes.</p>
-      <p class="sub">Les sets les plus reliés (<span class="nw">{{deg1}}</span>, <span class="nw">{{deg2}}</span>) ne sont pas les ponts entre groupes (<span class="nw">{{btw1}}</span>, <span class="nw">{{btw2}}</span>).</p>
+      <p style="margin-top:30px">The large block mixes {{giant_themes}} of the {{n_themes}} themes.</p>
+      <p class="sub">The most connected sets (<span class="nw">{{deg1}}</span>, <span class="nw">{{deg2}}</span>) are not the bridges between groups (<span class="nw">{{btw1}}</span>, <span class="nw">{{btw2}}</span>).</p>
     </div>
   </div>
   <div class="foot"><span>results/lego_sets.gexf · summary.json</span><span class="num"></span></div>
@@ -323,16 +328,16 @@ body.print .slide{position:relative;opacity:1;visibility:visible;height:1080px}
 <!-- 6 · Communautés contre thèmes -->
 <section class="slide" data-s="6">
   <div class="pad">
-    <h2>L'époque structure plus le graphe que le thème</h2>
+    <h2>Era shapes the graph more than theme does</h2>
     <div class="fig">
-      <p class="yt" style="left:330px">Modularité du découpage</p>
+      <p class="yt" style="left:330px">Modularity of each partition</p>
       <div id="mod"></div>
-      <p class="note" style="margin-left:330px;max-width:56ch">Modularité&#8239;: part des liens qui restent dans les groupes, moins ce qu'on attendrait au hasard (0 = pas mieux que le hasard).</p>
+      <p class="note" style="margin-left:330px;max-width:56ch">Modularity: share of links that stay inside groups, minus what chance alone would give (0 = no better than chance).</p>
     </div>
     <div class="side">
       <div class="big">{{nmi}}</div>
-      <p style="margin-top:22px">NMI entre les communautés Louvain et les thèmes officiels, sets non isolés (1 = identiques, 0 = aucun lien).</p>
-      <p class="sub">Louvain à {{n_res}} résolutions et {{n_lp}} variantes de label propagation&#8239;: NMI entre {{nmi_lo}} et {{nmi_hi}}.</p>
+      <p style="margin-top:22px">NMI between Louvain communities and official themes, non-isolated sets (<span class="nw">1 = identical</span>, <span class="nw">0 = unrelated</span>).</p>
+      <p class="sub">Louvain at {{n_res}} resolutions and {{n_lp}} label propagation variants: NMI between {{nmi_lo}} and {{nmi_hi}}.</p>
     </div>
   </div>
   <div class="foot"><span>results/summary.json · communities_comparison.csv</span><span class="num"></span></div>
@@ -342,20 +347,20 @@ body.print .slide{position:relative;opacity:1;visibility:visible;height:1080px}
 <section class="slide" data-s="7">
   <canvas class="c3d" id="tg" style="left:0;top:0;width:1240px;height:1040px"></canvas>
   <div class="legend">
-    <div class="t">Cohésion du thème</div>
-    <div class="s">part des liens qui restent dans le thème</div>
+    <div class="t">Theme cohesion</div>
+    <div class="s">share of links that stay inside the theme</div>
     <div class="ramp"></div>
-    <div class="ends"><span>0&#8239;%</span><span>100&#8239;%</span></div>
-    <div class="s" style="margin-top:22px">{{tg_n}} thèmes d'au moins 30 sets, reliés à leurs 3 voisins les plus forts. Taille = nombre de sets.</div>
+    <div class="ends"><span>0%</span><span>100%</span></div>
+    <div class="s" style="margin-top:22px">{{tg_n}} themes with at least 30 sets, each linked to its 3 strongest neighbors. Size = number of sets.</div>
   </div>
   <div class="pad" style="left:auto;width:720px;padding-left:0;padding-right:120px">
-    <h2>Le thème d'un set se devine à ses voisins</h2>
+    <h2>Neighbors give away a set's theme</h2>
     <div class="cmp">
-      <div class="row main"><div class="top"><span class="name">Vote des voisins</span><span class="val" id="p-acc"></span></div><div class="track"><i id="b-acc"></i></div></div>
-      <div class="row"><div class="top"><span class="name">Toujours le plus gros thème</span><span class="val" id="p-maj"></span></div><div class="track"><i id="b-maj"></i></div></div>
-      <div class="row"><div class="top"><span class="name">Au hasard</span><span class="val" id="p-rnd"></span></div><div class="track"><i id="b-rnd"></i></div></div>
+      <div class="row main"><div class="top"><span class="name">Neighbor vote</span><span class="val" id="p-acc"></span></div><div class="track"><i id="b-acc"></i></div></div>
+      <div class="row"><div class="top"><span class="name">Always the largest theme</span><span class="val" id="p-maj"></span></div><div class="track"><i id="b-maj"></i></div></div>
+      <div class="row"><div class="top"><span class="name">Random guess</span><span class="val" id="p-rnd"></span></div><div class="track"><i id="b-rnd"></i></div></div>
     </div>
-    <p class="note">Part des sets dont le thème est retrouvé par le vote pondéré de leurs voisins, le set lui-même exclu (sets non isolés).</p>
+    <p class="note">Share of sets whose theme is recovered by a weighted vote of their neighbors, excluding the set itself (non-isolated sets).</p>
   </div>
   <div class="foot"><span>results/theme_graph_edges.csv · extensions_summary.json</span><span class="num"></span></div>
 </section>
@@ -363,19 +368,19 @@ body.print .slide{position:relative;opacity:1;visibility:visible;height:1080px}
 <!-- 8 · Cohésion et modèle nul -->
 <section class="slide" data-s="8">
   <div class="pad">
-    <h2>Quelques univers fermés, beaucoup d'univers faibles</h2>
+    <h2>A few closed universes, many weak ones</h2>
     <div class="fig">
-      <div class="lgd"><span><i class="sw y"></i>cohésion observée</span><span><i class="sw"></i>au hasard (moyenne de {{n_draws}} tirages)</span></div>
+      <div class="lgd"><span><i class="sw y"></i>observed cohesion</span><span><i class="sw"></i>random (mean of {{n_draws}} draws)</span></div>
       <div class="dumb"><div class="dgrid" id="dgrid"></div><div id="dumb"></div></div>
-      <p class="dnote">{{n_closed}} des {{coh_n}} thèmes dépassent 80&#8239;%&#8239;: les 4 du haut, plus {{closed_other}}.</p>
+      <p class="dnote">{{n_closed}} of the {{coh_n}} themes exceed 80%: the top 4, plus {{closed_other}}.</p>
     </div>
     <div class="side">
       <dl class="defs">
-        <dt>Cohésion</dt><dd>part des liens du thème qui restent dans le thème</dd>
-        <dt>Au hasard</dt><dd>on mélange les pièces entre les sets, en gardant la taille de chaque set et la fréquence de chaque pièce</dd>
+        <dt>Cohesion</dt><dd>share of the theme's links that stay inside the theme</dd>
+        <dt>Random</dt><dd>parts are shuffled between sets, keeping each set's size and each part's frequency</dd>
       </dl>
-      <p>Tous les thèmes ({{null_all}} sur {{null_n}}) sont plus cohésifs que dans chacun des {{n_draws}} tirages.</p>
-      <p>Licences&#8239;: {{lic_lo}} à {{lic_hi}} fois plus qu'au hasard, loin des univers fermés.</p>
+      <p>Every theme ({{null_all}} of {{null_n}}) is more cohesive than in each of the {{n_draws}} draws.</p>
+      <p>Licensed themes: {{lic_lo}} to {{lic_hi}} times more than random, far from the closed universes.</p>
     </div>
   </div>
   <div class="foot"><span>results/theme_cohesion_null.csv</span><span class="num"></span></div>
@@ -384,19 +389,19 @@ body.print .slide{position:relative;opacity:1;visibility:visible;height:1080px}
 <!-- 9 · Évolution et limites -->
 <section class="slide" data-s="9">
   <div class="pad">
-    <h2>Pas de spécialisation&#8239;: les sets grossissent avec des pièces communes</h2>
+    <h2>No specialization: sets grow with common parts</h2>
     <div class="fig">
-      <div class="sm" style="left:0"><h3>Part des pièces exclusives au thème</h3><div class="cols" id="c-excl"></div></div>
-      <div class="sm" style="left:560px"><h3>Pièces distinctes par set</h3><div class="cols" id="c-parts"></div></div>
-      <p class="note" style="position:absolute;top:532px;margin:0;max-width:none">Même tendance sans les autocollants&#8239;: {{ns_first}} → {{ns_last}}. Ce calcul ne dépend pas du seuil.</p>
+      <div class="sm" style="left:0"><h3>Share of theme-exclusive parts</h3><div class="cols" id="c-excl"></div></div>
+      <div class="sm" style="left:560px"><h3>Distinct parts per set</h3><div class="cols" id="c-parts"></div></div>
+      <p class="note" style="position:absolute;top:532px;margin:0;max-width:none">Same trend without stickers: {{ns_first}} → {{ns_last}}. This measure does not depend on the threshold.</p>
     </div>
     <div class="side">
-      <h3 class="sh">Limites</h3>
+      <h3 class="sh">Limitations</h3>
       <ul class="list">
-        <li>Le seuil de {{thr}} est un choix qui change fortement le graphe.</li>
-        <li>Pièces imprimées et autocollants comptés comme des pièces à part.</li>
-        <li>Modèle nul&#8239;: {{n_draws}} tirages seulement.</li>
-        <li>La couleur des pièces est ignorée.</li>
+        <li>The {{thr}} threshold is a choice that changes the graph a lot.</li>
+        <li>Printed parts and stickers count as separate parts.</li>
+        <li>Null model: only {{n_draws}} draws.</li>
+        <li>Part color is ignored.</li>
       </ul>
     </div>
   </div>
@@ -407,11 +412,11 @@ body.print .slide{position:relative;opacity:1;visibility:visible;height:1080px}
 <section class="slide" data-s="10">
   <canvas class="c3d" id="stack" style="left:0;top:0;width:1920px;height:1080px"></canvas>
   <div class="pad" style="padding-top:150px">
-    <h2 style="max-width:1000px">Quelques thèmes sont de vrais univers&#8239;; la plupart sont des <span class="hl">univers faibles</span>, bâtis avec les mêmes briques.</h2>
+    <h2 style="max-width:1000px">A few themes are real universes; most are <span class="hl">weak universes</span>, built from the same bricks.</h2>
     <dl class="pairs" style="margin-top:64px;width:900px">
-      <div><dt>Univers fermés</dt><dd>{{n_closed}} thèmes sur {{coh_n}} gardent plus de 80&#8239;% de leurs liens, dont Duplo et Technic.</dd></div>
-      <div><dt>Univers faibles</dt><dd>les licences, seulement {{lic_lo}} à {{lic_hi}} fois plus cohésives qu'au hasard.</dd></div>
-      <div><dt>Pas de spécialisation</dt><dd>pièces exclusives au thème&#8239;: {{ex_first}} dans les années 1990, {{ex_last}} depuis 2020.</dd></div>
+      <div><dt>Closed universes</dt><dd>{{n_closed}} of {{coh_n}} themes keep over 80% of their links, including Duplo and Technic.</dd></div>
+      <div><dt>Weak universes</dt><dd>licensed themes, only {{lic_lo}} to {{lic_hi}} times more cohesive than random.</dd></div>
+      <div><dt>No specialization</dt><dd>theme-exclusive parts: {{ex_first}} in the 1990s, {{ex_last}} since 2020.</dd></div>
     </dl>
   </div>
   <div class="foot"><span>github.com/enzontl/Graph_analytics</span><span class="num"></span></div>
@@ -423,7 +428,7 @@ body.print .slide{position:relative;opacity:1;visibility:visible;height:1080px}
 <script>/*THREE*/</script>
 <script>
 /*DATA*/
-const fr=(x)=>String(x).replace('.',','), NB=' ';
+const fr=(x)=>String(x), NB='';
 const slides=[...document.querySelectorAll('.slide')], stage=document.getElementById('stage'), bar=document.getElementById('bar');
 const PRINT=new URLSearchParams(location.search).has('print'), RMQ=matchMedia('(prefers-reduced-motion: reduce)');
 if(PRINT) document.body.classList.add('print');
@@ -478,7 +483,7 @@ function studio(id,camPos,camTgt,o={}){
     else { z=12-L-R; y=F+R+s-L-A; }
     pa.setXYZ(i,pa.getX(i)+BX,y,z); }
   sw.computeVertexNormals();
-  sc.add(new THREE.Mesh(sw,new THREE.MeshStandardMaterial({color:lin(0x221e1b),roughness:1,metalness:0,envMapIntensity:.04})));
+  sc.add(new THREE.Mesh(sw,new THREE.MeshStandardMaterial({color:lin(0x163a78),roughness:1,metalness:0,envMapIntensity:.04})));
 
   // lumières : une source douce au-dessus du sujet, une autre qui éclaire le mur derrière
   const kt=o.key||[BX,-1], key=new THREE.SpotLight(0xffe6c4,o.int||5.5,45,o.angle||.46,1,1.5);
@@ -541,7 +546,8 @@ const scenes={}, flat={};
 
 // ---------- slide 1 : une brique dans un studio photo ----------
 scenes[1]=(()=>{ let S,g;
-  return {render(t){ if(!S){ S=studio('hero',[0,2.3,15.5],[0,.25,0]); g=brick(4,2,1.2,0xc8160f); g.position.set(BX,F,0); S.sc.add(g); }
+  return {render(t){ if(!S){ S=studio('hero',[0,2.3,15.5],[0,.25,0]); g=brick(4,2,1.2,0xc8160f); g.position.set(BX,F,0); S.sc.add(g);
+      [[2,2,0x0055bf,BX+3.6,-2.6,.5],[2,1,0xf2c41c,BX-2.3,2.2,-.35]].forEach(([wx,dz,hex,x,z,ry])=>{ const b=brick(wx,dz,1.2,hex); b.position.set(x,F,z); b.rotation.y=ry; S.sc.add(b); }); }
     g.rotation.y=-.62+t*.00009; S.tick(t); }};
 })();
 
@@ -550,10 +556,10 @@ scenes[2]=(()=>{ let S; const P=[];
   function setup(){
     S=studio('plates',[-.8,10.5,20],[0,-.3,.6],{key:[BX+.1,1],keyPos:[BX+1.2,11,5],angle:.62,haze:false,int:4});
     const cols={2:BX-2.6,4:BX+1.6}, rows=[-1.2,3.8];   // bord avant de chaque rangée
-    DATA.plates.forEach((p,i)=>{ const g=brick(p.w,p.d,.4,0xc8160f), fz=rows[i>>1], x=cols[p.w];
+    DATA.plates.forEach((p,i)=>{ const g=brick(p.w,p.d,.4,[0xc8160f,0x0055bf,0xf2c41c,0x237841][i]), fz=rows[i>>1], x=cols[p.w];
       g.position.set(x,F,fz-p.d/2); S.sc.add(g);
       const d=document.createElement('div'); d.className='cap';
-      d.innerHTML=`<b>${p.label}</b><span>dans ${p.share}${NB}% des sets</span>`; S.c.parentNode.appendChild(d);
+      d.innerHTML=`<b>${p.label}</b><span>in ${p.share}% of sets</span>`; S.c.parentNode.appendChild(d);
       const v=new THREE.Vector3(x,F,fz+.25).project(S.cam);
       d.style.left=((v.x+1)/2*S.w)+'px'; d.style.top=((1-v.y)/2*S.h)+'px'; P.push([g,d]); });
   }
@@ -602,7 +608,7 @@ scenes[7]=(()=>{ let init=false,r,cam,sc,g,w,h,labels=[],drag=null,rot={x:.25,y:
 scenes[10]=(()=>{ let S,G; const B=[];
   return {render(t,dt){
     if(!S){ S=studio('stack',[0,2.3,15.5],[0,.25,0]); G=new THREE.Group(); G.position.set(BX,F,0); S.sc.add(G);
-      [[4,2,0xc8160f,0,0,true],[4,2,0xf2c41c,1,1.2,false],[2,2,0xa0a5a9,.5,2.4,false]].forEach(([wx,dz,hex,x,y,sh])=>{
+      [[4,2,0xc8160f,0,0,true],[4,2,0xf2c41c,1,1.2,false],[2,2,0x0055bf,.5,2.4,false]].forEach(([wx,dz,hex,x,y,sh])=>{
         const g=brick(wx,dz,1.2,hex,sh); g.position.set(x,y,0); G.add(g); B.push([g,y]); }); }
     G.rotation.y=-.62+t*.00009;
     B.forEach(([g,y],i)=>land(g,y,6,ease(dt,200+i*260,650)));   // partent hors champ, au-dessus
@@ -616,11 +622,11 @@ flat[5]=(()=>{ let x,last=-1; const P=[];
     const phy=(n,cx,cy,col,t0,t1)=>{ for(let i=0;i<n;i++){ const r=C*Math.sqrt(i+.5), a=i*2.39996;
       P.push([cx+r*Math.cos(a),cy+r*Math.sin(a),col,t0+i/n*t1]); } };
     const [g,d]=DATA.comps.sizes;
-    phy(g,194,B-C*Math.sqrt(g),'#c9c2b6',0,1300);
+    phy(g,194,B-C*Math.sqrt(g),'#078bc9',0,1300);
     phy(d,472,B-C*Math.sqrt(d),'#ffcd00',300,600);
     let xx=566, yb=B, rowH=0; const sm=DATA.comps.small;
     sm.forEach((s,k)=>{ const R=C*Math.sqrt(s)+1.5; if(xx+2*R>796){ xx=566; yb-=rowH+4; rowH=0; }
-      phy(s,xx+R,yb-R,'#8a8278',700+k/sm.length*500,150); xx+=2*R+4; rowH=Math.max(rowH,2*R); });
+      phy(s,xx+R,yb-R,'#4b9f4a',700+k/sm.length*500,150); xx+=2*R+4; rowH=Math.max(rowH,2*R); });
     let sd=7; const rnd=()=>(sd=(sd*16807)%2147483647)/2147483647;
     for(let i=0;i<DATA.comps.isolated;i++) P.push([855+(i%28)*7+(rnd()-.5)*2, B-3-Math.floor(i/28)*7+(rnd()-.5)*2,'#5c564e',900+rnd()*800]);
   }
@@ -638,10 +644,10 @@ flat[5]=(()=>{ let x,last=-1; const P=[];
   let s='';
   for(const v of [0,.25,.5,.75,1]) s+=`<line class="gl" x1="${ml}" x2="${W-mr}" y1="${Y(v)}" y2="${Y(v)}"/><text class="ax" x="${ml-14}" y="${Y(v)+6}" text-anchor="end">${Math.round(v*100)}${NB}%</text>`;
   for(const v of [.15,.2,.25,.3,.35,.4]) s+=`<text class="ax" x="${X(v)}" y="${H-mb+34}" text-anchor="middle">${fr(v.toFixed(2))}</text>`;
-  s+=`<text class="ax" x="${(ml+W-mr)/2}" y="${H-2}" text-anchor="middle">seuil de similarité de Jaccard</text>`;
+  s+=`<text class="ax" x="${(ml+W-mr)/2}" y="${H-2}" text-anchor="middle">Jaccard similarity threshold</text>`;
   s+=`<path class="ln" pathLength="1" d="M${S.map(r=>X(r[0]).toFixed(1)+' '+Y(r[3]).toFixed(1)).join('L')}"/>`;
   S.forEach(r=>{ const sel=r[0]===DATA.chosen, f=(X(r[0])-ml)/(W-ml-mr);
-    s+=`<circle class="mk${sel?' sel':''}" cx="${X(r[0])}" cy="${Y(r[3])}" r="${sel?8:5}" style="--d:${(.15+f*.6).toFixed(2)}s"><title>Seuil ${fr(r[0])} : ${fr((r[3]*100).toFixed(1))} % des sets dans le plus grand bloc, ${r[1].toLocaleString('fr-FR')} liens</title></circle>`; });
+    s+=`<circle class="mk${sel?' sel':''}" cx="${X(r[0])}" cy="${Y(r[3])}" r="${sel?8:5}" style="--d:${(.15+f*.6).toFixed(2)}s"><title>Threshold ${fr(r[0])}: ${fr((r[3]*100).toFixed(1))}% of sets in the largest block, ${r[1].toLocaleString('en-US')} links</title></circle>`; });
   const a=S[0], z=S[S.length-1];
   s+=`<text class="vl" x="${X(a[0])+14}" y="${Y(a[3])-12}">${Math.round(a[3]*100)}${NB}%</text>`;
   s+=`<text class="vl" x="${X(z[0])}" y="${Y(z[3])-18}" text-anchor="middle">${Math.round(z[3]*100)}${NB}%</text>`;
@@ -651,7 +657,7 @@ flat[5]=(()=>{ let x,last=-1; const P=[];
 
 // 6 · modularité de chaque découpage
 (()=>{ const M=DATA.mod, mx=Math.max(...M.map(m=>m[1]));
-  document.getElementById('mod').innerHTML=M.map(([n,v],i)=>`<div class="br${n==='Décennies'?' acc':''}" style="--w:${(Math.max(0,v)/mx*80).toFixed(2)}%;--d:${i*90}ms"><span class="bn">${n}</span><span class="bt"><i></i><b>${Math.abs(v)<.005?'≈'+NB+'0':fr(v.toFixed(2))}</b></span></div>`).join('');
+  document.getElementById('mod').innerHTML=M.map(([n,v],i)=>`<div class="br${n==='Decades'?' acc':''}" style="--w:${(Math.max(0,v)/mx*80).toFixed(2)}%;--d:${i*90}ms"><span class="bn">${n}</span><span class="bt"><i></i><b>${Math.abs(v)<.005?'≈'+NB+'0':fr(v.toFixed(2))}</b></span></div>`).join('');
 })();
 
 // 7 · thème deviné
@@ -662,13 +668,28 @@ flat[5]=(()=>{ let x,last=-1; const P=[];
 // 8 · cohésion observée contre hasard
 document.getElementById('dgrid').innerHTML=[0,25,50,75,100].map(v=>`<i style="left:${v}%"></i><span style="left:${v}%">${v}${NB}%</span>`).join('');
 document.getElementById('dumb').innerHTML=DATA.null.map((d,i)=>{ const o=d.obs*100, n=d.rnd*100;
-  return `<div class="db${i===3?' gap':''}" style="--o:${o.toFixed(2)};--n:${n.toFixed(2)};--d:${i*70}ms" title="${d.t} : ${Math.round(o)} % observé, ${fr(n.toFixed(1))} % au hasard en moyenne (maximum ${fr((d.max*100).toFixed(1))} %)"><span class="dn">${d.t}</span><span class="dt"><i class="ln"></i><i class="pt"></i><span class="mv"><i class="pt"></i></span></span><span class="dv">${Math.round(o)}${NB}%</span></div>`; }).join('');
+  return `<div class="db${i===3?' gap':''}" style="--o:${o.toFixed(2)};--n:${n.toFixed(2)};--d:${i*70}ms" title="${d.t}: ${Math.round(o)}% observed, ${fr(n.toFixed(1))}% random on average (max ${fr((d.max*100).toFixed(1))}%)"><span class="dn">${d.t}</span><span class="dt"><i class="ln"></i><i class="pt"></i><span class="mv"><i class="pt"></i></span></span><span class="dv">${Math.round(o)}${NB}%</span></div>`; }).join('');
 
 // 9 · évolution par période
 (()=>{ const T=DATA.temporal;
   const cols=(key,fmt,id)=>{ const mx=Math.max(...T.map(r=>r[key]));
     document.getElementById(id).innerHTML=T.map((r,i)=>`<div class="cl" style="--h:${(r[key]/mx*80).toFixed(1)}%;--d:${i*90}ms"><b>${fmt(r[key])}</b><i></i><span>${r.p}</span></div>`).join(''); };
   cols('excl',v=>fr(v.toFixed(1))+NB+'%','c-excl'); cols('parts',v=>String(v),'c-parts');
+})();
+
+// briques floues dans les coins des slides 2D, comme hors du champ de netteté d'une photo
+(()=>{ const r=new THREE.WebGLRenderer({antialias:true,alpha:true,preserveDrawingBuffer:true}); r.setSize(420,420,false);
+  r.outputEncoding=THREE.sRGBEncoding; r.toneMapping=THREE.ACESFilmicToneMapping;
+  const sc=new THREE.Scene(), cam=new THREE.PerspectiveCamera(30,1,.1,100); cam.position.set(6,6,8); cam.lookAt(0,.5,0);
+  const d=new THREE.DirectionalLight(0xffe6c4,2.4); d.position.set(3,9,5); sc.add(d,new THREE.HemisphereLight(0xdfe8ff,0x16264a,.9));
+  const shot=(wx,dz,hex)=>{ const g=brick(wx,dz,1.2,hex,false); sc.add(g); r.render(sc,cam); sc.remove(g); return r.domElement.toDataURL(); };
+  const I={r:shot(2,2,0xc8160f),y:shot(4,2,0xf2c41c),g:shot(4,2,0x237841),b:shot(2,2,0x0055bf)};
+  r.dispose();
+  // [image, gauche, haut, largeur, rotation] : coins haut droit, bas droit et bas gauche, les zones libres sur toutes les slides
+  const L={3:'yrg',4:'rgb',5:'gyr',6:'byg',7:'rby',8:'ygr',9:'grb'};
+  Object.entries(L).forEach(([k,[a,b,e]])=>{ const sl=document.querySelector(`.slide[data-s="${k}"]`);
+    [[a,1630,-150,440,+k%2?14:-12],[b,1700,790,300,+k%2?-20:16],[e,-150,860,320,+k%2?24:-18]].forEach(([c,x,y,w,rot])=>{ const im=new Image(); im.src=I[c]; im.className='bgb';
+      im.style.cssText=`left:${x}px;top:${y}px;width:${w}px;transform:rotate(${rot}deg)`; sl.prepend(im); }); });
 })();
 
 // ---------- navigation ----------
