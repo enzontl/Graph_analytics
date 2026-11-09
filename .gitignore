@@ -3,3 +3,5 @@ __pycache__/
 .venv/
 .pytest_cache/
 results/lego_sets.gexf
+results_demo/
+figures_demo/
