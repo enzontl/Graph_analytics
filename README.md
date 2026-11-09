@@ -30,9 +30,15 @@ Graphe par défaut : sets de 1990 à 2025 d'au moins 50 pièces, poids de Jaccar
   mélangés au hasard. Un découpage par décennie (0,36) structure le graphe
   **mieux** que les thèmes. La NMI communautés/thèmes vaut 0,45 (sets isolés
   exclus). Les grandes communautés mélangent plusieurs thèmes d'une même époque.
-- **Autre algorithme** (`communities_comparison.csv`). _À compléter après
-  `run_extensions.py` : nombre de communautés, modularité et NMI de la label
-  propagation et de Louvain aux résolutions 0,5, 1, 2 et 4._
+- **Autre algorithme** (`communities_comparison.csv`). La label propagation
+  donne des résultats proches de Louvain : 1 814 communautés, modularité 0,58 et
+  NMI 0,49 (asynchrone, pondérée) ; 1 805 communautés, 0,58 et 0,47
+  (semi-synchrone, non pondérée). Louvain à résolution 1 (nos résultats) : 1 677
+  communautés, 0,63 et 0,45. Quand on augmente la résolution de Louvain
+  (0,5 → 4), la NMI monte (0,43 → 0,54) et la modularité baisse (0,61 → 0,48),
+  mais c'est surtout parce qu'il y a plus de communautés : on ne conclut pas
+  que les thèmes sont mieux retrouvés. Les NMI de tous les algorithmes
+  restent entre 0,43 et 0,54.
 - **Quelques thèmes sont de vrais univers.** Part des liens d'un thème qui
   restent dans le thème (`theme_cohesion.csv`) : Duplo 0,91, Technic 0,85,
   Mixels 0,81, DOTS 0,81, Brickheadz 0,77. Les thèmes sous licence sont surtout
@@ -40,10 +46,23 @@ Graphe par défaut : sets de 1990 à 2025 d'au moins 50 pièces, poids de Jaccar
   Jurassic World 0,03.
   La médiane est de 0,29 sur 57 thèmes.
 - **Graphe des thèmes** (`theme_graph.gexf`, `figures/theme_graph.png`).
-  _À compléter : thèmes les plus liés entre eux, thèmes isolés._
+  127 thèmes, 2 487 liens, 7 thèmes sans aucun lien (tous très petits : 2 à 19
+  sets, par exemple Bluey ou Scala). Les liens les plus lourds passent par Star Wars et
+  Creator (Creator–Star Wars, Star Wars–Icons) mais ils sont peu
+  informatifs : leur `lift` est proche de 1 (1,10 et 1,38), ce qu'on attend
+  d'un thème qui a énormément de liens. Les couples les plus liés par rapport au hasard
+  (`lift`, thèmes d'au moins 30 sets) sont des thèmes proches par l'univers :
+  Castle–Pirates (56), Pirates–Adventurers (45), Train–Town (20),
+  Bionicle–Hero Factory (15).
 - **Deviner le thème d'un set par ses voisins** (`theme_prediction.csv`).
-  _À compléter : taux de réussite global, comparé aux repères (thème
-  majoritaire, hasard), thèmes les mieux et les moins bien devinés._
+  Chaque voisin vote pour son thème : on devine juste pour **63,9 %** des sets
+  reliés (7 600 sets) et 53,6 % en comptant les sets isolés comme des échecs,
+  contre 8,4 % en prédisant toujours Star Wars et 3,1 % au hasard. Les mieux
+  devinés : Technic 100 %, Town 93 %, Duplo 88 %, Star Wars 86 %, Friends 83 %.
+  Les moins bien devinés sont des thèmes-étiquettes, presque toujours
+  confondus avec Star Wars : LEGO Ideas 0 %, Icons 5 %, LEGO Exclusive 5 %,
+  Monkie Kid 9 %. Cela rejoint la cohésion : les univers fermés se devinent,
+  pas les étiquettes.
 - **Modèle nul** (`theme_cohesion_null.csv`, `null_model_runs.csv`). Si l'on
   mélange les pièces entre les sets (tailles des sets et fréquences des pièces
   conservées, 10 tirages), environ 180 paires de sets seulement atteignent le
@@ -114,9 +133,7 @@ Le graphe des sets dans Gephi, coloré par communauté Louvain
   été repris. Le projet utilise les bibliothèques NetworkX, pandas, NumPy,
   SciPy, scikit-learn et matplotlib.
 - **Outils d'IA :** le code (chargement, construction du graphe, fonctions
-  d'analyse, tests) et la recherche d'études existantes ont été réalisés avec
-  l'aide de Claude Code (Anthropic). _À compléter : ce que chaque membre du
-  groupe a fait lui-même._
+  d'analyse, tests) et la recherche d'études existantes ont été réalisés avec l'aide de Claude Code (Anthropic).
 
 ## Modèle de graphe
 
